@@ -1,8 +1,8 @@
 Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
-Version:	2.3.0
-Release:	2
+Version:	2.3.1
+Release:	1
 License:	GPL
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
@@ -42,13 +42,14 @@ do mirrorowania serwerów FTP.
 
 %build
 gettextize --copy --force
-CXXFLAGS="$RPM_OPT_FLAGS -fno-rtti -fno-exceptions -fno-implicit-templates"
+CXXFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g} -fno-rtti -fno-exceptions -fno-implicit-templates"
 %configure \
 	--with-modules
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 install -d $RPM_BUILD_ROOT%{_sysconfdir}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
@@ -57,8 +58,7 @@ install lftp.conf $RPM_BUILD_ROOT%{_sysconfdir}
 
 chmod +x $RPM_BUILD_ROOT%{_libdir}/lftp/*
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
-	README NEWS
+gzip -9nf README NEWS
 
 %find_lang %{name}
 
