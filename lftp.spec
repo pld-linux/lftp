@@ -66,7 +66,7 @@ o arquivo FEATURES para uma lista mais detalhada.
 %prep
 %setup -q
 #%patch0 -p1
-#%patch1 -p1
+%patch1 -p1
 sed -i -e 's#pkgverlibdir.*=.*#pkgverlibdir = $(pkglibdir)#g' src/Makefile*
 
 # allow pl.gmo regeneration
