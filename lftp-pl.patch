@@ -433,6 +433,15 @@
  
  #: src/ftpclass.cc:3357
  msgid "saw file size in response"
+@@ -1840,7 +1840,7 @@
+ 
+ #: src/ftpclass.cc:3675
+ msgid "Making data connection..."
+-msgstr "Ustanawianie po³±czenie dla danych..."
++msgstr "Ustanawianie po³±czenia dla danych..."
+ 
+ #: src/ftpclass.cc:3678
+ msgid "Changing remote directory..."
 @@ -1880,17 +1879,17 @@
  msgid "[%lu] Terminated by signal %d. %s"
  msgstr "[%lu] Przerwany przez sygna³ %d. %s"
