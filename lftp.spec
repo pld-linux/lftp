@@ -2,7 +2,7 @@ Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
 Version:	2.3.4
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
@@ -42,7 +42,7 @@ do mirrorowania serwerów FTP.
 gettextize --copy --force
 CXXFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g} -fno-rtti -fno-exceptions -fno-implicit-templates"
 %configure \
-	--with-modules
+	--without-modules
 %{__make}
 
 %install
