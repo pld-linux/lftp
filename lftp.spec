@@ -28,7 +28,10 @@ BuildRequires:	ncurses-devel >= 5.2
 BuildRequires:	readline-devel >= 4.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		__cxx		%{__cc}
+%define		_gcc_ver	%(%{__cc} -dumpversion | cut -b 1)
+%if %{_gcc_ver} == 2
+%define		__cxx		"%{__cc}"
+%endif
 
 %description
 LFTP is a shell-like command line ftp client. The main two advantages
