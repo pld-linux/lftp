@@ -69,7 +69,7 @@ Veja o arquivo FEATURES para uma lista mais detalhada.
 install -m644 %{SOURCE1} po/pl.po
 rm -f missing
 %{__libtoolize}
-gettextize --copy --force
+%{__gettextize}
 aclocal -I m4
 %{__autoconf}
 %{__automake}
