@@ -9,7 +9,7 @@ Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente ftp/h
 Summary(zh_CN):	lftp ¿Í»§¶Ë³ÌÐò
 Name:		lftp
 Version:	3.0.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Networking
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
@@ -18,6 +18,7 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Source2:	%{name}.desktop
 Patch0:		%{name}-home_etc.patch
+Patch1:		%{name}-pl.po-update.patch
 Icon:		ftp.gif
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf
@@ -28,6 +29,7 @@ BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel >= 5.2
 %{?with_ssl:BuildRequires:	openssl-devel >= 0.9.7d}
 BuildRequires:	readline-devel >= 4.2
+BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_gcc_ver	%(%{__cc} -dumpversion | cut -b 1)
@@ -64,7 +66,11 @@ o arquivo FEATURES para uma lista mais detalhada.
 %prep
 %setup -q
 #%patch0 -p1
+%patch1 -p1
 sed -i -e 's#pkgverlibdir.*=.*#pkgverlibdir = $(pkglibdir)#g' src/Makefile*
+
+# allow pl.gmo regeneration
+rm -f po/stamp-po
 
 %build
 %{__libtoolize}
