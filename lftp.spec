@@ -1,6 +1,6 @@
 #
 # Conditional build:
-# bcond_off_ssl - do not use SSL
+# _without_ssl - do not use SSL
 #
 Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
@@ -21,7 +21,7 @@ BuildRequires:	ncurses-devel >= 5.2
 BuildRequires:	readline-devel >= 4.2
 BuildRequires:	gettext-devel
 BuildRequires:	gcc-c++
-%{!??bcond_off_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
+%{!??_without_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -57,7 +57,7 @@ automake -a -c
 CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions -fno-implicit-templates"
 %configure \
 	--with-modules \
-	--with%{?bcond_off_ssl:out}-ssl
+	--with%{?_without_ssl:out}-ssl
 %{__make}
 
 %install
