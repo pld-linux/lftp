@@ -8,7 +8,8 @@ Group(pl):	Sieciowe
 Copyright:	GPL
 Source:		ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client/%{name}-%{version}.tar.gz
 Icon:		ftp.gif
-Requires:	ncurses => 4.2-12
+BuildPrereq:	ncurses-devel
+%requires_pkg	ncurses
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -33,7 +34,8 @@ Doskonale siê spisuje jako aplikacja do mirrorowania serwerów FTP.
 
 %build
 CFLAGS=$RPM_OPT_FLAGS CXXFLAGS=$RPM_OPT_FLAGS LDFLAGS=-s \
-./configure --prefix=/usr
+./configure \
+	--prefix=/usr
 make 
 
 %install
@@ -44,8 +46,8 @@ make prefix=$RPM_BUILD_ROOT/usr install
 
 install lftp.conf $RPM_BUILD_ROOT/etc
 
-gzip -9fn $RPM_BUILD_ROOT/usr/man/man1/*
-gzip -9fn README NEWS 
+gzip -9fn $RPM_BUILD_ROOT/usr/man/man1/* \
+	README NEWS 
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -57,9 +59,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /usr/bin/*
 /usr/man/man1/*
 
-%attr(755,root,root,755) /usr/share/lftp
-
-%config(noreplace) %verify(not size mtime md5) /etc/lftp.conf
+%attr(755,root,root) /usr/share/lftp
 
 %lang(es)    /usr/share/locale/es/LC_MESSAGES/lftp.mo
 %lang(ru)    /usr/share/locale/ru/LC_MESSAGES/lftp.mo
@@ -67,7 +67,15 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pt_BR) /usr/share/locale/pt_BR/LC_MESSAGES/lftp.mo
 %lang(pl)    /usr/share/locale/pl/LC_MESSAGES/lftp.mo
 
+%config(noreplace) %verify(not size mtime md5) /etc/lftp.conf
+  [1.2.4-4]
 %changelog
+- added resdline-devel to BuildPrereq,
+  [1.2.4-3]
+- removed %%requires_pkg (dependences for ncurses is generted automatycally).
+
+* Mon Apr 20 1999 Piotr Czerwiñski <pius@pld.org.pl>
+- recompiled on rpm 3,
 - added %requires_pkg macro and BuildPrereq,
 - replacements in %files.
 
