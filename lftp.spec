@@ -2,7 +2,7 @@ Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
 Version:	1.2.4
-Release:	3
+Release:	4
 Group:		Networking/Utilities
 Group(pl):	Sieciowe/Narzêdzia
 Copyright:	GPL
@@ -33,7 +33,8 @@ Doskonale siê spisuje jako aplikacja do mirrorowania serwerów FTP.
 %setup -q
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
+CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
+CXXFLAGS="$RPM_OPT_FLAGS" \
 ./configure %{_target} \
 	--prefix=/usr
 make 
@@ -49,27 +50,25 @@ install lftp.conf $RPM_BUILD_ROOT/etc
 gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	README NEWS 
 
+%find_lang lftp
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f lftp.lang
 %defattr(644,root,root,755)
 %doc {README,NEWS}.gz
-
+%config(noreplace) %verify(not size mtime md5) /etc/lftp.conf
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
-
 %attr(755,root,root) %{_datadir}/lftp
 
-%lang(es)    %{_datadir}/locale/es/LC_MESSAGES/lftp.mo
-%lang(ru)    %{_datadir}/locale/ru/LC_MESSAGES/lftp.mo
-%lang(it)    %{_datadir}/locale/it/LC_MESSAGES/lftp.mo
-%lang(pt_BR) %{_datadir}/locale/pt_BR/LC_MESSAGES/lftp.mo
-%lang(pl)    %{_datadir}/locale/pl/LC_MESSAGES/lftp.mo
-
-%config(noreplace) %verify(not size mtime md5) /etc/lftp.conf
-  [1.2.4-4]
 %changelog
+Revision 1.31  1999/07/12 23:06:05  kloczek
+- added using CVS keywords in %changelog (for automating them).
+
+* Sat May 29 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.2.4-4]
 - more rpm macros,
 - added rpm BuildPrereq rules.
 
@@ -98,7 +97,6 @@ rm -rf $RPM_BUILD_ROOT
 - changed %lang to pt_BR on pt_BR lftp.mo.
 
 * Fri Jun 12 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-- moved %changelog at the end of spec.
-- build against glibc-2.1,
+- moved %changelog at the end of spec.- build against glibc-2.1,
 - translation modified for pl,
 - moved %changelog at the end of spec.
