@@ -59,7 +59,8 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Mon Nov  2 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.0.1-2]
-- fixed passing $RPM_OPT_FLAGS.
+- fixed passing $RPM_OPT_FLAGS,
+- added Group(pl).
 - removed "rm -rf $RPM_BUILD_ROOT" from %prep,
 - simplification in %files,
   [1.0.1-1]
