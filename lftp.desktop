@@ -10,4 +10,5 @@ Exec=lftp
 Icon=lftp.png
 Terminal=true
 Type=Application
+Categories=ConsoleOnly;Network;FileTransfer;
 # vi: encoding=utf-8
