@@ -1,0 +1,72 @@
+--- lftp-2.6.5/src/module.cc~	Sat Apr 19 08:38:36 2003
++++ lftp-2.6.5/src/module.cc	Sat Apr 19 08:38:36 2003
+@@ -116,7 +116,7 @@
+ };
+ module_info *module_info::base;
+ 
+-static ResDecl res_mod_path("module:path", PKGLIBDIR"/"VERSION":"PKGLIBDIR, 0,0);
++static ResDecl res_mod_path("module:path", PKGLIBDIR, 0,0);
+ 
+ void *module_load(const char *path,int argc,const char *const *argv)
+ {
+@@ -162,7 +162,7 @@
+ 	 }
+       }
+       if(p==0)
+-	 sprintf(fullpath,"%s/%s/%s.so",PKGLIBDIR,VERSION,path); // fallback
++	 sprintf(fullpath,"%s/%s.so",PKGLIBDIR,path); // fallback
+    }
+    map=dlopen(fullpath,DLOPEN_FLAGS);  // LAZY?
+    if(map==0)
+--- lftp-2.6.5/src/Makefile.am~	Sat Apr 19 09:26:05 2003
++++ lftp-2.6.5/src/Makefile.am	Sat Apr 19 09:26:05 2003
+@@ -11,7 +11,7 @@
+ #ftpget_SOURCES = ftpget.cc
+ 
+ EXTRA_LTLIBRARIES = libnetwork.la proto-ftp.la proto-http.la proto-file.la cmd-mirror.la cmd-sleep.la proto-fish.la
+-pkgverlib_LTLIBRARIES = $(MODULES_LA)
++pkglib_LTLIBRARIES = $(MODULES_LA)
+ noinst_LTLIBRARIES = $(MODULES_LA_STATIC) libtasks.la libjobs.la
+ 
+ proto_ftp_la_SOURCES  = ftpclass.cc ftpclass.h FtpListInfo.cc FtpListInfo.h\
+@@ -24,18 +24,18 @@
+ libnetwork_la_SOURCES = NetAccess.cc NetAccess.h Resolver.cc Resolver.h\
+  lftp_ssl.cc lftp_ssl.h buffer_ssl.cc buffer_ssl.h
+ 
+-proto_ftp_la_LDFLAGS  = -module -avoid-version -rpath $(pkgverlibdir)
+-proto_http_la_LDFLAGS = -module -avoid-version -rpath $(pkgverlibdir)
+-proto_file_la_LDFLAGS = -module -avoid-version -rpath $(pkgverlibdir)
+-proto_fish_la_LDFLAGS = -module -avoid-version -rpath $(pkgverlibdir)
+-cmd_mirror_la_LDFLAGS = -module -avoid-version -rpath $(pkgverlibdir)
+-cmd_sleep_la_LDFLAGS  = -module -avoid-version -rpath $(pkgverlibdir)
+-libnetwork_la_LDFLAGS = -avoid-version -rpath $(pkgverlibdir) $(SSL_LDFLAGS)
++proto_ftp_la_LDFLAGS  = -module -avoid-version -rpath $(pkglibdir)
++proto_http_la_LDFLAGS = -module -avoid-version -rpath $(pkglibdir)
++proto_file_la_LDFLAGS = -module -avoid-version -rpath $(pkglibdir)
++proto_fish_la_LDFLAGS = -module -avoid-version -rpath $(pkglibdir)
++cmd_mirror_la_LDFLAGS = -module -avoid-version -rpath $(pkglibdir)
++cmd_sleep_la_LDFLAGS  = -module -avoid-version -rpath $(pkglibdir)
++libnetwork_la_LDFLAGS = -avoid-version -rpath $(pkglibdir) $(SSL_LDFLAGS)
+ libnetwork_la_LIBADD  = $(SOCKSLIBS) $(SSL_LIBS)
+ 
+-proto_ftp_la_LIBADD  = -L$(DESTDIR)$(pkgverlibdir) libnetwork.la
+-proto_http_la_LIBADD = -L$(DESTDIR)$(pkgverlibdir) libnetwork.la
+-proto_fish_la_LIBADD = -L$(DESTDIR)$(pkgverlibdir) libnetwork.la
++proto_ftp_la_LIBADD  = libnetwork.la
++proto_http_la_LIBADD = libnetwork.la
++proto_fish_la_LIBADD = libnetwork.la
+ 
+ libtasks_la_SOURCES = PollVec.cc PollVec.h SMTask.cc SMTask.h ProcWait.cc\
+  ProcWait.h GetPass.cc GetPass.h ConnectionSlot.cc ConnectionSlot.h\
+@@ -93,11 +93,3 @@
+ 	ln -sf .libs/libtasks.a* libtasks.a
+ libjobs.a: libjobs.la
+ 	ln -sf .libs/libjobs.a* libjobs.a
+-
+-# libtool does not strip modules, do it here.
+-install-lib-local:
+-	@-if test "$(MODULES_LA)"; then \
+-	    case " $(LDFLAGS) " in *" -s "*) \
+-	       echo $(STRIP) $(DESTDIR)$(pkgverlibdir)/*.so; \
+-	       $(STRIP) $(DESTDIR)$(pkgverlibdir)/*.so;; \
+-	    esac; fi
