@@ -1,6 +1,6 @@
 #
 # Conditional build:
-# _without_ssl - do not use SSL
+%bcond_without ssl	# do not use SSL
 #
 Summary:	Sophisticated command line ftp/http client
 Summary(ko):	명령줄에서 돌아가는 ftp/http 클라이언트
@@ -28,7 +28,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel >= 5.2
-%{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.7c}
+%{?with_ssl:BuildRequires:	openssl-devel >= 0.9.7c}
 BuildRequires:	readline-devel >= 4.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -78,7 +78,7 @@ o arquivo FEATURES para uma lista mais detalhada.
 CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions -fno-implicit-templates"
 %configure \
 	--with-modules \
-	--with%{?_without_ssl:out}-ssl
+	--with%{!?with_ssl:out}-ssl
 %{__make}
 
 %install
