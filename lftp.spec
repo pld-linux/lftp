@@ -2,10 +2,10 @@
 # Conditional build:
 %bcond_without	ssl	# do not use SSL
 #
-Summary:	Sophisticated command line FTP/http client
-Summary(ko):	¸í·ÉÁÙ¿¡¼­ µ¹¾Æ°¡´Â FTP/http Å¬¶óÀÌ¾ðÆ®
-Summary(pl):	Zaawansowany klient FTP/http
-Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente FTP/http)
+Summary:	Sophisticated command line FTP/HTTP client
+Summary(ko):	¸í·ÉÁÙ¿¡¼­ µ¹¾Æ°¡´Â FTP/HTTP Å¬¶óÀÌ¾ðÆ®
+Summary(pl):	Zaawansowany klient FTP/HTTP
+Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente FTP/HTTP)
 Summary(zh_CN):	lftp ¿Í»§¶Ë³ÌÐò
 Name:		lftp
 Version:	3.0.10
@@ -38,7 +38,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %endif
 
 %description
-LFTP is a shell-like command line FTP/http client. The main two
+LFTP is a shell-like command line FTP/HTTP client. The main two
 advantages over other FTP clients are reliability and ability to
 perform tasks in background. It will reconnect and reget the file
 being transferred if the connection broke. You can start a transfer in
@@ -49,7 +49,7 @@ and completes the transfers. It has also such nice features as reput
 and mirror.
 
 %description -l pl
-Lftp jest zaawansowanym klientem FTP/http. Potrafi automatycznie
+Lftp jest zaawansowanym klientem FTP/HTTP. Potrafi automatycznie
 po³±czyæ siê z serwerem FTP po zerwanym po³±czeniu i dokoñczyæ
 ¶ci±ganie archiwów. Lftp mo¿e pracowaæ w tle i nie zrywa przy tym
 po³±czenia po tym jak siê wylogujesz. Program ten honoruje komendy
@@ -58,8 +58,8 @@ jako aplikacja do mirrorowania serwerów FTP.
 
 %description -l pt_BR
 O lftp é um programa de transferência de arquivos por linha de
-comando. Ele suporta os protocolos FTP/http. Suporta: proxy FTP, proxy
-http, FTP sobre http, opie/skey, transferências fxp, repetição de
+comando. Ele suporta os protocolos FTP/HTTP. Suporta: proxy FTP, proxy
+HTTP, FTP sobre HTTP, opie/skey, transferências fxp, repetição de
 tentativa automática em erros não-fatais e timeouts, ipv6, socks. Veja
 o arquivo FEATURES para uma lista mais detalhada.
 
