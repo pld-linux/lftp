@@ -6,7 +6,7 @@ Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente ftp/http)
 Name:		lftp
-Version:	2.5.1
+Version:	2.5.2
 Release:	1
 License:	GPL
 Group:		Applications/Networking
@@ -27,6 +27,8 @@ BuildRequires:	ncurses-devel >= 5.2
 %{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
 BuildRequires:	readline-devel >= 4.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		__cxx		%{__cc}
 
 %description
 LFTP is a shell-like command line ftp client. The main two advantages
