@@ -4,9 +4,10 @@ Name:        lftp
 Version:     1.1.1
 Release:     2
 Copyright:   GPL
+Group:       Applications/Networking
+Group(pl):   Aplikacje/Sieæ
 Source:      ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client/%{name}-%{version}.tar.gz
 Icon:        ftp.gif
-Group:       Applications/Networking
 BuildRoot:   /tmp/%{name}-%{version}-root
 
 %description
