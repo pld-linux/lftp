@@ -9,7 +9,7 @@ Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente ftp/h
 Summary(zh_CN):	lftp ¿Í»§¶Ë³ÌÐò
 Name:		lftp
 Version:	2.6.5
-Release:	2
+Release:	1
 License:	GPL
 Group:		Applications/Networking
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
@@ -28,7 +28,7 @@ BuildRequires:	gcc-c++
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel >= 5.2
-%{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.7}
+%{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.6j}
 BuildRequires:	readline-devel >= 4.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
