@@ -24,7 +24,7 @@ BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	gcc-c++
 BuildRequires:	libstdc++-devel
-BuildRequires:	libtool
+BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel >= 5.2
 %{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
 BuildRequires:	readline-devel >= 4.2
@@ -82,10 +82,6 @@ CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions -fno-implicit-templates"
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sysconfdir}
-
-# Ugly hack --misiek
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
-rm src/*.la
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
