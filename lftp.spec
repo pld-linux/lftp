@@ -1,14 +1,15 @@
 Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
-Version:	2.1.4
-Release:	2
+Version:	2.1.5
+Release:	1
+License:	GPL
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
-Copyright:	GPL
-Source:		ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
+Source:		http://metalab.unc.edu/pub/Linux/system/network/file-transfer/%{name}-%{version}.tar.gz
 Patch:		lftp-passive.patch
 Icon:		ftp.gif
+URL:		http://ftp.yars.free.net/projects/lftp/
 BuildRequires:	ncurses-devel >= 5.0
 BuildRequires:	readline-devel
 BuildRequires:	gettext-devel
@@ -22,16 +23,17 @@ other ftp clients are reliability and ability to perform tasks in
 background. It will reconnect and reget the file being transferred if the
 connection broke. You can start a transfer in background and continue
 browsing on the ftp site. It does this all in one process. When you have
-started background jobs and feel you are done, you can just exit lftp and it
-automatically moves to nohup mode and completes the transfers. It has also
-such nice features as reput and mirror.
+started background jobs and feel you are done, you can just exit lftp and
+it automatically moves to nohup mode and completes the transfers. It has
+also such nice features as reput and mirror.
 
 %description -l pl
-Lftp jest zaawansowanym klientem ftp. Potrafi automatycznie po³±czyæ siê z 
-serwerem ftp po zerwanym po³±czeniu i dokoñczyæ ¶ci±ganie archiwów. Lftp mo¿e 
-pracowaæ w tle i nie zrywa przy tym po³±czenia po tym jak siê wylogujesz. 
-Program ten honoruje komendy pow³oki podczas sesji, np. `ls -al | less` itp. 
-Doskonale siê spisuje jako aplikacja do mirrorowania serwerów FTP.
+Lftp jest zaawansowanym klientem ftp. Potrafi automatycznie po³±czyæ siê z
+serwerem ftp po zerwanym po³±czeniu i dokoñczyæ ¶ci±ganie archiwów. Lftp
+mo¿e pracowaæ w tle i nie zrywa przy tym po³±czenia po tym jak siê
+wylogujesz. Program ten honoruje komendy pow³oki podczas sesji, np. `ls
+-al | less` itp. Doskonale siê spisuje jako aplikacja do mirrorowania
+serwerów FTP.
 
 %prep
 %setup -q
@@ -40,7 +42,7 @@ Doskonale siê spisuje jako aplikacja do mirrorowania serwerów FTP.
 %build
 gettextize --copy --force
 LDFLAGS="-s"; export LDFLAGS
-CXXFLAGS="$RPM_OPT_FLAGS"; export CXXFLAGS
+CXXFLAGS="$RPM_OPT_FLAGS -fno-rtti -fno-exceptions -fno-implicit-templates"; export CXXFLAGS
 %configure \
 	--with-modules
 make
@@ -55,8 +57,8 @@ install lftp.conf $RPM_BUILD_ROOT%{_sysconfdir}
 
 chmod +x $RPM_BUILD_ROOT%{_libdir}/lftp/*
 
-gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man1/* \
-	README NEWS 
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
+	README NEWS
 
 %find_lang %{name}
 
