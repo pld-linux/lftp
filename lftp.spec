@@ -2,30 +2,30 @@
 # Conditional build:
 %bcond_without ssl	# do not use SSL
 #
-%define	snap	20040325
 Summary:	Sophisticated command line ftp/http client
 Summary(ko):	¸í·ÉÁÙ¿¡¼­ µ¹¾Æ°¡´Â ftp/http Å¬¶óÀÌ¾ðÆ®
 Summary(pl):	Zaawansowany klient ftp/http
 Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente ftp/http)
 Summary(zh_CN):	lftp ¿Í»§¶Ë³ÌÐò
 Name:		lftp
-Version:	3.0.0
-Release:	0.%{snap}.1
+Version:	2.6.12
+Release:	1
 License:	GPL
 Group:		Applications/Networking
-Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/devel/%{name}-pre%{version}-%{snap}.tar.gz
-# Source0-md5:	38761cf75535f4eda16b8ca98104df98
+Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
+# Source0-md5:	bc5ed223daa568fda9a01f89b5000612
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Source2:	%{name}.desktop
-Patch0:		%{name}-home_etc.patch
+Patch0:		%{name}-amfix.patch
+Patch1:		%{name}-no_pkgverlibdir.patch
+Patch2:		%{name}-home_etc.patch
 Icon:		ftp.gif
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	libstdc++-devel
-BuildRequires:	sed >= 4.0.0
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel >= 5.2
 %{?with_ssl:BuildRequires:	openssl-devel >= 0.9.7d}
@@ -64,11 +64,12 @@ tentativa automática em erros não-fatais e timeouts, ipv6, socks. Veja
 o arquivo FEATURES para uma lista mais detalhada.
 
 %prep
-%setup -q -n %{name}-pre%{version}-%{snap}
-#%patch0 -p1
+%setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
-sed -i -e 's#pkgverlibdir.*=.*#pkgverlibdir = $(pkglibdir)#g' src/Makefile*
 %{__libtoolize}
 %{__gettextize}
 %{__aclocal} -I m4
@@ -104,9 +105,13 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lftp.conf
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/lftp
-%attr(755,root,root) %{_libdir}/lftp/cmd*.so
-%attr(755,root,root) %{_libdir}/lftp/lib*.so
-%attr(755,root,root) %{_libdir}/lftp/proto-*.so
+%attr(755,root,root) %{_libdir}/lftp/cmd-mirror.so
+%attr(755,root,root) %{_libdir}/lftp/cmd-sleep.so
+%attr(755,root,root) %{_libdir}/lftp/libnetwork.so
+%attr(755,root,root) %{_libdir}/lftp/proto-file.so
+%attr(755,root,root) %{_libdir}/lftp/proto-fish.so
+%attr(755,root,root) %{_libdir}/lftp/proto-ftp.so
+%attr(755,root,root) %{_libdir}/lftp/proto-http.so
 %attr(755,root,root) %{_datadir}/lftp
 %{_mandir}/man1/*
 %lang(pl) %{_mandir}/pl/man1/*
