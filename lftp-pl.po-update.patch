@@ -1,32 +1,21 @@
---- lftp-3.0.4/po/pl.po.orig	2004-05-21 13:30:01.000000000 +0200
-+++ lftp-3.0.4/po/pl.po	2004-05-25 18:32:45.973452880 +0200
-@@ -1,15 +1,15 @@
- # Polish translation of lftp.
- # Copyright (C) 1998-2000 Free Software Foundation, Inc.
- # Arkadiusz Mi¶kiewicz <misiek@pld-linux.org>, 1998-2004
--# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2003
-+# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2004
- # some updates by Tomasz K³oczko <kloczek@pld.org.pl>, 2003
- #
- msgid ""
- msgstr ""
--"Project-Id-Version: lftp 3.0.1\n"
-+"Project-Id-Version: lftp 3.0.4\n"
+diff -burN lftp-3.0.5.orig/po/pl.po lftp-3.0.5/po/pl.po
+--- lftp-3.0.5.orig/po/pl.po	2004-05-31 19:16:45.290725064 +0200
++++ lftp-3.0.5/po/pl.po	2004-05-31 19:19:31.418469808 +0200
+@@ -9,7 +9,7 @@
+ "Project-Id-Version: lftp 3.0.4\n"
  "Report-Msgid-Bugs-To: \n"
- "POT-Creation-Date: 2004-05-21 15:29+0400\n"
--"PO-Revision-Date: 2004-04-07 08:01+0200\n"
-+"PO-Revision-Date: 2004-05-25 18:31+0200\n"
+ "POT-Creation-Date: 2004-05-31 17:28+0400\n"
+-"PO-Revision-Date: 2004-05-25 18:31+0200\n"
++"PO-Revision-Date: 2004-05-31 19:17+0200\n"
  "Last-Translator: Arkadiusz Miskiewicz <arekm@pld-linux.org>\n"
  "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
  "MIME-Version: 1.0\n"
-@@ -2208,9 +2208,8 @@
- msgstr "**** FXP: próba odwrócenia ftp:fxp-passive-source\n"
+@@ -2209,7 +2209,7 @@
  
- #: src/FileCopyFtp.cc:97
--#, fuzzy
+ #: src/FileCopyFtp.cc:104
+ msgid "**** FXP: trying to reverse ftp:fxp-passive-sscn\n"
+-msgstr "**** FXP: próba odwrócenia ftp:ssl-protect-sscn\n"
++msgstr "**** FXP: próba odwrócenia ftp:fxp-passive-sscn\n"
+ 
+ #: src/FileCopyFtp.cc:112
  msgid "**** FXP: trying to reverse ftp:ssl-protect-fxp\n"
--msgstr "**** FXP: próba odwrócenia ftp:fxp-passive-source\n"
-+msgstr "**** FXP: próba odwrócenia ftp:ssl-protect-fxp\n"
- 
- #: src/FileCopyFtp.cc:102
- msgid "**** FXP: giving up, reverting to plain copy\n"
