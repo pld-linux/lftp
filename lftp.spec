@@ -13,6 +13,7 @@ Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
+Source1:	lftp.pl.po
 Icon:		ftp.gif
 URL:		http://ftp.yars.free.net/projects/lftp/
 BuildRequires:	ncurses-devel >= 5.2
@@ -55,6 +56,7 @@ Veja o arquivo FEATURES para uma lista mais detalhada.
 %setup -q
 
 %build
+install -m644 %{SOURCE1} po/pl.po
 rm -f missing
 libtoolize --copy --force
 gettextize --copy --force
