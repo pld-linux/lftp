@@ -9,7 +9,7 @@ Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente ftp/h
 Summary(zh_CN):	lftp ¿Í»§¶Ë³ÌÐò
 Name:		lftp
 Version:	2.6.11
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Networking
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
@@ -36,6 +36,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %if %{_gcc_ver} == 2
 %define		__cxx		"%{__cc}"
 %endif
+
+%define		no_install_post_chrpath 	1
 
 %description
 LFTP is a shell-like command line ftp/http client. The main two
