@@ -9,7 +9,7 @@ Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente ftp/h
 Summary(zh_CN):	lftp ¿Í»§¶Ë³ÌÐò
 Name:		lftp
 Version:	2.6.10
-Release:	4
+Release:	3
 License:	GPL
 Group:		Applications/Networking
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
