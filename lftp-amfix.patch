@@ -34,9 +34,9 @@
 -lftp.o commands.o module.o: confpaths.h
 +lftp.lo commands.lo module.lo: confpaths.h
 +libtasks.a: libtasks.la
-+	ln -sf .libs/libtasks.a .
++	ln -sf .libs/libtasks.al libtasks.a
 +libjobs.a: libjobs.la
-+	ln -sf .libs/libjobs.a .
++	ln -sf .libs/libjobs.al libjobs.a
  
  # libtool does not strip modules, do it here.
  install-lib-local:
