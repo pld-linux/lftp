@@ -3,8 +3,8 @@ Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
 Version:	2.1.4
 Release:	1
-Group:		Networking/Utilities
-Group(pl):	Sieciowe/Narzêdzia
+Group:		Applications/Networking
+Group(pl):	Aplikacje/Sieciowe
 Copyright:	GPL
 Source:		ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
 Patch:		lftp-passive.patch
@@ -30,7 +30,7 @@ such nice features as reput and mirror.
 Lftp jest zaawansowanym klientem ftp. Potrafi automatycznie po³±czyæ siê z 
 serwerem ftp po zerwanym po³±czeniu i dokoñczyæ ¶ci±ganie archiwów. Lftp mo¿e 
 pracowaæ w tle i nie zrywa przy tym po³±czenia po tym jak siê wylogujesz. 
-Program ten honoruje komendy shellowe podczas sesji, np. `ls -al | less` itp. 
+Program ten honoruje komendy pow³oki podczas sesji, np. `ls -al | less` itp. 
 Doskonale siê spisuje jako aplikacja do mirrorowania serwerów FTP.
 
 %prep
