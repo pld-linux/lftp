@@ -7,7 +7,7 @@ Summary(pl):	Zaawansowany klient ftp
 Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente ftp/http)
 Name:		lftp
 Version:	2.4.4
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
@@ -87,7 +87,15 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/lftp/%{version}/*.so
+# All modules specified here because lftp breaks things
+%attr(755,root,root) %{_libdir}/lftp/%{version}/cmd-mirror.so
+%attr(755,root,root) %{_libdir}/lftp/%{version}/cmd-sleep.so
+%attr(755,root,root) %{_libdir}/lftp/%{version}/libnetwork.so
+%attr(755,root,root) %{_libdir}/lftp/%{version}/proto-file.so
+%attr(755,root,root) %{_libdir}/lftp/%{version}/proto-fish.so
+%attr(755,root,root) %{_libdir}/lftp/%{version}/proto-ftp.so
+%attr(755,root,root) %{_libdir}/lftp/%{version}/proto-http.so
+
 %attr(755,root,root) %{_datadir}/lftp
 %dir %{_libdir}/lftp
 %dir %{_libdir}/lftp/%{version}
