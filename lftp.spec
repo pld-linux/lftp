@@ -4,6 +4,7 @@
 #
 Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
+Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente ftp/http)
 Name:		lftp
 Version:	2.4.4
 Release:	2
@@ -43,6 +44,13 @@ archiwów. Lftp mo¿e pracowaæ w tle i nie zrywa przy tym po³±czenia po
 tym jak siê wylogujesz. Program ten honoruje komendy pow³oki podczas
 sesji, np. `ls -al | less` itp. Doskonale siê spisuje jako aplikacja
 do mirrorowania serwerów FTP.
+
+%description -l pt_BR
+O lftp é um programa de transferência de arquivos por linha de
+comando. Ele suporta os protocolos FTP e HTTP. Suporta: proxy ftp,
+proxy http, ftp sobre http, opie/skey, transferências fxp, repetição
+de tentativa automática em erros não-fatais e timeouts, ipv6, socks.
+Veja o arquivo FEATURES para uma lista mais detalhada.
 
 %prep
 %setup -q
