@@ -1,8 +1,8 @@
 Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
-Version:	1.2.4
-Release:	4
+Version:	2.0.0
+Release:	1
 Group:		Networking/Utilities
 Group(pl):	Sieciowe/Narzêdzia
 Copyright:	GPL
@@ -36,7 +36,8 @@ Doskonale siê spisuje jako aplikacja do mirrorowania serwerów FTP.
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 CXXFLAGS="$RPM_OPT_FLAGS" \
 ./configure %{_target_platform} \
-	--prefix=/usr
+	--prefix=/usr \
+	--with-modules
 make 
 
 %install
@@ -64,6 +65,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
 %attr(755,root,root) %{_datadir}/lftp
+%attr(755,root,root) %{_libdir}/lftp/*.so
+%attr(755,root,root) %dir %{_libdir}/lftp
 
 %changelog
 Revision 1.31  1999/07/12 23:06:05  kloczek
@@ -99,6 +102,7 @@ Revision 1.31  1999/07/12 23:06:05  kloczek
 - changed %lang to pt_BR on pt_BR lftp.mo.
 
 * Fri Jun 12 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-- moved %changelog at the end of spec.- build against glibc-2.1,
+- moved %changelog at the end of spec.
+- build against glibc-2.1,
 - translation modified for pl,
 - moved %changelog at the end of spec.
