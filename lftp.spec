@@ -6,7 +6,7 @@ Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
 Version:	2.4.4
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
@@ -68,8 +68,6 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 install lftp.conf $RPM_BUILD_ROOT%{_sysconfdir}
-install src/.libs/proto-ftp.so[A-Z] $RPM_BUILD_ROOT%{_libdir}/lftp/%{version}/proto-ftp.so
-install src/.libs/proto-http.so[A-Z] $RPM_BUILD_ROOT%{_libdir}/lftp/%{version}/proto-http.so
 
 gzip -9nf README NEWS FAQ FEATURES BUGS ChangeLog TODO
 
