@@ -72,5 +72,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 %attr(755,root,root) %{_datadir}/lftp
 
-%dir %{_libdir}/lftp
-%attr(755,root,root) %{_libdir}/lftp/*.so
+#%dir %{_libdir}/lftp
+#%attr(755,root,root) %{_libdir}/lftp/*.so
