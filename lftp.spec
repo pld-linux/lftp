@@ -9,7 +9,7 @@ Copyright:	GPL
 Source:		ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
 Patch:		lftp-passive.patch
 Icon:		ftp.gif
-BuildRequires:	ncurses-devel > 5.0
+BuildRequires:	ncurses-devel >= 5.0
 BuildRequires:	readline-devel
 BuildRequires:	gettext-devel
 Buildroot:	/tmp/%{name}-%{version}-root
