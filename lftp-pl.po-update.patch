@@ -1,6 +1,10 @@
---- lftp-3.0.11/po/pl.po	2004-11-03 14:16:25.000000000 +0000
-+++ lftp-3.0.11.new/po/pl.po	2004-11-03 22:21:12.423426608 +0000
-@@ -6,11 +6,11 @@
+--- lftp-3.0.11/po/pl.po.orig	2004-11-03 15:16:25.000000000 +0100
++++ lftp-3.0.11/po/pl.po	2004-11-23 20:18:22.205749456 +0100
+@@ -3,14 +3,15 @@
+ # Arkadiusz Mi¶kiewicz <misiek@pld-linux.org>, 1998-2004
+ # Jakub Bogusz <qboosh@pld-linux.org>, 2002-2004
+ # some updates by Tomasz K³oczko <kloczek@pld.org.pl>, 2003
++# Adam Go³êbiowski <adamg@pld-linux.org>, 2004
  #
  msgid ""
  msgstr ""
@@ -10,12 +14,27 @@
  "POT-Creation-Date: 2004-11-03 17:16+0300\n"
 -"PO-Revision-Date: 2004-05-31 19:17+0200\n"
 -"Last-Translator: Arkadiusz Miskiewicz <arekm@pld-linux.org>\n"
-+"PO-Revision-Date: 2004-11-03 23:20+0200\n"
-+"Last-Translator: Adam Golebiowski <adamg@pld-linux.org>\n"
++"PO-Revision-Date: 2004-11-23 20:15+0200\n"
++"Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
  "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
  "MIME-Version: 1.0\n"
  "Content-Type: text/plain; charset=iso-8859-2\n"
-@@ -2034,7 +2034,7 @@
+@@ -1804,12 +1805,12 @@
+ #: src/ftpclass.cc:2062
+ #, c-format
+ msgid "Connecting data socket to (%s) port %u"
+-msgstr "£±cznie siê (gniazdo danych) z (%s) port %u"
++msgstr "£±czenie siê (gniazdo danych) z (%s) port %u"
+ 
+ #: src/ftpclass.cc:2069
+ #, c-format
+ msgid "Connecting data socket to proxy %s (%s) port %u"
+-msgstr "£±cznie siê (gniazdo danych) z proxy %s (%s) port %u"
++msgstr "£±czenie siê (gniazdo danych) z proxy %s (%s) port %u"
+ 
+ #: src/ftpclass.cc:2094 src/ftpclass.cc:3742
+ msgid "Switching passive mode off"
+@@ -2034,7 +2035,7 @@
  
  #: src/Http.cc:1273
  msgid "Object is not cached and http:cache-control has only-if-cached"
@@ -24,3 +43,19 @@
  
  #: src/Http.cc:1401
  msgid "Receiving body..."
+@@ -2245,7 +2246,7 @@
+ #: src/NetAccess.cc:323
+ #, c-format
+ msgid "Connecting to %s%s (%s) port %u"
+-msgstr "£±cznie siê z %s%s (%s) port %u"
++msgstr "£±czenie siê z %s%s (%s) port %u"
+ 
+ #: src/NetAccess.cc:379
+ msgid "Timeout - reconnecting"
+@@ -2296,6 +2297,3 @@
+ #: src/module.cc:200
+ msgid "modules are not supported on this system"
+ msgstr "modu³y nie s± wspierane na tym systemie"
+-
+-#~ msgid "remote end closed connection"
+-#~ msgstr "komputer po drugiej stronie zamkn±³ po³±czenie"
