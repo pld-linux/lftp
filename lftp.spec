@@ -6,8 +6,8 @@ Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente ftp/http)
 Name:		lftp
-Version:	2.5.0a
-Release:	3
+Version:	2.5.1
+Release:	1
 License:	GPL
 Group:		Applications/Networking
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
@@ -55,7 +55,7 @@ Veja o arquivo FEATURES para uma lista mais detalhada.
 
 %prep
 %setup -q
-%patch0 -p1
+#%patch0 -p1
 %patch1 -p1
 
 %build
