@@ -2,10 +2,10 @@
 Encoding=UTF-8
 Name=Lftp
 Comment=Sophisticated command line ftp/http client
-Comment[ko]=¸íˇÉÁŮżĄź­ ľšžĆ°Ą´Â FTP/HTTP ĹŹśóŔĚžđĆŽ
+Comment[ko]=명령줄에서 돌아가는 FTP/HTTP 클라이언트
 Comment[pl]=Zaawansowany klient ftp/http
-Comment[pt_BR]=Sofisticado programa de transferęncia de arquivos (cliente ftp/http)
-Comment[zh_CN]=Lftp żÍť§śËłĚĐň
+Comment[pt_BR]=Sofisticado programa de transferência de arquivos (cliente ftp/http)
+Comment[zh_CN]=Lftp 客户端程序
 Exec=lftp
 Icon=lftp.png
 Terminal=true
