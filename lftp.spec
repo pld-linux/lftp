@@ -9,8 +9,8 @@ Copyright:	GPL
 Source:		ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client/%{name}-%{version}.tar.gz
 Patch:		lftp-User-Agent.patch
 Icon:		ftp.gif
-BuildPrereq:	ncurses-devel
-BuildPrereq:	readline-devel
+BuildRequires:	ncurses-devel
+BuildRequires:	readline-devel
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %define		_sysconfdir	/etc
