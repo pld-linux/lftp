@@ -3,7 +3,7 @@ Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
 Version:	1.2.4
 Release:	3
-Group:		Networking/Utilities                                                                                          
+Group:		Networking/Utilities
 Group(pl):	Sieciowe/Narzêdzia
 Copyright:	GPL
 Source:		ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client/%{name}-%{version}.tar.gz
@@ -34,7 +34,7 @@ Doskonale siê spisuje jako aplikacja do mirrorowania serwerów FTP.
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-./configure \
+./configure %{_target} \
 	--prefix=/usr
 make 
 
@@ -98,6 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 - changed %lang to pt_BR on pt_BR lftp.mo.
 
 * Fri Jun 12 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-- moved %changelog at the end of spec.- build against glibc-2.1,
+- moved %changelog at the end of spec.
+- build against glibc-2.1,
 - translation modified for pl,
 - moved %changelog at the end of spec.
