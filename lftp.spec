@@ -54,7 +54,7 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}
 
 install lftp.conf $RPM_BUILD_ROOT%{_sysconfdir}
 
-chmod +x $RPM_BUILD_ROOT%{_libdir}/lftp/*
+#chmod +x $RPM_BUILD_ROOT%{_libdir}/lftp/*
 
 gzip -9nf README NEWS
 
