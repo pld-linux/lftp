@@ -68,7 +68,7 @@ Veja o arquivo FEATURES para uma lista mais detalhada.
 %build
 install -m644 %{SOURCE1} po/pl.po
 rm -f missing
-libtoolize --copy --force
+%{__libtoolize}
 gettextize --copy --force
 aclocal -I m4
 %{__autoconf}
