@@ -5,6 +5,7 @@ Version:	2.3.0
 Release:	1
 License:	GPL
 Group:		Applications/Networking
+Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
 Icon:		ftp.gif
@@ -39,8 +40,7 @@ do mirrorowania serwerów FTP.
 
 %build
 gettextize --copy --force
-LDFLAGS="-s"; export LDFLAGS
-CXXFLAGS="$RPM_OPT_FLAGS -fno-rtti -fno-exceptions -fno-implicit-templates"; export CXXFLAGS
+CXXFLAGS="$RPM_OPT_FLAGS -fno-rtti -fno-exceptions -fno-implicit-templates"
 %configure \
 	--with-modules
 %{__make}
