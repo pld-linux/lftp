@@ -44,6 +44,7 @@ do mirrorowania serwerów FTP.
 %patch2 -p1
 
 %build
+libtoolize --copy --force
 gettextize --copy --force
 aclocal -I m4
 autoconf
