@@ -6,14 +6,13 @@ Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente ftp/http)
 Name:		lftp
-Version:	2.4.4
-Release:	3
+Version:	2.4.5
+Release:	1
 License:	GPL
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-readline.patch
 Icon:		ftp.gif
 URL:		http://ftp.yars.free.net/projects/lftp/
 BuildRequires:	ncurses-devel >= 5.2
@@ -54,7 +53,6 @@ Veja o arquivo FEATURES para uma lista mais detalhada.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 rm -f missing
@@ -72,6 +70,10 @@ CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions -fno-implicit-templates"
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sysconfdir}
+
+# Ugly hack --misiek
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
+rm src/*.la
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
