@@ -1,14 +1,5 @@
---- lftp-2.6.3/po/pl.po.orig	Mon Nov  4 19:26:47 2002
-+++ lftp-2.6.3/po/pl.po	Mon Nov 25 21:53:16 2002
-@@ -5,7 +5,7 @@
- msgid ""
- msgstr ""
- "Project-Id-Version: lftp\n"
--"POT-Creation-Date: 2002-11-04 21:26+0300\n"
-+"POT-Creation-Date: 2002-11-25 21:26+0100\n"
- "PO-Revision-Date: 1999-06-08 15:27+02:00\n"
- "Last-Translator: Arkadiusz Mi¶kiewicz <misiek@pld.ORG.PL>\n"
- "Language-Team: Polish <pl@li.org>\n"
+--- lftp-2.6.3/po/pl.po.orig	Thu Dec 26 06:51:11 2002
++++ lftp-2.6.3/po/pl.po	Sun Jan  5 19:18:01 2003
 @@ -31,7 +31,7 @@
  #: src/CmdExec.cc:218
  #, c-format
@@ -102,7 +93,7 @@
  
  #: src/MirrorJob.cc:1107 src/MirrorJob.cc:1123 src/commands.cc:818
  #: src/commands.cc:1912 src/DummyProto.cc:73
-@@ -508,7 +508,7 @@
+@@ -513,7 +513,7 @@
  "\n"
  " -c, --changes        - podobnie jak verbose ale informuj tylko gdy dokonano "
  "zmiany\n"
@@ -111,7 +102,7 @@
  " -v, --verbose        - wy¶wietlaj diagnostyczne informacja dla ka¿dego "
  "pliku\n"
  " -R, --recursive      - zmieniaj pliki i katalogi rekursywnie\n"
-@@ -572,7 +572,7 @@
+@@ -577,7 +577,7 @@
  " -B, --basename       - wy¶wietlaj jedynie nazwê bazow± plików\n"
  "     --block-size=ROZ - u¿yj bloków o rozmiarze SIZ-bajtów\n"
  " -d, --directory      - wy¶wietlaj listê katalogów zamiast ich zawarto¶ci\n"
@@ -120,7 +111,7 @@
  " -h, --human-readable - wy¶wietlaj rozmiary w formie czytelnej dla "
  "cz³owieka\n"
  "     --si             - jak wy¿ej u¿ywaj±c potêg 1000 zamiast 1024\n"
-@@ -590,7 +590,7 @@
+@@ -595,7 +595,7 @@
  " --user, --group, --perms, --date, --linkcount, --links\n"
  "                      - pokazuj indywidualne pola\n"
  "\n"
@@ -129,7 +120,7 @@
  "zobaczyæ\n"
  "nowe listy plików u¿yj komendy `recls' lub `cache flush'.\n"
  "\n"
-@@ -600,10 +600,10 @@
+@@ -605,10 +605,10 @@
  "Dla przyk³adu, aby listing \"completion\" pokazywa³ rozmiary plików ustaw:\n"
  "cls-completion-default na \"-s\".\n"
  "\n"
@@ -144,7 +135,7 @@
  
  #: src/commands.cc:213
  msgid "debug [<level>|off] [-o <file>]"
-@@ -650,7 +650,7 @@
+@@ -655,7 +655,7 @@
  " -c, --total           wy¶wietlaj sumaryczne informacje\n"
  " -d, --max-depth=N     wy¶wietlaj sumaryczny rozmiar dla katalogu (lub "
  "pliku, z --all)\n"
@@ -153,7 +144,7 @@
  "                       N; --max-depth=0 daje ten same efekt jak --summarize\n"
  " -F, --files           wy¶wietlaj ilo¶æ plików zamiast rozmiarów\n"
  " -h, --human-readable  wy¶wietlaj rozmiary w formacie czytelnym dla "
-@@ -678,7 +678,7 @@
+@@ -683,7 +683,7 @@
  "exit - wyj¶cie z lftp lub przej¶cie w t³o je¿eli s± aktywne zadania\n"
  "\n"
  "Je¿eli nie ma aktywnych zadañ, kod jest przekazany systemowi jako status\n"
@@ -162,7 +153,7 @@
  "polecenia. `bg' wymusza przej¶cie w t³o nawet gdy cmd:move-background jest\n"
  "ustawione na fa³sz.\n"
  
-@@ -817,10 +817,10 @@
+@@ -822,10 +822,10 @@
  " -f <plik>           wykonanie poleceñ z pliku <plik> i wyj¶cie\n"
  " -c <komenda>        wykonanie polecenia <komenda> i wyj¶cie\n"
  " --help              wy¶wietl pomoc i zakoñcz dzia³anie\n"
@@ -176,7 +167,7 @@
  " -p <port>           u¿yj portu <port> do po³±czeniu\n"
  " <site>              nazwa hosta, URL lub nazwa zak³adki\n"
  
-@@ -861,7 +861,7 @@
+@@ -866,7 +866,7 @@
  " -c  kontynuacja, reget\n"
  " -d  utwórz katalogi o nazwie takiej samej jak pliki i pobierz pliki do\n"
  "     nich zamiast do bie¿±cego katalogu\n"
@@ -185,7 +176,7 @@
  " -a  u¿yj trybu ascii (domy¶lnie tryb binarny)\n"
  " -O <base> podaje bazowy katalog lub adres URL gdzie nale¿y umieszczaæ "
  "pliki.\n"
-@@ -871,7 +871,6 @@
+@@ -876,7 +876,6 @@
  msgstr "mirror [OPCJE] [zdalny [lokalny]]"
  
  #: src/commands.cc:308
@@ -193,7 +184,7 @@
  msgid ""
  "\n"
  "Mirror specified remote directory to local directory\n"
-@@ -903,10 +902,11 @@
+@@ -908,10 +907,11 @@
  "\n"
  "Mirror wskazanego zdalnego katalogu do lokalnego katalogu\n"
  "\n"
@@ -207,7 +198,7 @@
  " -n, --only-newer       pozyskuj tylko nowsze pliki (-c nie dzia³a)\n"
  " -r, --no-recursion     nie wchod¼ do podkatalogów\n"
  " -p, --no-perms         nie ustawiaj praw dostêpu do plików\n"
-@@ -915,16 +915,15 @@
+@@ -920,16 +920,15 @@
  " -L, --dereference      pozyskuj dowi±zania symboliczne jako pliki\n"
  " -N, --newer-than PLIK  pozyskuj pliki tylko nowsze ni¿ PLIK\n"
  " -P, --parallel[=N]     pozyskuj N plików równolegle\n"
@@ -230,7 +221,7 @@
  
  #: src/commands.cc:332
  msgid "mkdir [-p] <dirs>"
-@@ -982,7 +981,7 @@
+@@ -987,7 +986,7 @@
  " -c  kontynuacja, reget\n"
  " -d  utwórz katalogi o nazwie takiej samej jak pliki i pobierz pliki do\n"
  "     nich zamiast do bie¿±cego katalogu\n"
@@ -239,7 +230,7 @@
  " -a  u¿yj trybu ascii (domy¶lnie tryb binarny)\n"
  " -O <base> podaje bazowy katalog lub adres URL gdzie nale¿y umieszczaæ "
  "pliki.\n"
-@@ -1032,7 +1031,7 @@
+@@ -1037,7 +1036,7 @@
  msgstr ""
  "Wybierz server, URL lub zak³adkê\n"
  " -e <cmd>            wykonaj zaraz po wyborze polecenie <cmd>\n"
@@ -248,7 +239,7 @@
  " -p <port>           u¿yj portu <port> do po³±czenia\n"
  " <site>              nazwa hosta, URL lub zak³adka\n"
  
-@@ -1128,7 +1127,7 @@
+@@ -1133,7 +1132,7 @@
  "\n"
  "\tqueue --delete|-d [indeks lub wyra¿enie wieloznaczne]\n"
  "\n"
@@ -257,7 +248,7 @@
  "zostanie\n"
  "usuniêty ostatni wpis w kolejce.\n"
  "\n"
-@@ -1225,7 +1224,7 @@
+@@ -1230,7 +1229,7 @@
  " -f  work quietly\n"
  msgstr ""
  "Usuñ zdalne pliki\n"
@@ -266,7 +257,7 @@
  " -f  pracuj cicho\n"
  
  #: src/commands.cc:430
-@@ -1265,7 +1264,7 @@
+@@ -1270,7 +1269,7 @@
  "dok³adnym ustawieniem aplikacji. Zobacz lftp(1) po szczegó³y.\n"
  "Je¶li komenda wywo³ywana jest bez podawania nazwy zmiennej wtedy tylko\n"
  "zmienione ustawienia s± wy¶wietlane. Jako opcje mo¿na podaæ:\n"
@@ -275,7 +266,7 @@
  " -d  wy¶wietl tylko standardowe ustawienia, niekoniecznie aktualne\n"
  
  #: src/commands.cc:443
-@@ -1289,7 +1288,7 @@
+@@ -1294,7 +1293,7 @@
  msgstr ""
  "U¿ycie: sleep <czas>[jednostka]\n"
  "¦pij przez okre¶lony okres czasu. Argument czasu jest opcjonalny,\n"
@@ -284,7 +275,7 @@
  "Domy¶lna jednostka czasu to sekundy.\n"
  
  #: src/commands.cc:452
-@@ -1310,7 +1309,7 @@
+@@ -1315,7 +1314,7 @@
  "will be cached for future usage.\n"
  msgstr ""
  "U¿yj podanej informacji przy zdalnym logowaniu. Je¶li podasz URL, has³o\n"
@@ -293,7 +284,7 @@
  
  #: src/commands.cc:459
  msgid "Shows lftp version\n"
-@@ -1419,7 +1418,7 @@
+@@ -1424,7 +1423,7 @@
  
  #: src/commands.cc:1071
  msgid "Created a stopped queue.\n"
@@ -302,7 +293,7 @@
  
  #: src/commands.cc:1115 src/commands.cc:1145
  #, c-format
-@@ -1522,7 +1521,7 @@
+@@ -1527,7 +1526,7 @@
  msgstr "U¿ycie: %s <nr_proc> ... | all\n"
  
  #: src/commands.cc:1983 src/commands.cc:2116 src/commands.cc:2261
@@ -311,7 +302,7 @@
  #, c-format
  msgid "%s: %s - not a number\n"
  msgstr "%s: %s - nie jest numerem\n"
-@@ -1617,12 +1616,12 @@
+@@ -1622,12 +1621,12 @@
  #: src/commands.cc:2361
  msgid ""
  "This is free software with ABSOLUTELY NO WARRANTY. See COPYING for details.\n"
@@ -326,7 +317,7 @@
  
  #: src/commands.cc:2433 src/commands.cc:2465
  #, c-format
-@@ -1632,68 +1631,68 @@
+@@ -1637,7 +1636,7 @@
  #: src/commands.cc:2454
  #, c-format
  msgid "%s: spaces in bookmark name are not allowed\n"
@@ -335,82 +326,25 @@
  
  #: src/commands.cc:2467
  #, c-format
- msgid "%s: no such bookmark `%s'\n"
- msgstr "%s: nie ma takiej zak³adki `%s'\n"
- 
--#: src/commands.cc:2482
-+#: src/commands.cc:2485
- #, c-format
- msgid "%s: import type required (netscape,ncftp)\n"
- msgstr "%s: wymagany jest typ importowanych danych (netscape,ncftp)\n"
- 
--#: src/commands.cc:2553
-+#: src/commands.cc:2556
- #, c-format
- msgid "Usage: %s [-d #] dir\n"
- msgstr "U¿ycie: %s [-d $] katalog\n"
- 
--#: src/commands.cc:2653
-+#: src/commands.cc:2656
- #, c-format
- msgid "%s: invalid block size `%s'\n"
- msgstr "%s: nieprawid³owy rozmiar bloku `%s'\n"
- 
--#: src/commands.cc:2668
-+#: src/commands.cc:2671
- #, c-format
- msgid "Usage: %s [options] <dirs>\n"
- msgstr "U¿ycie: %s [opcje] <katalogi>\n"
- 
--#: src/commands.cc:2674
-+#: src/commands.cc:2677
+@@ -1667,7 +1666,7 @@
+ #: src/commands.cc:2674
  #, c-format
  msgid "%s: warning: summarizing is the same as using --max-depth=0\n"
 -msgstr "%s: ostrze¿enie: podsuowanie jest takie samo jak przy --max-depth=0\n"
 +msgstr "%s: uwaga: podsumowanie jest takie samo jak przy --max-depth=0\n"
  
--#: src/commands.cc:2678
-+#: src/commands.cc:2681
+ #: src/commands.cc:2678
  #, c-format
- msgid "%s: summarizing conflicts with --max-depth=%i\n"
- msgstr "%s: podsumowanie konfliktów z --max-depth=%i\n"
+@@ -1686,7 +1685,7 @@
  
--#: src/commands.cc:2730
-+#: src/commands.cc:2733
- #, c-format
- msgid "Usage: %s command args...\n"
- msgstr "U¿ycie: %s module argumenty...\n"
- 
--#: src/commands.cc:2742
-+#: src/commands.cc:2745
- #, c-format
- msgid "Usage: %s module [args...]\n"
- msgstr "U¿ycie: %s module [argumenty...]\n"
- 
--#: src/commands.cc:2760 src/LocalAccess.cc:600
-+#: src/commands.cc:2763 src/LocalAccess.cc:600
+ #: src/commands.cc:2760 src/LocalAccess.cc:603
  msgid "cannot get current directory"
 -msgstr "nie mo¿na uzyskac aktualnego katalogu"
 +msgstr "nie mo¿na uzyskaæ aktualnego katalogu"
  
--#: src/commands.cc:2821
-+#: src/commands.cc:2824
+ #: src/commands.cc:2821
  #, c-format
- msgid "Usage: %s [OPTS] mode file...\n"
- msgstr "U¿ycie: %s [OPCJE] tryb pliki...\n"
- 
--#: src/commands.cc:2840
-+#: src/commands.cc:2843
- #, c-format
- msgid "invalid mode string: %s\n"
- msgstr "nieprawid³owy tryb: %s\n"
- 
--#: src/commands.cc:2898
-+#: src/commands.cc:2901
- #, c-format
- msgid "Usage: %s [OPTS] file\n"
- msgstr "U¿ycie: %s [OPCJE] plik\n"
-@@ -1732,7 +1731,7 @@
+@@ -1737,7 +1736,7 @@
  
  #: src/ftpclass.cc:511
  msgid "assuming failed host name lookup"
@@ -419,7 +353,7 @@
  
  #: src/ftpclass.cc:740
  msgid "cannot parse EPSV response"
-@@ -1778,11 +1777,11 @@
+@@ -1783,11 +1782,11 @@
  
  #: src/ftpclass.cc:2522
  msgid "Closing control socket"
@@ -433,7 +367,7 @@
  
  #: src/ftpclass.cc:3357
  msgid "saw file size in response"
-@@ -1840,7 +1840,7 @@
+@@ -1846,7 +1845,7 @@
  
  #: src/ftpclass.cc:3675
  msgid "Making data connection..."
@@ -442,7 +376,7 @@
  
  #: src/ftpclass.cc:3678
  msgid "Changing remote directory..."
-@@ -1880,17 +1879,17 @@
+@@ -1885,17 +1884,17 @@
  msgid "[%lu] Terminated by signal %d. %s"
  msgstr "[%lu] Przerwany przez sygna³ %d. %s"
  
@@ -463,7 +397,7 @@
  #, c-format
  msgid "[%lu] Moving to background to complete transfers...\n"
  msgstr "[%lu] Przechodzenie w t³o w celu dokoñczenia transferów...\n"
-@@ -1983,7 +1982,7 @@
+@@ -1988,7 +1987,7 @@
  
  #: src/Http.cc:1175
  msgid "Could not parse HTTP status line"
@@ -472,7 +406,7 @@
  
  #: src/Http.cc:1315
  msgid "Receiving body..."
-@@ -2074,7 +2073,7 @@
+@@ -2079,7 +2078,7 @@
  #: src/CopyJob.cc:274
  #, c-format
  msgid "Transfer of %d of %d $file|files$ failed\n"
@@ -481,16 +415,16 @@
  
  #: src/CopyJob.cc:280
  #, c-format
-@@ -2100,7 +2099,7 @@
+@@ -2105,7 +2104,7 @@
  
- #: src/FileCopy.cc:208
+ #: src/FileCopy.cc:210
  msgid "copy: all data received, but get rolled back\n"
 -msgstr "copy: wszystkie dane przes³oano ale powrócono ponownie\n"
 +msgstr "copy: wszystkie dane otrzymano, ale powrócono do poprzedniego stanu\n"
  
- #: src/FileCopy.cc:224
+ #: src/FileCopy.cc:226
  #, c-format
-@@ -2119,17 +2118,17 @@
+@@ -2124,17 +2123,17 @@
  #: src/Speedometer.cc:98
  #, c-format
  msgid "%.0fb/s"
@@ -511,7 +445,7 @@
  
  #: src/Speedometer.cc:130
  msgid "day"
-@@ -2157,7 +2156,7 @@
+@@ -2162,7 +2161,7 @@
  
  #: src/FileCopyFtp.cc:96
  msgid "ftp:fxp-force is set but FXP is not available"
@@ -520,8 +454,8 @@
  
  #: src/FileCopyFtp.cc:108
  msgid "**** FXP: trying to reverse ftp:fxp-passive-source\n"
-@@ -2207,7 +2206,7 @@
- #: src/NetAccess.cc:747
+@@ -2212,7 +2211,7 @@
+ #: src/NetAccess.cc:799
  #, c-format
  msgid "Getting files information (%d%%) [%s]"
 -msgstr "Pobieranie informcji o plikach (%d%%) [%s]"
@@ -529,7 +463,7 @@
  
  #: src/PollVec.cc:98
  #, c-format
-@@ -2227,155 +2226,8 @@
+@@ -2232,155 +2231,8 @@
  #: src/module.cc:181
  #, c-format
  msgid "depend module `%s': %s\n"
