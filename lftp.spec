@@ -1,7 +1,7 @@
 Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
-Version:	2.2.0a
+Version:	2.2.1a
 Release:	1
 License:	GPL
 Group:		Applications/Networking
