@@ -5,8 +5,8 @@
 Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
-Version:	2.3.9
-Release:	4
+Version:	2.3.10
+Release:	1
 License:	GPL
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
@@ -15,6 +15,7 @@ Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%
 Patch0:		%{name}-am14_fix.patch
 Patch1:		%{name}-use_system_gettext.m4.patch
 Patch2:		%{name}-readline.patch
+Patch3:		%{name}-OMIT.patch
 Icon:		ftp.gif
 URL:		http://ftp.yars.free.net/projects/lftp/
 BuildRequires:	ncurses-devel >= 5.2
@@ -44,9 +45,10 @@ do mirrorowania serwerów FTP.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+#%patch0 -p1
+#%patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 libtoolize --copy --force
@@ -56,6 +58,7 @@ autoconf
 automake -a -c
 CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions -fno-implicit-templates"
 %configure \
+	--enable-shared=ftp
 	--with-modules \
 	--with%{?bcond_off_ssl:out}-ssl
 %{__make}
@@ -68,7 +71,7 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}
 
 install lftp.conf $RPM_BUILD_ROOT%{_sysconfdir}
 
-gzip -9nf README NEWS
+gzip -9nf README NEWS FAQ
 
 %find_lang %{name}
 
