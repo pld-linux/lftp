@@ -8,7 +8,7 @@ Group:       Applications/Networking
 Group(pl):   Aplikacje/Sieæ
 Source:      ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client/%{name}-%{version}.tar.gz
 Icon:        ftp.gif
-BuildRoot:   /tmp/%{name}-%{version}-root
+BuildRoot:   /tmp/buildroot-%{name}-%{version}
 
 %description
 LFTP is a shell-like command line ftp client. The main two advantages over
