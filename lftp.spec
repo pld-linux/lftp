@@ -2,7 +2,7 @@ Summary:	Commandline ftp client.
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
 Version:	1.2.3
-Release:	3d
+Release:	1
 URL:		ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client
 Source:		%{name}-%{version}.tar.gz
 Icon:		ftp.gif
