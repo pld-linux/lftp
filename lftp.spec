@@ -35,7 +35,7 @@ Doskonale siê spisuje jako aplikacja do mirrorowania serwerów FTP.
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 CXXFLAGS="$RPM_OPT_FLAGS" \
-./configure %{_target} \
+./configure %{_target_platform} \
 	--prefix=/usr
 make 
 
