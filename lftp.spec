@@ -2,14 +2,14 @@ Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
 Version:	2.1.4
-Release:	1
+Release:	2
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
 Copyright:	GPL
 Source:		ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
 Patch:		lftp-passive.patch
 Icon:		ftp.gif
-BuildRequires:	ncurses-devel
+BuildRequires:	ncurses-devel > 5.0
 BuildRequires:	readline-devel
 BuildRequires:	gettext-devel
 Buildroot:	/tmp/%{name}-%{version}-root
