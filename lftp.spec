@@ -1,7 +1,7 @@
 Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
-Version:	2.0.0
+Version:	2.0.1
 Release:	1
 Group:		Networking/Utilities
 Group(pl):	Sieciowe/Narzêdzia
@@ -12,6 +12,8 @@ Icon:		ftp.gif
 BuildPrereq:	ncurses-devel
 BuildPrereq:	readline-devel
 Buildroot:	/tmp/%{name}-%{version}-root
+
+%define		_sysconfdir	/etc
 
 %description
 LFTP is a shell-like command line ftp client. The main two advantages over
@@ -44,11 +46,13 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/etc
+install -d $RPM_BUILD_ROOT%{_sysconfdir}
 
 make install DESTDIR=$RPM_BUILD_ROOT
 
-install lftp.conf $RPM_BUILD_ROOT/etc
+install lftp.conf $RPM_BUILD_ROOT%{_sysconfdir}
+
+chmod +x $RPM_BUILD_ROOT%{_libdir}/lftp/*
 
 gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	README NEWS 
@@ -61,12 +65,14 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc {README,NEWS}.gz
-%config(noreplace) %verify(not size mtime md5) /etc/lftp.conf
+
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lftp.conf
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
 %attr(755,root,root) %{_datadir}/lftp
+
+%dir %{_libdir}/lftp
 %attr(755,root,root) %{_libdir}/lftp/*.so
-%attr(755,root,root) %dir %{_libdir}/lftp
 
 %changelog
 Revision 1.31  1999/07/12 23:06:05  kloczek
