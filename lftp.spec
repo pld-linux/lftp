@@ -6,7 +6,7 @@ Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente ftp/http)
 Name:		lftp
-Version:	2.4.6
+Version:	2.4.7
 Release:	1
 License:	GPL
 Group:		Applications/Networking
