@@ -1,6 +1,6 @@
---- lftp-2.6.0.orig/src/Makefile.am	Wed Jul 10 10:10:16 2002
-+++ lftp-2.6.0/src/Makefile.am	Mon Aug  5 00:32:30 2002
-@@ -12,10 +12,8 @@
+--- lftp-2.6.2/src/Makefile.am.orig	Mon Aug  5 10:42:25 2002
++++ lftp-2.6.2/src/Makefile.am	Tue Aug 20 00:23:01 2002
+@@ -12,11 +12,9 @@
  lftp_SOURCES = lftp.cc complete.h complete.cc lftp_rl.c lftp_rl.h
  #ftpget_SOURCES = ftpget.cc
  
@@ -12,6 +12,7 @@
 +noinst_LTLIBRARIES = $(MODULES_LA_STATIC) libtasks.la libjobs.la
  
  proto_ftp_la_SOURCES  = ftpclass.cc ftpclass.h FtpListInfo.cc FtpListInfo.h\
+  FtpDirList.cc FtpDirList.h md5.c md5.h ftp-opie.c FileCopyFtp.cc FileCopyFtp.h
 @@ -41,7 +39,7 @@
  proto_http_la_LIBADD = -L$(DESTDIR)$(pkgverlibdir) libnetwork.la
  proto_fish_la_LIBADD = -L$(DESTDIR)$(pkgverlibdir) libnetwork.la
@@ -30,13 +31,13 @@
   commands.cc mgetJob.h mgetJob.cc SysCmdJob.cc SysCmdJob.h rmJob.cc rmJob.h\
   parsecmd.cc\
   mvJob.cc mvJob.h alias.cc alias.h\
-@@ -71,7 +71,7 @@
+@@ -73,7 +71,7 @@
   OutputJob.cc OutputJob.h
  
  lftp_LDFLAGS = -export-dynamic $(LFTP_SSL_LDFLAGS)
--lftp_LDADD = libjobs.a libtasks.a $(READLINE) $(READLINE_SUPPLIB) \
-+lftp_LDADD = LocalAccess.lo libjobs.a libtasks.a $(READLINE) $(READLINE_SUPPLIB) \
- 	$(top_builddir)/lib/liblib.a $(INTLLIBS) $(LFTP_SSL_LIBS) $(MODULES_LA_STATIC)
+-lftp_LDADD = libjobs.a libtasks.a $(MODULES_LA_STATIC) $(READLINE) \
++lftp_LDADD = libjobs.a libtasks.a $(MODULES_LA_STATIC) $(READLINE) $(READLINE_SUPPLIB) \
+ 	$(top_builddir)/lib/liblib.a $(LFTP_SSL_LIBS) $(INTLLIBS)
  lftp_DEPENDENCIES = libjobs.a libtasks.a $(READLINE_DEPEND) \
  	$(top_builddir)/lib/liblib.a $(MODULES_LA_STATIC)
 @@ -92,7 +90,11 @@
@@ -52,4 +53,3 @@
  
  # libtool does not strip modules, do it here.
  install-lib-local:
-
