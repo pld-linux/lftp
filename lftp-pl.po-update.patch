@@ -1,0 +1,159 @@
+--- lftp-2.6.8/po/pl.po.orig	2003-10-10 11:56:14.000000000 +0200
++++ lftp-2.6.8/po/pl.po	2003-10-19 23:23:43.388620888 +0200
+@@ -1,15 +1,15 @@
+ # Polish translation of lftp.
+ # Copyright (C) 1998-2000 Free Software Foundation, Inc.
+ # Arkadiusz Mi¶kiewicz <misiek@pld.ORG.PL>, 1998-2000
+-# Jakub Bogusz <qboosh@pld.org.pl>, 2002-2003
+ # Tomasz K³oczko <kloczek@pld.org.pl>, 2003
++# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2003
+ #
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: lftp 2.6.6\n"
+-"POT-Creation-Date: 2003-10-10 13:56+0400\n"
+-"PO-Revision-Date: 2003-06-10 22:53+0200\n"
+-"Last-Translator: Jakub Bogusz <qboosh@pld.org.pl>\n"
++"Project-Id-Version: lftp 2.6.8\n"
++"POT-Creation-Date: 2003-10-19 23:20+0200\n"
++"PO-Revision-Date: 2003-10-19 23:20+0200\n"
++"Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
+ "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=iso-8859-2\n"
+@@ -279,7 +279,7 @@
+ #: src/commands.cc:1439 src/commands.cc:1473 src/commands.cc:1573
+ #: src/commands.cc:1829 src/commands.cc:2023 src/commands.cc:2197
+ #: src/commands.cc:2204 src/commands.cc:2387 src/commands.cc:2415
+-#: src/commands.cc:2422 src/commands.cc:2749 src/commands.cc:3010
++#: src/commands.cc:2422 src/commands.cc:2752 src/commands.cc:3013
+ #: src/SleepJob.cc:139
+ #, c-format
+ msgid "Try `help %s' for more information.\n"
+@@ -689,7 +689,6 @@
+ "ustawione na fa³sz.\n"
+ 
+ #: src/commands.cc:242
+-#, fuzzy
+ msgid ""
+ "Usage: find [OPTS] [directory]\n"
+ "Print contents of specified directory or current directory recursively.\n"
+@@ -698,10 +697,10 @@
+ " -d, --maxdepth=LEVELS  Descend at most LEVELS of directories.\n"
+ msgstr ""
+ "U¿ycie: find [OPCJE] [katalog]\n"
+-"Wy¶wietl zawarto¶æ podanego katalogu rekursywnie. Katalogi znajduj±ce siê\n"
+-"na li¶cie s± zaznaczone przez slash. Mo¿esz przekierowaæ wyj¶cie dowolnej\n"
+-"komendy.\n"
+-" -d, --maxdepth=POZIOMY  Zag³êbianie maksymalnie do POZIOMÓW.\n"
++"Wy¶wietl rekursywnie zawarto¶æ podanego katalogu lub katalogu bie¿±cego.\n"
++"Katalogi znajduj±ce siê na li¶cie s± zaznaczone przez slash. Mo¿na\n"
++"przekierowaæ wyj¶cie tej komendy.\n"
++" -d, --maxdepth=POZIOMY  Zag³êbianie maksymalnie do tylu POZIOMÓW.\n"
+ 
+ #: src/commands.cc:247
+ msgid "get [OPTS] <rfile> [-o <lfile>]"
+@@ -1529,7 +1528,7 @@
+ msgstr "U¿ycie: %s <nr_proc> ... | all\n"
+ 
+ #: src/commands.cc:1988 src/commands.cc:2121 src/commands.cc:2266
+-#: src/commands.cc:2553 src/commands.cc:2628 src/commands.cc:3022
++#: src/commands.cc:2556 src/commands.cc:2631 src/commands.cc:3025
+ #, c-format
+ msgid "%s: %s - not a number\n"
+ msgstr "%s: %s - nie jest numerem\n"
+@@ -1647,61 +1646,61 @@
+ msgid "%s: no such bookmark `%s'\n"
+ msgstr "%s: nie ma takiej zak³adki `%s'\n"
+ 
+-#: src/commands.cc:2488
++#: src/commands.cc:2491
+ #, c-format
+ msgid "%s: import type required (netscape,ncftp)\n"
+ msgstr "%s: wymagany jest typ importowanych danych (netscape,ncftp)\n"
+ 
+-#: src/commands.cc:2559
++#: src/commands.cc:2562
+ #, c-format
+ msgid "Usage: %s [-d #] dir\n"
+ msgstr "U¿ycie: %s [-d $] katalog\n"
+ 
+-#: src/commands.cc:2659
++#: src/commands.cc:2662
+ #, c-format
+ msgid "%s: invalid block size `%s'\n"
+ msgstr "%s: nieprawid³owy rozmiar bloku `%s'\n"
+ 
+-#: src/commands.cc:2674
++#: src/commands.cc:2677
+ #, c-format
+ msgid "Usage: %s [options] <dirs>\n"
+ msgstr "U¿ycie: %s [opcje] <katalogi>\n"
+ 
+-#: src/commands.cc:2680
++#: src/commands.cc:2683
+ #, c-format
+ msgid "%s: warning: summarizing is the same as using --max-depth=0\n"
+ msgstr "%s: uwaga: podsumowanie jest takie samo jak przy --max-depth=0\n"
+ 
+-#: src/commands.cc:2684
++#: src/commands.cc:2687
+ #, c-format
+ msgid "%s: summarizing conflicts with --max-depth=%i\n"
+ msgstr "%s: podsumowanie konfliktów z --max-depth=%i\n"
+ 
+-#: src/commands.cc:2736
++#: src/commands.cc:2739
+ #, c-format
+ msgid "Usage: %s command args...\n"
+ msgstr "U¿ycie: %s module argumenty...\n"
+ 
+-#: src/commands.cc:2748
++#: src/commands.cc:2751
+ #, c-format
+ msgid "Usage: %s module [args...]\n"
+ msgstr "U¿ycie: %s module [argumenty...]\n"
+ 
+-#: src/commands.cc:2766 src/LocalAccess.cc:603
++#: src/commands.cc:2769 src/LocalAccess.cc:603
+ msgid "cannot get current directory"
+ msgstr "nie mo¿na uzyskaæ aktualnego katalogu"
+ 
+-#: src/commands.cc:2827
++#: src/commands.cc:2830
+ #, c-format
+ msgid "Usage: %s [OPTS] mode file...\n"
+ msgstr "U¿ycie: %s [OPCJE] tryb pliki...\n"
+ 
+-#: src/commands.cc:2846
++#: src/commands.cc:2849
+ #, c-format
+ msgid "invalid mode string: %s\n"
+ msgstr "nieprawid³owy tryb: %s\n"
+ 
+-#: src/commands.cc:2904
++#: src/commands.cc:2907
+ #, c-format
+ msgid "Usage: %s [OPTS] file\n"
+ msgstr "U¿ycie: %s [OPCJE] plik\n"
+@@ -1888,17 +1887,17 @@
+ msgid "[%lu] Terminated by signal %d. %s"
+ msgstr "[%lu] Przerwany przez sygna³ %d. %s"
+ 
+-#: src/lftp.cc:299
++#: src/lftp.cc:306
+ #, c-format
+ msgid "[%lu] Started.  %s"
+ msgstr "[%lu] Zosta³ uruchomiony.  %s"
+ 
+-#: src/lftp.cc:308
++#: src/lftp.cc:315
+ #, c-format
+ msgid "[%lu] Finished. %s"
+ msgstr "[%lu] Zakoñczono. %s"
+ 
+-#: src/lftp.cc:312
++#: src/lftp.cc:319
+ #, c-format
+ msgid "[%lu] Moving to background to complete transfers...\n"
+ msgstr "[%lu] Przechodzenie w t³o w celu dokoñczenia transferów...\n"

@@ -20,6 +20,7 @@ Source2:	%{name}.desktop
 Patch0:		%{name}-amfix.patch
 Patch1:		%{name}-home_etc.patch
 Patch2:		%{name}-no_pkgverlibdir.patch
+Patch3:		%{name}-pl.po-update.patch
 Icon:		ftp.gif
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf
@@ -68,9 +69,9 @@ o arquivo FEATURES para uma lista mais detalhada.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
-rm -f missing
 %{__libtoolize}
 %{__gettextize}
 %{__aclocal} -I m4
@@ -86,7 +87,8 @@ CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions -fno-implicit-templates"
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_pixmapsdir},%{_applnkdir}/Network/FTP}
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 install lftp.conf $RPM_BUILD_ROOT%{_sysconfdir}
 install contrib/lftp-icon.png $RPM_BUILD_ROOT%{_pixmapsdir}/lftp.png
