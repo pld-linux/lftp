@@ -8,18 +8,16 @@ Summary(pl):	Zaawansowany klient ftp/http
 Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente ftp/http)
 Summary(zh_CN):	lftp ¿Í»§¶Ë³ÌÐò
 Name:		lftp
-Version:	2.6.12
-Release:	1
+Version:	3.0.0
+Release:	0.1
 License:	GPL
 Group:		Applications/Networking
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
-# Source0-md5:	bc5ed223daa568fda9a01f89b5000612
+# Source0-md5:	8f15787fd578f5992eae784d9c510b26
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Source2:	%{name}.desktop
-Patch0:		%{name}-amfix.patch
-Patch1:		%{name}-no_pkgverlibdir.patch
-Patch2:		%{name}-home_etc.patch
+Patch0:		%{name}-home_etc.patch
 Icon:		ftp.gif
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf
@@ -65,9 +63,8 @@ o arquivo FEATURES para uma lista mais detalhada.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+#%patch0 -p1
+sed -i -e 's#pkgverlibdir.*=.*#pkgverlibdir = $(pkglibdir)#g' src/Makefile*
 
 %build
 %{__libtoolize}
@@ -105,13 +102,9 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lftp.conf
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/lftp
-%attr(755,root,root) %{_libdir}/lftp/cmd-mirror.so
-%attr(755,root,root) %{_libdir}/lftp/cmd-sleep.so
-%attr(755,root,root) %{_libdir}/lftp/libnetwork.so
-%attr(755,root,root) %{_libdir}/lftp/proto-file.so
-%attr(755,root,root) %{_libdir}/lftp/proto-fish.so
-%attr(755,root,root) %{_libdir}/lftp/proto-ftp.so
-%attr(755,root,root) %{_libdir}/lftp/proto-http.so
+%attr(755,root,root) %{_libdir}/lftp/cmd*.so
+%attr(755,root,root) %{_libdir}/lftp/lib*.so
+%attr(755,root,root) %{_libdir}/lftp/proto-*.so
 %attr(755,root,root) %{_datadir}/lftp
 %{_mandir}/man1/*
 %lang(pl) %{_mandir}/pl/man1/*
