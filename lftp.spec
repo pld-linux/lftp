@@ -6,8 +6,7 @@ Release:	2
 Group:		Networking
 Group(pl):	Sieciowe
 Copyright:	GPL
-URL:		ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client
-Source:		%{name}-%{version}.tar.gz
+Source:		ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client/%{name}-%{version}.tar.gz
 Icon:		ftp.gif
 Requires:	ncurses => 4.2-12
 Buildroot:	/tmp/%{name}-%{version}-root
