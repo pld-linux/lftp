@@ -5,7 +5,7 @@ diff -urN lftp-2.4.7.org/src/lftp.cc lftp-2.4.7/src/lftp.cc
  #endif
  
     setlocale (LC_ALL, "");
-+   setlocale (LC_NUMERIC, "");
++   setlocale (LC_NUMERIC, "C");
     bindtextdomain (PACKAGE, LOCALEDIR);
     textdomain (PACKAGE);
  
