@@ -1,0 +1,4 @@
+- release 4,
+- added handling %%{_without_ssl} for allow disable compile withut SSL
+  support,
+- rebuild against openssl 0.9.6a.
