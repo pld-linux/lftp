@@ -1,13 +1,12 @@
 Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
-Version:	2.0.1
+Version:	2.0.3
 Release:	1
 Group:		Networking/Utilities
 Group(pl):	Sieciowe/Narzêdzia
 Copyright:	GPL
-Source:		ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client/%{name}-%{version}.tar.gz
-Patch:		lftp-User-Agent.patch
+Source:		ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.gz
 Icon:		ftp.gif
 BuildRequires:	ncurses-devel
 BuildRequires:	readline-devel
@@ -34,7 +33,6 @@ Doskonale siê spisuje jako aplikacja do mirrorowania serwerów FTP.
 
 %prep
 %setup -q
-%patch -p1
 
 %build
 gettextize --copy --force
