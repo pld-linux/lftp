@@ -26,7 +26,7 @@ BuildRequires:	gcc-c++
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel >= 5.2
-%{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
+%{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.7}
 BuildRequires:	readline-devel >= 4.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
