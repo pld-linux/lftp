@@ -2,8 +2,8 @@ Summary:     Commandline ftp client.
 Summary(pl): Zaawansowany klient ftp
 Name:        lftp
 Version:     1.1.1
-Release:     1
-Copyright: GPL
+Release:     2
+Copyright:   GPL
 Source:      ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client/%{name}-%{version}.tar.gz
 Icon:        ftp.gif
 Group:       Applications/Networking
@@ -32,8 +32,8 @@ rm -rf $RPM_BUILD_ROOT
 %setup -q
 
 %build
-CFLAGS=$RPM_OPT_FLAGS ./configure --prefix=/usr
-make 2>/dev/null
+CXXFLAGS="$RPM_OPT_FLAGS" CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -56,10 +56,13 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pt) /usr/share/locale/pt*/LC_MESSAGES/lftp.mo
 
 %changelog
+* Mon Nov  2 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.0.1-2]
+- fixed passing $RPM_OPT_FLAGS.
+- removed "rm -rf $RPM_BUILD_ROOT" from %prep,
 - simplification in %files,
   [1.0.1-1]
 - added %lang macros for /usr/share/locale/*/LC_MESSAGES/lftp.mo files,
-- added pl translation.
-- build against glibc-2.1,
+- added pl translation.- build against glibc-2.1,
 - translation modified for pl,
 - moved %changelog at the end of spec.
