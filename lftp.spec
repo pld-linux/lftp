@@ -1,7 +1,7 @@
 Summary:	Commandline ftp client.
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
-Version:	1.2.3
+Version:	1.2.4
 Release:	1
 URL:		ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client
 Source:		%{name}-%{version}.tar.gz
@@ -9,6 +9,7 @@ Icon:		ftp.gif
 Copyright:	GPL
 Group:		Networking
 Group(pl):	Sieciowe
+Requires:	ncurses => 4.2-12
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -55,9 +56,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc {README,NEWS}.bz2 
 
 %attr(755,root,root) /usr/bin/*
-%attr(644,root, man) /usr/man/man1/*
+/usr/man/man1/*
 
-%attr(755,root,root, 755) /usr/share/lftp
+%attr(755,root,root,755) /usr/share/lftp
 
 %config(noreplace) %verify(not size mtime md5) /etc/lftp.conf
 
@@ -68,8 +69,11 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pl)    /usr/share/locale/pl/LC_MESSAGES/lftp.mo
 
 %changelog
-* Wed Feb 17 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.2.4-2]
 - gzipping documentation (instead bzipping)
+
+* Tue Feb 23 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.2.4-1]
 - removed man group from man pages,
 - added "Requires: ncurses => 4.2-12" for prevent using lftp with proper
   version ncurses,
