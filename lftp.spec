@@ -1,14 +1,13 @@
 Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
-Version:	2.3.5
-Release:	2
+Version:	2.3.6
+Release:	1
 License:	GPL
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
-Patch0:		lftp-pl.po-patch
 Icon:		ftp.gif
 URL:		http://ftp.yars.free.net/projects/lftp/
 BuildRequires:	ncurses-devel >= 5.0
@@ -39,7 +38,6 @@ do mirrorowania serwerów FTP.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 gettextize --copy --force
@@ -50,7 +48,6 @@ CXXFLAGS="%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS} -fno-rtti -fno-exceptions -fn
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT%{_sysconfdir}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
@@ -68,8 +65,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc {README,NEWS}.gz
-
+%doc *.gz
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lftp.conf
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
