@@ -41,7 +41,7 @@ do mirrorowania serwerów FTP.
 
 %build
 gettextize --copy --force
-CXXFLAGS="%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS} -fno-rtti -fno-exceptions -fno-implicit-templates"
+CXXFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS} -fno-rtti -fno-exceptions -fno-implicit-templates"
 %configure \
 	--with-modules
 %{__make}
