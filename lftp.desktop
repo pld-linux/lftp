@@ -1,4 +1,5 @@
 [Desktop Entry]
+Encoding=UTF-8
 Name=Lftp
 Comment=Sophisticated command line ftp/http client
 Comment[ko]=¸í·ÉÁÙ¿¡¼­ µ¹¾Æ°¡´Â FTP/HTTP Å¬¶óÀÌ¾ðÆ®
@@ -7,6 +8,6 @@ Comment[pt_BR]=Sofisticado programa de transferência de arquivos (cliente ftp/ht
 Comment[zh_CN]=Lftp ¿Í»§¶Ë³ÌÐò
 Exec=lftp
 Icon=lftp.png
-Terminal=1
+Terminal=false
 Type=Application
 # vi: encoding=utf-8
