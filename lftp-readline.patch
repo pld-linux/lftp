@@ -1,0 +1,32 @@
+--- lftp-2.3.9.orig/src/complete.cc	Fri Dec  8 16:30:37 2000
++++ lftp-2.3.9/src/complete.cc	Sat Apr 14 05:38:44 2001
+@@ -39,7 +39,11 @@
+ #include "url.h"
+ 
+ CDECL_BEGIN
++#undef __P
++#define __P(args) args
+ #include "readline/readline.h"
++#undef __P
++#define __P(args) args __THROW
+ CDECL_END
+ 
+ static char *bash_dequote_filename (char *text, int quote_char);
+@@ -575,7 +579,7 @@
+    text=bash_dequote_filename(text, quoted);
+    len=strlen(text);
+ 
+-   char **matches=completion_matches(text,(CPFunction*)generator);
++   char **matches=rl_completion_matches(text,(CPFunction*)generator);
+ 
+    glob_res=0;
+    if(rg)
+@@ -952,8 +956,6 @@
+ 
+ int   lftp_complete_remote(int count,int key)
+ {
+-   extern Function *rl_last_func;
+-
+    if(rl_last_func == (Function*)lftp_complete_remote)
+       rl_last_func = (Function*)rl_complete;
+ 

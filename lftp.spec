@@ -10,14 +10,13 @@ Group(pl):	Aplikacje/Sieciowe
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-am14_fix.patch
 Patch1:		%{name}-use_system_gettext.m4.patch
+Patch2:		%{name}-readline.patch
 Icon:		ftp.gif
 URL:		http://ftp.yars.free.net/projects/lftp/
 BuildRequires:	ncurses-devel >= 5.2
 BuildRequires:	readline-devel >= 4.2
 BuildRequires:	gettext-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_sysconfdir	/etc
 
 %description
 LFTP is a shell-like command line ftp client. The main two advantages
@@ -41,6 +40,7 @@ do mirrorowania serwerów FTP.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 gettextize --copy --force
@@ -60,8 +60,6 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}
 
 install lftp.conf $RPM_BUILD_ROOT%{_sysconfdir}
 
-chmod +x $RPM_BUILD_ROOT%{_libdir}/lftp/*
-
 gzip -9nf README NEWS
 
 %find_lang %{name}
@@ -78,4 +76,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/lftp
 
 %dir %{_libdir}/lftp
-%attr(755,root,root) %{_libdir}/lftp/*.so
+%dir %{_libdir}/lftp/%{version}
+%attr(755,root,root) %{_libdir}/lftp/%{version}/*.so
