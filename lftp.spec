@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without ssl	# do not use SSL
+%bcond_without	ssl	# do not use SSL
 #
 Summary:	Sophisticated command line ftp/http client
 Summary(ko):	명령줄에서 돌아가는 ftp/http 클라이언트
