@@ -17,6 +17,9 @@ Icon:		ftp.gif
 URL:		http://ftp.yars.free.net/projects/lftp/
 BuildRequires:	ncurses-devel >= 5.2
 BuildRequires:	readline-devel >= 4.2
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool
 BuildRequires:	gettext-devel
 BuildRequires:	gcc-c++
 BuildRequires:	libstdc++-devel
@@ -46,7 +49,7 @@ do mirrorowania serwerów FTP.
 %patch0 -p1
 
 %build
-rm missing
+rm -f missing
 libtoolize --copy --force
 gettextize --copy --force
 aclocal -I m4
