@@ -8,7 +8,6 @@ Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-epsv.patch
 Icon:		ftp.gif
 URL:		http://ftp.yars.free.net/projects/lftp/
 BuildRequires:	ncurses-devel >= 5.0
@@ -38,7 +37,6 @@ do mirrorowania serwerów FTP.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 gettextize --copy --force
