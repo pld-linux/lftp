@@ -8,20 +8,18 @@ Summary(pl):	Zaawansowany klient ftp/http
 Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente ftp/http)
 Summary(zh_CN):	lftp ¿Í»§¶Ë³ÌÐò
 Name:		lftp
-Version:	2.6.9
+Version:	2.6.10
 Release:	2
 License:	GPL
 Group:		Applications/Networking
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
-# Source0-md5:	34ae6b74b003e99ccae4dd82122192ed
+# Source0-md5:	851387ab94bad8013d20ba7d3758b603
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Source2:	%{name}.desktop
 Patch0:		%{name}-amfix.patch
-Patch1:		%{name}-pl.po-update.patch
-Patch2:		%{name}-no_pkgverlibdir.patch
-Patch3:		%{name}-home_etc.patch
-Patch4:		%{name}-acfix.patch
+Patch1:		%{name}-no_pkgverlibdir.patch
+Patch2:		%{name}-home_etc.patch
 Icon:		ftp.gif
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf
@@ -70,8 +68,6 @@ o arquivo FEATURES para uma lista mais detalhada.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 %{__libtoolize}
