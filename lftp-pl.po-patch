@@ -1,0 +1,12 @@
+diff -urN lftp-2.3.5.org/po/pl.po lftp-2.3.5/po/pl.po
+--- lftp-2.3.5.org/po/pl.po	Sun Dec 17 11:24:20 2000
++++ lftp-2.3.5/po/pl.po	Sun Dec 17 11:24:55 2000
+@@ -1792,7 +1792,7 @@
+ #: src/CopyJob.cc:220
+ #, c-format
+ msgid "%lld $#ll#byte|bytes$ transferred in %ld $#l#second|seconds$"
+-msgstr "%lld bajt$#l#|y|ów$ przes³an$y|e|ych$ w ci±gu %lld sekund$#l#y||$"
++msgstr "%lld bajt$#l#|y|ów$ przes³an$y|e|ych$ w ci±gu %ld sekund$#l#y||$"
+ 
+ #: src/CopyJob.cc:232
+ #, c-format
