@@ -58,7 +58,6 @@ autoconf
 automake -a -c
 CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions -fno-implicit-templates"
 %configure \
-	--enable-shared=ftp
 	--with-modules \
 	--with%{?bcond_off_ssl:out}-ssl
 %{__make}
