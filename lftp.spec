@@ -70,7 +70,7 @@ Veja o arquivo FEATURES para uma lista mais detalhada.
 rm -f missing
 %{__libtoolize}
 %{__gettextize}
-aclocal -I m4
+%{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
 CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions -fno-implicit-templates"
