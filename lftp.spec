@@ -1,13 +1,13 @@
 Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
-Version:	2.2.5
+Version:	2.2.6
 Release:	1
 License:	GPL
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
-Patch0:		lftp-passive.patch
+Patch0:		%{name}-passive.patch
 Icon:		ftp.gif
 URL:		http://ftp.yars.free.net/projects/lftp/
 BuildRequires:	ncurses-devel >= 5.0
@@ -18,22 +18,22 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_sysconfdir	/etc
 
 %description
-LFTP is a shell-like command line ftp client. The main two advantages over
-other ftp clients are reliability and ability to perform tasks in
-background. It will reconnect and reget the file being transferred if the
-connection broke. You can start a transfer in background and continue
-browsing on the ftp site. It does this all in one process. When you have
-started background jobs and feel you are done, you can just exit lftp and
-it automatically moves to nohup mode and completes the transfers. It has
-also such nice features as reput and mirror.
+LFTP is a shell-like command line ftp client. The main two advantages
+over other ftp clients are reliability and ability to perform tasks in
+background. It will reconnect and reget the file being transferred if
+the connection broke. You can start a transfer in background and
+continue browsing on the ftp site. It does this all in one process.
+When you have started background jobs and feel you are done, you can
+just exit lftp and it automatically moves to nohup mode and completes
+the transfers. It has also such nice features as reput and mirror.
 
 %description -l pl
-Lftp jest zaawansowanym klientem ftp. Potrafi automatycznie po³±czyæ siê z
-serwerem ftp po zerwanym po³±czeniu i dokoñczyæ ¶ci±ganie archiwów. Lftp
-mo¿e pracowaæ w tle i nie zrywa przy tym po³±czenia po tym jak siê
-wylogujesz. Program ten honoruje komendy pow³oki podczas sesji, np. `ls
--al | less` itp. Doskonale siê spisuje jako aplikacja do mirrorowania
-serwerów FTP.
+Lftp jest zaawansowanym klientem ftp. Potrafi automatycznie po³±czyæ
+siê z serwerem ftp po zerwanym po³±czeniu i dokoñczyæ ¶ci±ganie
+archiwów. Lftp mo¿e pracowaæ w tle i nie zrywa przy tym po³±czenia po
+tym jak siê wylogujesz. Program ten honoruje komendy pow³oki podczas
+sesji, np. `ls -al | less` itp. Doskonale siê spisuje jako aplikacja
+do mirrorowania serwerów FTP.
 
 %prep
 %setup -q
