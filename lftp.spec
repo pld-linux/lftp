@@ -6,14 +6,15 @@ Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente ftp/http)
 Name:		lftp
-Version:	2.4.10
+Version:	2.5.0a
 Release:	1
 License:	GPL
 Group:		Applications/Networking
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
 Source1:	%{name}.pl.po
+Patch0:		%{name}-m4.patch
 Icon:		ftp.gif
-URL:		http://ftp.yars.free.net/projects/lftp/
+URL:		http://lftp.yar.ru/
 BuildRequires:	ncurses-devel >= 5.2
 BuildRequires:	readline-devel >= 4.2
 BuildRequires:	autoconf
@@ -52,6 +53,7 @@ Veja o arquivo FEATURES para uma lista mais detalhada.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 install -m644 %{SOURCE1} po/pl.po
