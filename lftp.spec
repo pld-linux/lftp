@@ -1,12 +1,12 @@
 Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
-Version:	2.1.5
+Version:	2.1.6
 Release:	1
 License:	GPL
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
-Source:		http://metalab.unc.edu/pub/Linux/system/network/file-transfer/%{name}-%{version}.tar.gz
+Source:		http://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
 Patch:		lftp-passive.patch
 Icon:		ftp.gif
 URL:		http://ftp.yars.free.net/projects/lftp/
