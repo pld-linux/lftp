@@ -24,7 +24,6 @@ URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gcc-c++
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel >= 5.2
