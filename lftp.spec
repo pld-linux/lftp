@@ -46,7 +46,7 @@ make prefix=$RPM_BUILD_ROOT/usr install
 
 install lftp.conf $RPM_BUILD_ROOT/etc
 
-gzip -9fn $RPM_BUILD_ROOT/usr/man/man1/* \
+gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	README NEWS 
 
 %clean
@@ -57,7 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc {README,NEWS}.gz
 
 %attr(755,root,root) /usr/bin/*
-/usr/man/man1/*
+%{_mandir}/man1/*
 
 %attr(755,root,root) /usr/share/lftp
 
