@@ -2,14 +2,15 @@ Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
 Version:	1.2.4
-Release:	2
-Group:		Networking
+Release:	3
+Group:		Networking/Utilities                                                                                          
+Group(pl):	Sieciowe/Narzêdzia
 Group(pl):	Sieciowe
 Copyright:	GPL
 Source:		ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client/%{name}-%{version}.tar.gz
 Icon:		ftp.gif
 BuildPrereq:	ncurses-devel
-%requires_pkg	ncurses
+BuildPrereq:	readline-devel
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -33,7 +34,7 @@ Doskonale siê spisuje jako aplikacja do mirrorowania serwerów FTP.
 %setup -q
 
 %build
-CFLAGS=$RPM_OPT_FLAGS CXXFLAGS=$RPM_OPT_FLAGS LDFLAGS=-s \
+CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 ./configure \
 	--prefix=/usr
 make 
@@ -70,8 +71,12 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %verify(not size mtime md5) /etc/lftp.conf
   [1.2.4-4]
 %changelog
+- more rpm macros,
+- added rpm BuildPrereq rules.
+* Tue Apr 20 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+- removed %requires_pkg (dependences for ncurses is generted automatycally).
+- changed Group to Networking/Utilities,
 - added resdline-devel to BuildPrereq,
-  [1.2.4-3]
 - removed %%requires_pkg (dependences for ncurses is generted automatycally).
 
 * Mon Apr 20 1999 Piotr Czerwiñski <pius@pld.org.pl>
@@ -93,7 +98,6 @@ rm -rf $RPM_BUILD_ROOT
 - changed %lang to pt_BR on pt_BR lftp.mo.
 
 * Fri Jun 12 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-- moved %changelog at the end of spec.
-- build against glibc-2.1,
+- moved %changelog at the end of spec.- build against glibc-2.1,
 - translation modified for pl,
 - moved %changelog at the end of spec.
