@@ -33,7 +33,8 @@ Doskonale siê spisuje jako aplikacja do mirrorowania serwerów FTP.
 
 %build
 CFLAGS=$RPM_OPT_FLAGS CXXFLAGS=$RPM_OPT_FLAGS LDFLAGS=-s \
-./configure --prefix=/usr
+./configure \
+	--prefix=/usr
 make 
 
 %install
@@ -44,8 +45,8 @@ make prefix=$RPM_BUILD_ROOT/usr install
 
 install lftp.conf $RPM_BUILD_ROOT/etc
 
-gzip -9fn $RPM_BUILD_ROOT/usr/man/man1/*
-gzip -9fn README NEWS 
+gzip -9fn $RPM_BUILD_ROOT/usr/man/man1/* \
+	README NEWS 
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -57,7 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /usr/bin/*
 /usr/man/man1/*
 
-%attr(755,root,root,755) /usr/share/lftp
+%attr(755,root,root) /usr/share/lftp
 
 %config(noreplace) %verify(not size mtime md5) /etc/lftp.conf
 
