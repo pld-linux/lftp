@@ -1,14 +1,14 @@
-Summary:	Commandline ftp client.
+Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
 Version:	1.2.4
-Release:	1
+Release:	2
+Group:		Networking
+Group(pl):	Sieciowe
+Copyright:	GPL
 URL:		ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client
 Source:		%{name}-%{version}.tar.gz
 Icon:		ftp.gif
-Copyright:	GPL
-Group:		Networking
-Group(pl):	Sieciowe
 Requires:	ncurses => 4.2-12
 Buildroot:	/tmp/%{name}-%{version}-root
 
@@ -39,21 +39,21 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT/etc
+
 make prefix=$RPM_BUILD_ROOT/usr install
 
 install lftp.conf $RPM_BUILD_ROOT/etc
 
 gzip -9fn $RPM_BUILD_ROOT/usr/man/man1/*
-bzip2 -9 README NEWS 
+gzip -9fn README NEWS 
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {README,NEWS}.bz2 
+%doc {README,NEWS}.gz
 
 %attr(755,root,root) /usr/bin/*
 /usr/man/man1/*
@@ -69,6 +69,10 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pl)    /usr/share/locale/pl/LC_MESSAGES/lftp.mo
 
 %changelog
+- added %requires_pkg macro and BuildPrereq,
+- replacements in %files.
+
+* Thu Mar 18 1999 Micha³ Kuratczyk <kura@pld.org.pl>
   [1.2.4-2]
 - gzipping documentation (instead bzipping)
 
@@ -82,6 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 - changed %lang to pt_BR on pt_BR lftp.mo.
 
 * Fri Jun 12 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-- moved %changelog at the end of spec.- build against glibc-2.1,
+- moved %changelog at the end of spec.
+- build against glibc-2.1,
 - translation modified for pl,
 - moved %changelog at the end of spec.
