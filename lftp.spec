@@ -33,20 +33,18 @@ Doskonale siê spisuje jako aplikacja do mirrorowania serwerów FTP.
 %setup -q
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-CXXFLAGS="$RPM_OPT_FLAGS" \
-./configure %{_target_platform} \
-	--prefix=/usr \
+gettextize --copy --force
+LDFLAGS="-s"; export LDFLAGS
+CXXFLAGS="$RPM_OPT_FLAGS"; export CXXFLAGS
+%configure \
 	--with-modules
-make 
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/etc
 
-make install \
-	prefix=$RPM_BUILD_ROOT%{_prefix} \
-	mandir=$RPM_BUILD_ROOT%{_mandir}
+make install DESTDIR=$RPM_BUILD_ROOT
 
 install lftp.conf $RPM_BUILD_ROOT/etc
 
@@ -102,7 +100,6 @@ Revision 1.31  1999/07/12 23:06:05  kloczek
 - changed %lang to pt_BR on pt_BR lftp.mo.
 
 * Fri Jun 12 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-- moved %changelog at the end of spec.
-- build against glibc-2.1,
+- moved %changelog at the end of spec.- build against glibc-2.1,
 - translation modified for pl,
 - moved %changelog at the end of spec.
