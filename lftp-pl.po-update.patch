@@ -1,0 +1,32 @@
+--- lftp-3.0.4/po/pl.po.orig	2004-05-21 13:30:01.000000000 +0200
++++ lftp-3.0.4/po/pl.po	2004-05-25 18:32:45.973452880 +0200
+@@ -1,15 +1,15 @@
+ # Polish translation of lftp.
+ # Copyright (C) 1998-2000 Free Software Foundation, Inc.
+ # Arkadiusz Mi¶kiewicz <misiek@pld-linux.org>, 1998-2004
+-# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2003
++# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2004
+ # some updates by Tomasz K³oczko <kloczek@pld.org.pl>, 2003
+ #
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: lftp 3.0.1\n"
++"Project-Id-Version: lftp 3.0.4\n"
+ "Report-Msgid-Bugs-To: \n"
+ "POT-Creation-Date: 2004-05-21 15:29+0400\n"
+-"PO-Revision-Date: 2004-04-07 08:01+0200\n"
++"PO-Revision-Date: 2004-05-25 18:31+0200\n"
+ "Last-Translator: Arkadiusz Miskiewicz <arekm@pld-linux.org>\n"
+ "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
+ "MIME-Version: 1.0\n"
+@@ -2208,9 +2208,8 @@
+ msgstr "**** FXP: próba odwrócenia ftp:fxp-passive-source\n"
+ 
+ #: src/FileCopyFtp.cc:97
+-#, fuzzy
+ msgid "**** FXP: trying to reverse ftp:ssl-protect-fxp\n"
+-msgstr "**** FXP: próba odwrócenia ftp:fxp-passive-source\n"
++msgstr "**** FXP: próba odwrócenia ftp:ssl-protect-fxp\n"
+ 
+ #: src/FileCopyFtp.cc:102
+ msgid "**** FXP: giving up, reverting to plain copy\n"
