@@ -5,7 +5,6 @@ Version:	1.2.4
 Release:	3
 Group:		Networking/Utilities                                                                                          
 Group(pl):	Sieciowe/Narzêdzia
-Group(pl):	Sieciowe
 Copyright:	GPL
 Source:		ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client/%{name}-%{version}.tar.gz
 Icon:		ftp.gif
@@ -73,8 +72,9 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 - more rpm macros,
 - added rpm BuildPrereq rules.
+
 * Tue Apr 20 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-- removed %requires_pkg (dependences for ncurses is generted automatycally).
+  [1.2.4-3]
 - changed Group to Networking/Utilities,
 - added resdline-devel to BuildPrereq,
 - removed %%requires_pkg (dependences for ncurses is generted automatycally).
