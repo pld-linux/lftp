@@ -8,6 +8,6 @@ Comment[pt_BR]=Sofisticado programa de transferência de arquivos (cliente ftp/ht
 Comment[zh_CN]=Lftp ¿Í»§¶Ë³ÌÐò
 Exec=lftp
 Icon=lftp.png
-Terminal=false
+Terminal=true
 Type=Application
 # vi: encoding=utf-8
