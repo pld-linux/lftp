@@ -1,0 +1,11 @@
+diff -urN lftp-2.4.7.org/src/lftp.cc lftp-2.4.7/src/lftp.cc
+--- lftp-2.4.7.org/src/lftp.cc	Mon Nov 19 14:27:55 2001
++++ lftp-2.4.7/src/lftp.cc	Mon Nov 19 14:28:13 2001
+@@ -305,6 +305,7 @@
+ #endif
+ 
+    setlocale (LC_ALL, "");
++   setlocale (LC_NUMERIC, "");
+    bindtextdomain (PACKAGE, LOCALEDIR);
+    textdomain (PACKAGE);
+ 
