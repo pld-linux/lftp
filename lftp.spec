@@ -9,7 +9,7 @@ Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente FTP/H
 Summary(zh_CN):	lftp ¿Í»§¶Ë³ÌÐò
 Name:		lftp
 Version:	3.1.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Networking
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
@@ -18,11 +18,12 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Source2:	%{name}.desktop
 Patch0:		%{name}-home_etc.patch
+Patch1:		%{name}-pl.po-update.patch
 Icon:		ftp.gif
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-devel >= 0.14.2
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel >= 5.2
@@ -65,8 +66,11 @@ o arquivo FEATURES para uma lista mais detalhada.
 %prep
 %setup -q
 #%patch0 -p1
+%patch1 -p1
 
 sed -i -e 's#pkgverlibdir.*=.*#pkgverlibdir = $(pkglibdir)#g' src/Makefile*
+# for gettext >= 0.14.2
+sed -i -e 's/jm_AC/gl_AC/' m4/human.m4
 
 # allow pl.gmo regeneration
 rm -f po/stamp-po
@@ -104,7 +108,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc README NEWS FAQ FEATURES BUGS ChangeLog TODO
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lftp.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/lftp.conf
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/lftp
 %attr(755,root,root) %{_libdir}/lftp/*.so
