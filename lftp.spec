@@ -56,7 +56,7 @@ autoconf
 automake -a -c
 CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions -fno-implicit-templates"
 %configure \
-	--with-modules
+	--with-modules \
 	--with%{?bcond_off_ssl:out}-ssl
 %{__make}
 
