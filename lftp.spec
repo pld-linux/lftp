@@ -7,12 +7,13 @@ Summary(pl):	Zaawansowany klient ftp
 Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente ftp/http)
 Name:		lftp
 Version:	2.4.7
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
+Patch0:		%{name}-locale.patch
 Icon:		ftp.gif
 URL:		http://ftp.yars.free.net/projects/lftp/
 BuildRequires:	ncurses-devel >= 5.2
@@ -53,6 +54,7 @@ Veja o arquivo FEATURES para uma lista mais detalhada.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 rm -f missing
