@@ -5,7 +5,7 @@
 Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
-Version:	2.3.11
+Version:	2.4.0
 Release:	1
 License:	GPL
 Group:		Applications/Networking
@@ -20,6 +20,7 @@ BuildRequires:	ncurses-devel >= 5.2
 BuildRequires:	readline-devel >= 4.2
 BuildRequires:	gettext-devel
 BuildRequires:	gcc-c++
+BuildRequires:	libstdc++-devel
 %{!??_without_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -47,6 +48,7 @@ do mirrorowania serwerów FTP.
 %patch1 -p1
 
 %build
+rm missing
 libtoolize --copy --force
 gettextize --copy --force
 aclocal -I m4
@@ -68,7 +70,7 @@ install lftp.conf $RPM_BUILD_ROOT%{_sysconfdir}
 install src/.libs/proto-ftp.so[A-Z] $RPM_BUILD_ROOT%{_libdir}/lftp/%{version}/proto-ftp.so
 install src/.libs/proto-http.so[A-Z] $RPM_BUILD_ROOT%{_libdir}/lftp/%{version}/proto-http.so
 
-gzip -9nf README NEWS FAQ
+gzip -9nf README NEWS FAQ FEATURES BUGS ChangeLog TODO
 
 %find_lang %{name}
 
@@ -77,12 +79,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc *.gz
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lftp.conf
 %attr(755,root,root) %{_bindir}/*
-%{_mandir}/man1/*
+%attr(755,root,root) %{_libdir}/lftp/%{version}/*.so
 %attr(755,root,root) %{_datadir}/lftp
-
 %dir %{_libdir}/lftp
 %dir %{_libdir}/lftp/%{version}
-%attr(755,root,root) %{_libdir}/lftp/%{version}/*.so
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lftp.conf
+%{_mandir}/man1/*
+%doc *.gz
