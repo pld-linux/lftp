@@ -12,10 +12,9 @@ Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-am14_fix.patch
-Patch1:		%{name}-use_system_gettext.m4.patch
-Patch2:		%{name}-readline.patch
-Patch3:		%{name}-OMIT.patch
+Patch0:		%{name}-OMIT.patch
+Patch1:		%{name}-readline.patch
+Patch2:		%{name}-use_system_gettext.m4.patch
 Icon:		ftp.gif
 URL:		http://ftp.yars.free.net/projects/lftp/
 BuildRequires:	ncurses-devel >= 5.2
@@ -45,10 +44,9 @@ do mirrorowania serwerów FTP.
 
 %prep
 %setup -q
-#%patch0 -p1
-#%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch0 -p1
+%patch1 -p1
+#%patch2 -p1
 
 %build
 libtoolize --copy --force
@@ -69,6 +67,8 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 install lftp.conf $RPM_BUILD_ROOT%{_sysconfdir}
+install src/.libs/proto-ftp.so[A-Z] $RPM_BUILD_ROOT%{_libdir}/lftp/%{version}/proto-ftp.so
+install src/.libs/proto-http.so[A-Z] $RPM_BUILD_ROOT%{_libdir}/lftp/%{version}/proto-http.so
 
 gzip -9nf README NEWS FAQ
 
