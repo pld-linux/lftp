@@ -7,6 +7,7 @@ Group:		Networking/Utilities
 Group(pl):	Sieciowe/Narzêdzia
 Copyright:	GPL
 Source:		ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client/%{name}-%{version}.tar.gz
+Patch:		lftp-User-Agent.patch
 Icon:		ftp.gif
 BuildPrereq:	ncurses-devel
 BuildPrereq:	readline-devel
@@ -31,6 +32,7 @@ Doskonale siê spisuje jako aplikacja do mirrorowania serwerów FTP.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
 gettextize --copy --force
@@ -100,6 +102,7 @@ Revision 1.31  1999/07/12 23:06:05  kloczek
 - changed %lang to pt_BR on pt_BR lftp.mo.
 
 * Fri Jun 12 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-- moved %changelog at the end of spec.- build against glibc-2.1,
+- moved %changelog at the end of spec.
+- build against glibc-2.1,
 - translation modified for pl,
 - moved %changelog at the end of spec.
