@@ -1,0 +1,113 @@
+diff -ruN lftp-2.5.2.org/src/bookmark.cc lftp-2.5.2/src/bookmark.cc
+--- lftp-2.5.2.org/src/bookmark.cc	Mon Jan 21 17:25:16 2002
++++ lftp-2.5.2/src/bookmark.cc	Sun Jun  2 01:54:00 2002
+@@ -32,11 +32,19 @@
+ Bookmark::Bookmark()
+ {
+    const char *home=getenv("HOME");
++   const char *config_dir=getenv("CONFIG_DIR");
+    if(home==0)
+       home="";
+-   const char *add="/.lftp/bookmarks";
+-   bm_file=xstrdup(home,+strlen(add));
+-   strcat(bm_file,add);
++   if (config_dir) {
++       const char *add="/lftp/bookmarks";
++       bm_file=xstrdup(home,+strlen(add)+strlen(config_dir)+1);
++       sprintf(bm_file,"%s/%s%s", home, config_dir, add);
++   }
++   else {
++       const char *add="/.lftp/bookmarks";
++       bm_file=xstrdup(home,+strlen(add));
++       strcat(bm_file,add);
++   }
+ 
+    bm_fd=-1;
+    stamp=(time_t)-1;
+diff -ruN lftp-2.5.2.org/src/commands.cc lftp-2.5.2/src/commands.cc
+--- lftp-2.5.2.org/src/commands.cc	Sun May  5 16:22:55 2002
++++ lftp-2.5.2/src/commands.cc	Sun Jun  2 01:59:59 2002
+@@ -2451,7 +2451,10 @@
+    }
+    else if(!strcasecmp(op,"edit"))
+    {
+-      parent->PrependCmd("shell \"/bin/sh -c 'exec ${EDITOR:-vi} $HOME/.lftp/bookmarks'\"\n");
++      if (getenv("CONFIG_DIR"))
++	  parent->PrependCmd("shell \"/bin/sh -c 'exec ${EDITOR:-vi} $HOME/$CONFIG_DIR/lftp/bookmarks'\"\n");
++      else
++	  parent->PrependCmd("shell \"/bin/sh -c 'exec ${EDITOR:-vi} $HOME/.lftp/bookmarks'\"\n");
+    }
+    else if(!strcasecmp(op,"import"))
+    {
+diff -ruN lftp-2.5.2.org/src/history.cc lftp-2.5.2/src/history.cc
+--- lftp-2.5.2.org/src/history.cc	Mon Jan 21 17:25:17 2002
++++ lftp-2.5.2/src/history.cc	Sun Jun  2 01:56:09 2002
+@@ -40,11 +40,19 @@
+    modified=false;
+ 
+    const char *home=getenv("HOME");
++   const char *config_dir=getenv("CONFIG_DIR");
+    if(home==0)
+       home="";
+-   const char *add="/.lftp/cwd_history";
+-   file=xstrdup(home,+strlen(add));
+-   strcat(file,add);
++   if (config_dir) {
++       const char *add="/lftp/cwd_history";
++       file=xstrdup(home,+strlen(add)+strlen(config_dir)+1);
++       sprintf(file,"%s/%s%s", home, config_dir, add);
++   }
++   else {
++       const char *add="/.lftp/cwd_history";
++       file=xstrdup(home,+strlen(add));
++       strcat(file,add);
++   }
+ }
+ 
+ History::~History()
+diff -ruN lftp-2.5.2.org/src/lftp.cc lftp-2.5.2/src/lftp.cc
+--- lftp-2.5.2.org/src/lftp.cc	Wed Feb 27 10:15:57 2002
++++ lftp-2.5.2/src/lftp.cc	Sun Jun  2 02:12:06 2002
+@@ -231,8 +231,11 @@
+       const char *home=getenv("HOME");
+       if(home)
+       {
+-	 char *log=(char*)alloca(strlen(home)+1+9+1);
+-	 sprintf(log,"%s/.lftp",home);
++	 char *log=(char*)alloca(strlen(home)+strlen(getenv("CONFIG_DIR"))+1+9+1);
++	 if (getenv("CONFIG_DIR"))
++	     sprintf(log,"%s/%s/lftp",home,getenv("CONFIG_DIR"));	 
++	 else    
++	     sprintf(log,"%s/.lftp",home);
+ 	 if(access(log,F_OK)==-1)
+ 	    strcat(log,"_log");
+ 	 else
+@@ -329,9 +332,19 @@
+    const char *home=getenv("HOME");
+    if(home)
+    {
+-      char *rc=(char*)alloca(strlen(home)+9+1);
++      char *rc=(char*)alloca(strlen(home)+strlen(getenv("CONFIG_DIR"))+9+1);
+ 
+       // create lftp own directory
++    if (getenv("CONFIG_DIR")) {
++      sprintf(rc,"%s/%s/lftp",home,getenv("CONFIG_DIR"));
++      mkdir(rc,0755);
++
++      sprintf(rc,"%s/%s/lftprc",home,getenv("CONFIG_DIR"));
++      source_if_exist(top_exec,rc);
++      sprintf(rc,"%s/%s/lftp/rc",home,getenv("CONFIG_DIR"));
++      source_if_exist(top_exec,rc);
++    }
++    else {
+       sprintf(rc,"%s/.lftp",home);
+       mkdir(rc,0755);
+ 
+@@ -339,6 +352,7 @@
+       source_if_exist(top_exec,rc);
+       sprintf(rc,"%s/.lftp/rc",home);
+       source_if_exist(top_exec,rc);
++    }
+    }
+ 
+    WaitDone(top_exec);
