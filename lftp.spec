@@ -93,8 +93,6 @@ install lftp.conf $RPM_BUILD_ROOT%{_sysconfdir}
 
 bzip2 -dc %{SOURCE2} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
-gzip -9nf README NEWS FAQ FEATURES BUGS ChangeLog TODO
-
 %find_lang %{name}
 
 %clean
@@ -118,4 +116,4 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lftp.conf
 %{_mandir}/man1/*
 %lang(pl) %{_mandir}/pl/man1/*
-%doc *.gz
+%doc README NEWS FAQ FEATURES BUGS ChangeLog TODO
