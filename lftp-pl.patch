@@ -1,0 +1,50 @@
+--- lftp-2.6.0/po/pl.po.orig	Fri Aug  2 10:43:33 2002
++++ lftp-2.6.0/po/pl.po	Mon Aug  5 21:28:55 2002
+@@ -62,7 +62,7 @@
+ 
+ #: src/CmdExec.cc:728
+ msgid "Queue is stopped."
+-msgstr ""
++msgstr "Kolejka jest zatrzymana."
+ 
+ #: src/CmdExec.cc:732
+ msgid "Now executing:"
+@@ -1417,7 +1417,7 @@
+ 
+ #: src/commands.cc:1066
+ msgid "Created a stopped queue.\n"
+-msgstr ""
++msgstr "Utworzono zatrzyman± kolejkê.\n"
+ 
+ #: src/commands.cc:1110 src/commands.cc:1140
+ #, c-format
+@@ -2117,17 +2117,17 @@
+ #: src/Speedometer.cc:98
+ #, c-format
+ msgid "%.0fb/s"
+-msgstr ""
++msgstr "%.0fb/s"
+ 
+ #: src/Speedometer.cc:101
+ #, c-format
+ msgid "%.1fK/s"
+-msgstr ""
++msgstr "%.1fK/s"
+ 
+ #: src/Speedometer.cc:104
+ #, c-format
+ msgid "%.2fM/s"
+-msgstr ""
++msgstr "%.2fM/s"
+ 
+ #: src/Speedometer.cc:130
+ msgid "day"
+@@ -2155,7 +2155,7 @@
+ 
+ #: src/FileCopyFtp.cc:96
+ msgid "ftp:fxp-force is set but FXP is not available"
+-msgstr ""
++msgstr "ftp:fxp-force jest ustawione, ale FXP jest niedostêpne"
+ 
+ #: src/FileCopyFtp.cc:108
+ msgid "**** FXP: trying to reverse ftp:fxp-passive-source\n"

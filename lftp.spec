@@ -11,11 +11,10 @@ Release:	1
 License:	GPL
 Group:		Applications/Networking
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
-Source1:	%{name}.pl.po
-Source2:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
-Patch0:		%{name}-m4.patch
-Patch1:		%{name}-amfix.patch
-Patch2:		%{name}-home_etc.patch
+Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
+Patch0:		%{name}-amfix.patch
+Patch1:		%{name}-home_etc.patch
+Patch2:		%{name}-pl.patch
 Icon:		ftp.gif
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf
@@ -61,12 +60,11 @@ Veja o arquivo FEATURES para uma lista mais detalhada.
 
 %prep
 %setup -q
-#%patch0 -p1
+%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 
 %build
-install -m644 %{SOURCE1} po/pl.po
 rm -f missing
 %{__libtoolize}
 %{__gettextize}
@@ -91,7 +89,7 @@ rm src/*.la
 
 install lftp.conf $RPM_BUILD_ROOT%{_sysconfdir}
 
-bzip2 -dc %{SOURCE2} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
+bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
 %find_lang %{name}
 
@@ -100,6 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
+%doc README NEWS FAQ FEATURES BUGS ChangeLog TODO
 %attr(755,root,root) %{_bindir}/*
 # All modules specified here because lftp breaks things
 %attr(755,root,root) %{_libdir}/lftp/%{version}/cmd-mirror.so
@@ -116,4 +115,3 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lftp.conf
 %{_mandir}/man1/*
 %lang(pl) %{_mandir}/pl/man1/*
-%doc README NEWS FAQ FEATURES BUGS ChangeLog TODO

@@ -35,7 +35,7 @@
  
  lftp_LDFLAGS = -export-dynamic $(LFTP_SSL_LDFLAGS)
 -lftp_LDADD = libjobs.a libtasks.a $(READLINE) $(READLINE_SUPPLIB) \
-+lftp_LDADD = LocalAccess.o libjobs.a libtasks.a $(READLINE) $(READLINE_SUPPLIB) \
++lftp_LDADD = LocalAccess.lo libjobs.a libtasks.a $(READLINE) $(READLINE_SUPPLIB) \
  	$(top_builddir)/lib/liblib.a $(INTLLIBS) $(LFTP_SSL_LIBS) $(MODULES_LA_STATIC)
  lftp_DEPENDENCIES = libjobs.a libtasks.a $(READLINE_DEPEND) \
  	$(top_builddir)/lib/liblib.a $(MODULES_LA_STATIC)
