@@ -7,9 +7,11 @@ Group:		Networking/Utilities
 Group(pl):	Sieciowe/Narzêdzia
 Copyright:	GPL
 Source:		ftp://ftp.yars.free.net:/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.gz
+Patch:		lftp-passive.patch
 Icon:		ftp.gif
 BuildRequires:	ncurses-devel
 BuildRequires:	readline-devel
+BuildRequires:	gettext-devel
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %define		_sysconfdir	/etc
@@ -33,6 +35,7 @@ Doskonale siê spisuje jako aplikacja do mirrorowania serwerów FTP.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
 gettextize --copy --force
