@@ -14,6 +14,7 @@ Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%
 Source1:	%{name}.pl.po
 Source2:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 Patch0:		%{name}-m4.patch
+Patch1:		%{name}-amfix.patch
 Icon:		ftp.gif
 URL:		http://lftp.yar.ru/
 BuildRequires:	ncurses-devel >= 5.2
@@ -55,6 +56,7 @@ Veja o arquivo FEATURES para uma lista mais detalhada.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 install -m644 %{SOURCE1} po/pl.po
