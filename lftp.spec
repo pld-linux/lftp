@@ -2,7 +2,7 @@ Summary:	Commandline ftp client
 Summary(pl):	Zaawansowany klient ftp
 Name:		lftp
 Version:	2.1.10
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
@@ -11,7 +11,7 @@ Patch:		lftp-passive.patch
 Icon:		ftp.gif
 URL:		http://ftp.yars.free.net/projects/lftp/
 BuildRequires:	ncurses-devel >= 5.0
-BuildRequires:	readline-devel
+BuildRequires:	readline-devel >= 4.1
 BuildRequires:	gettext-devel
 Buildroot:	/tmp/%{name}-%{version}-root
 
