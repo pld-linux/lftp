@@ -17,15 +17,15 @@ Patch0:		%{name}-m4.patch
 Patch1:		%{name}-amfix.patch
 Icon:		ftp.gif
 URL:		http://lftp.yar.ru/
-BuildRequires:	ncurses-devel >= 5.2
-BuildRequires:	readline-devel >= 4.2
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libtool
 BuildRequires:	gettext-devel
 BuildRequires:	gcc-c++
 BuildRequires:	libstdc++-devel
-%{!??_without_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
+BuildRequires:	libtool
+BuildRequires:	ncurses-devel >= 5.2
+%{!?_without_ssl:BuildRequires:	openssl-devel >= 0.9.6a}
+BuildRequires:	readline-devel >= 4.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
