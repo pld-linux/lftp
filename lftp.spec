@@ -52,12 +52,12 @@ install lftp.conf $RPM_BUILD_ROOT/etc
 gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	README NEWS 
 
-%find_lang lftp
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f lftp.lang
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc {README,NEWS}.gz
 %config(noreplace) %verify(not size mtime md5) /etc/lftp.conf
