@@ -59,13 +59,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /usr/bin/*
 %{_mandir}/man1/*
 
-%attr(755,root,root) /usr/share/lftp
+%attr(755,root,root) %{_datadir}/lftp
 
-%lang(es)    /usr/share/locale/es/LC_MESSAGES/lftp.mo
-%lang(ru)    /usr/share/locale/ru/LC_MESSAGES/lftp.mo
-%lang(it)    /usr/share/locale/it/LC_MESSAGES/lftp.mo
-%lang(pt_BR) /usr/share/locale/pt_BR/LC_MESSAGES/lftp.mo
-%lang(pl)    /usr/share/locale/pl/LC_MESSAGES/lftp.mo
+%lang(es)    %{_datadir}/locale/es/LC_MESSAGES/lftp.mo
+%lang(ru)    %{_datadir}/locale/ru/LC_MESSAGES/lftp.mo
+%lang(it)    %{_datadir}/locale/it/LC_MESSAGES/lftp.mo
+%lang(pt_BR) %{_datadir}/locale/pt_BR/LC_MESSAGES/lftp.mo
+%lang(pl)    %{_datadir}/locale/pl/LC_MESSAGES/lftp.mo
 
 %config(noreplace) %verify(not size mtime md5) /etc/lftp.conf
   [1.2.4-4]
