@@ -1,16 +1,22 @@
---- lftp-3.0.8/po/pl.po	2004-09-14 11:00:43.000000000 +0000
-+++ lftp-3.0.8.new/po/pl.po	2004-09-14 17:18:18.875896536 +0000
-@@ -6,11 +6,11 @@
+--- lftp-3.0.8/po/pl.po.orig	2004-09-14 13:00:43.000000000 +0200
++++ lftp-3.0.8/po/pl.po	2004-09-15 18:59:02.368058952 +0200
+@@ -1,16 +1,16 @@
+ # Polish translation of lftp.
+-# Copyright (C) 1998-2000 Free Software Foundation, Inc.
++# Copyright (C) 1998-2004 Free Software Foundation, Inc.
+ # Arkadiusz Mi¶kiewicz <misiek@pld-linux.org>, 1998-2004
+ # Jakub Bogusz <qboosh@pld-linux.org>, 2002-2004
+ # some updates by Tomasz K³oczko <kloczek@pld.org.pl>, 2003
  #
  msgid ""
  msgstr ""
 -"Project-Id-Version: lftp 3.0.4\n"
 +"Project-Id-Version: lftp 3.0.8\n"
  "Report-Msgid-Bugs-To: \n"
--"POT-Creation-Date: 2004-09-14 15:00+0400\n"
+ "POT-Creation-Date: 2004-09-14 15:00+0400\n"
 -"PO-Revision-Date: 2004-05-31 19:17+0200\n"
- "Last-Translator: Arkadiusz Miskiewicz <arekm@pld-linux.org>\n"
-+"PO-Revision-Date: 2004-08-11 18:50+0200\n"
+-"Last-Translator: Arkadiusz Miskiewicz <arekm@pld-linux.org>\n"
++"PO-Revision-Date: 2004-09-15 18:50+0200\n"
 +"Last-Translator: Adam Golebiowski <adamg@pld-linux.org>\n"
  "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
  "MIME-Version: 1.0\n"
