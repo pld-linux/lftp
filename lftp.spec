@@ -1,24 +1,33 @@
+# TODO
+# - package itself defaults to GNUTLS (prefferring over openssl) should we too?
+# - rename ssl bcond to openssl?
 #
 # Conditional build:
-%bcond_without	ssl	# do not use SSL
+%bcond_without	ssl		# do not use SSL
+%bcond_with		gnutls	# use gnutls
 #
+%if %{with gnutls} && %{with ssl}
+# NOTE: the undefine somewhy doesn't work
+%undefine ssl
+%{warn:WARNING: disabling ssl bcond, as can't do both gnutls and ssl bconds}
+%endif
 Summary:	Sophisticated command line FTP/HTTP client
 Summary(ko):	¸í·ÉÁÙ¿¡¼­ µ¹¾Æ°¡´Â FTP/HTTP Å¬¶óÀÌ¾ðÆ®
 Summary(pl):	Zaawansowany klient FTP/HTTP
 Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente FTP/HTTP)
 Summary(zh_CN):	lftp ¿Í»§¶Ë³ÌÐò
 Name:		lftp
-Version:	3.1.3
-Release:	2
+Version:	3.2.0
+Release:	0.1
 License:	GPL
 Group:		Applications/Networking
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
-# Source0-md5:	4f5016eb8e7f2f731d95c27ed0c6e8ad
+# Source0-md5:	f0ac602fbc6298056e5e1689a65baead
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Source2:	%{name}.desktop
 Patch0:		%{name}-home_etc.patch
-Patch1:		%{name}-pl.po-update.patch
+#Patch1:		%{name}-pl.po-update.patch
 Icon:		ftp.gif
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf
@@ -28,6 +37,7 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel >= 5.2
 %{?with_ssl:BuildRequires:	openssl-devel >= 0.9.7d}
+%{?with_gnutls:BuildRequires:	gnutls-devel >= 1.2.1}
 BuildRequires:	readline-devel >= 4.2
 BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -66,14 +76,10 @@ o arquivo FEATURES para uma lista mais detalhada.
 %prep
 %setup -q
 #%patch0 -p1
-%patch1 -p1
 
 sed -i -e 's#pkgverlibdir.*=.*#pkgverlibdir = $(pkglibdir)#g' src/Makefile*
 # for gettext >= 0.14.2
 sed -i -e 's/jm_AC/gl_AC/' m4/human.m4
-
-# allow pl.gmo regeneration
-rm -f po/stamp-po
 
 %build
 %{__libtoolize}
@@ -84,7 +90,9 @@ rm -f po/stamp-po
 CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions -fno-implicit-templates"
 %configure \
 	--with-modules \
-	--with%{!?with_ssl:out}-ssl
+	--with%{!?with_ssl:out}-ssl \
+	--with%{!?with_gnutls:out}-gnutls
+
 %{__make}
 
 %install
