@@ -1,16 +1,20 @@
 # TODO
 # - package itself defaults to GNUTLS (prefferring over openssl) should we too?
-# - rename ssl bcond to openssl?
 #
 # Conditional build:
 %bcond_without	ssl		# do not use SSL
-%bcond_with		gnutls	# use gnutls
+%bcond_with		gnutls	# use gnutls, otherwise openssl is used when ssl is
+                        # on
 #
-%if %{with gnutls} && %{with ssl}
-# NOTE: the undefine somewhy doesn't work
-%undefine ssl
-%{warn:WARNING: disabling ssl bcond, as can't do both gnutls and ssl bconds}
+
+%if %{with ssl}
+%define with_openssl 1
 %endif
+
+%if %{with gnutls} && %{with ssl}
+%undefine with_openssl
+%endif
+
 Summary:	Sophisticated command line FTP/HTTP client
 Summary(ko):	¸í·ÉÁÙ¿¡¼­ µ¹¾Æ°¡´Â FTP/HTTP Å¬¶óÀÌ¾ðÆ®
 Summary(pl):	Zaawansowany klient FTP/HTTP
@@ -18,7 +22,7 @@ Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente FTP/H
 Summary(zh_CN):	lftp ¿Í»§¶Ë³ÌÐò
 Name:		lftp
 Version:	3.2.0
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		Applications/Networking
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
@@ -35,7 +39,7 @@ BuildRequires:	gettext-devel >= 0.14.2
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel >= 5.2
-%{?with_ssl:BuildRequires:	openssl-devel >= 0.9.7d}
+%{?with_openssl:BuildRequires:	openssl-devel >= 0.9.7d}
 %{?with_gnutls:BuildRequires:	gnutls-devel >= 1.2.1}
 BuildRequires:	readline-devel >= 4.2
 BuildRequires:	sed >= 4.0
@@ -90,6 +94,7 @@ CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions -fno-implicit-templates"
 %configure \
 	--with-modules \
 	--with%{!?with_ssl:out}-ssl \
+	--with%{!?with_openssl:out}-openssl \
 	--with%{!?with_gnutls:out}-gnutls
 
 %{__make}
