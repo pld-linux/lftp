@@ -3,9 +3,7 @@
 #
 # Conditional build:
 %bcond_without	ssl		# do not use SSL
-%bcond_with		gnutls	# use gnutls, otherwise openssl is used when ssl is
-                        # on
-#
+%bcond_with		gnutls	# use gnutls, otherwise openssl is used when ssl is on
 
 %if %{with ssl}
 %define with_openssl 1
