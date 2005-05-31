@@ -38,7 +38,7 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel >= 5.2
 %{?with_openssl:BuildRequires:	openssl-devel >= 0.9.7d}
-%{?with_gnutls:BuildRequires:	gnutls-devel >= 1.2.1}
+%{?with_gnutls:BuildRequires:	gnutls-devel >= 1.0.0}
 BuildRequires:	readline-devel >= 4.2
 BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
