@@ -20,7 +20,7 @@ Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente FTP/H
 Summary(zh_CN):	lftp ¿Í»§¶Ë³ÌÐò
 Name:		lftp
 Version:	3.3.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Networking
 Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
@@ -29,6 +29,7 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Source2:	%{name}.desktop
 Patch0:		%{name}-home_etc.patch
+Patch1:		%{name}-pl.po-update.patch
 Icon:		ftp.gif
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf
@@ -77,6 +78,7 @@ o arquivo FEATURES para uma lista mais detalhada.
 %prep
 %setup -q
 #%patch0 -p1
+%patch1 -p1
 
 sed -i -e 's#pkgverlibdir.*=.*#pkgverlibdir = $(pkglibdir)#g' src/Makefile*
 # for gettext >= 0.14.2
