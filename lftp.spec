@@ -19,12 +19,12 @@ Summary(pl):	Zaawansowany klient FTP/HTTP
 Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente FTP/HTTP)
 Summary(zh_CN):	lftp ¿Í»§¶Ë³ÌÐò
 Name:		lftp
-Version:	3.3.0
-Release:	3
+Version:	3.3.3
+Release:	1
 License:	GPL
 Group:		Applications/Networking
-Source0:	ftp://ftp.yars.free.net/pub/software/unix/net/ftp/client/lftp/%{name}-%{version}.tar.bz2
-# Source0-md5:	5f06462c88618ecd61db8e46ef494bc3
+Source0:	ftp://ftp.yars.free.net/pub/source/lftp/%{name}-%{version}.tar.bz2
+# Source0-md5:	92f2c10ee4460a9e4654615db0f3f8ab
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Source2:	%{name}.desktop
@@ -78,11 +78,13 @@ o arquivo FEATURES para uma lista mais detalhada.
 %prep
 %setup -q
 #%patch0 -p1
-%patch1 -p1
+#%patch1 -p1
 
 sed -i -e 's#pkgverlibdir.*=.*#pkgverlibdir = $(pkglibdir)#g' src/Makefile*
 # for gettext >= 0.14.2
 sed -i -e 's/jm_AC/gl_AC/' m4/human.m4
+
+%{!?with_gnutls:echo 'AC_DEFUN([AM_PATH_LIBGNUTLS],[/bin/true])' > m4/gnutls.m4}
 
 %build
 %{__libtoolize}
