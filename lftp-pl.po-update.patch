@@ -1,0 +1,48 @@
+--- lftp-3.4.0/po/pl.po.orig	2005-12-28 07:21:55.000000000 +0100
++++ lftp-3.4.0/po/pl.po	2006-01-16 23:32:58.327378500 +0100
+@@ -1,16 +1,16 @@
+ # Polish translation of lftp.
+ # Copyright (C) 1998-2000 Free Software Foundation, Inc.
+ # Arkadiusz Mi¶kiewicz <misiek@pld-linux.org>, 1998-2004
+-# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2005
++# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2006
+ # some updates by Tomasz K³oczko <kloczek@pld.org.pl>, 2003
+ # Adam Go³êbiowski <adamg@pld-linux.org>, 2004
+ #
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: lftp 3.3.0\n"
++"Project-Id-Version: lftp 3.4.0\n"
+ "Report-Msgid-Bugs-To: \n"
+ "POT-Creation-Date: 2005-12-28 09:21+0300\n"
+-"PO-Revision-Date: 2005-08-15 20:50+0200\n"
++"PO-Revision-Date: 2006-01-16 23:32+0100\n"
+ "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
+ "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
+ "MIME-Version: 1.0\n"
+@@ -354,11 +354,11 @@
+ 
+ #: src/ResMgr.cc:750
+ msgid "Invalid suffix. Valid suffixes are: k, M, G, T, P, E, Z, Y"
+-msgstr ""
++msgstr "Nieprawid³owy przyrostek. Poprawne to: k, M, G, T, P, E, Z, Y"
+ 
+ #: src/ResMgr.cc:753
+ msgid "Integer overflow"
+-msgstr ""
++msgstr "Przepe³nienie liczby ca³kowitej"
+ 
+ #: src/ResMgr.cc:816
+ msgid "Invalid IPv4 numeric address"
+@@ -1464,9 +1464,9 @@
+ msgstr "U¿ycie: %s [OPCJE] komenda argumenty...\n"
+ 
+ #: src/commands.cc:1103
+-#, fuzzy, c-format
++#, c-format
+ msgid "%s: -n: positive number expected. "
+-msgstr "%s: -n: Oczekiwano liczby. "
++msgstr "%s: -n: Oczekiwano liczby dodatniej. "
+ 
+ #: src/commands.cc:1155
+ #, c-format
