@@ -29,6 +29,7 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Source2:	%{name}.desktop
 Patch0:		%{name}-home_etc.patch
+Patch1:		%{name}-pl.po-update.patch
 Icon:		ftp.gif
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf
@@ -77,6 +78,8 @@ o arquivo FEATURES para uma lista mais detalhada.
 %prep
 %setup -q
 #%patch0 -p1
+%patch1 -p1
+rm -f po/stamp-po
 
 sed -i -e 's#pkgverlibdir.*=.*#pkgverlibdir = $(pkglibdir)#g' src/Makefile*
 # for gettext >= 0.14.2
@@ -117,13 +120,16 @@ bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
+
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc README NEWS FAQ FEATURES BUGS ChangeLog TODO
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/lftp.conf
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/lftp
-%attr(755,root,root) %{_libdir}/*.so.*
+%attr(755,root,root) %{_libdir}/liblftp*.so.*.*.*
 %attr(755,root,root) %{_libdir}/lftp/*.so
 %attr(755,root,root) %{_datadir}/lftp
 %{_mandir}/man1/*
