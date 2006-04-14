@@ -14,7 +14,7 @@
 -"Project-Id-Version: lftp 3.3.0\n"
 +"Project-Id-Version: lftp 3.3.4\n"
  "Report-Msgid-Bugs-To: \n"
- "POT-Creation-Date: 2006-03-15 11:04+0300\n"
+ "POT-Creation-Date: 2006-04-06 14:30+0400\n"
 -"PO-Revision-Date: 2005-08-15 20:50+0200\n"
 +"PO-Revision-Date: 2006-03-19 12:30+0100\n"
  "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
@@ -68,19 +68,19 @@
 @@ -1466,9 +1466,9 @@
  msgstr "U¿ycie: %s [OPCJE] komenda argumenty...\n"
  
- #: src/commands.cc:1111
+ #: src/commands.cc:1132
 -#, fuzzy, c-format
 +#, c-format
  msgid "%s: -n: positive number expected. "
 -msgstr "%s: -n: Oczekiwano liczby. "
 +msgstr "%s: -n: oczekiwano liczby dodatniej. "
  
- #: src/commands.cc:1163
+ #: src/commands.cc:1184
  #, c-format
 @@ -1670,9 +1670,9 @@
  msgstr "Dwuznaczne polecenie `%s'. U¿yj `help' by uzyskaæ spis komend.\n"
  
- #: src/commands.cc:2544
+ #: src/commands.cc:2565
 -#, fuzzy, c-format
 +#, c-format
  msgid "LFTP | Version %s | Copyright (c) 1996-2006 Alexander V. Lukyanov\n"
