@@ -34,11 +34,11 @@ URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel >= 0.14.2
+%{?with_gnutls:BuildRequires:	gnutls-devel >= 1.2.5}
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel >= 5.2
 %{?with_openssl:BuildRequires:	openssl-devel >= 0.9.7d}
-%{?with_gnutls:BuildRequires:	gnutls-devel >= 1.2.5}
 BuildRequires:	readline-devel >= 4.2
 BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -113,6 +113,8 @@ install contrib/lftp-icon.png $RPM_BUILD_ROOT%{_pixmapsdir}/lftp.png
 install %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
+rm -f $RPM_BUILD_ROOT%{_mandir}/{README.lftp-man-pages,lftpget.diff}
+rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang %{name}
 
