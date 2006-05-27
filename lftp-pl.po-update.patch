@@ -1,5 +1,5 @@
---- lftp-3.4.6/po/pl.po.orig	2006-04-25 06:36:08.000000000 +0000
-+++ lftp-3.4.6/po/pl.po	2006-05-07 15:08:36.725268500 +0000
+--- lftp-3.4.7/po/pl.po.orig	2006-05-18 08:32:08.000000000 +0200
++++ lftp-3.4.7/po/pl.po	2006-05-27 19:58:02.621564250 +0200
 @@ -1,16 +1,16 @@
  # Polish translation of lftp.
  # Copyright (C) 1998-2000 Free Software Foundation, Inc.
@@ -12,11 +12,11 @@
  msgid ""
  msgstr ""
 -"Project-Id-Version: lftp 3.3.0\n"
-+"Project-Id-Version: lftp 3.3.6\n"
++"Project-Id-Version: lftp 3.4.7\n"
  "Report-Msgid-Bugs-To: \n"
- "POT-Creation-Date: 2006-04-25 10:36+0400\n"
+ "POT-Creation-Date: 2006-05-18 10:32+0400\n"
 -"PO-Revision-Date: 2005-08-15 20:50+0200\n"
-+"PO-Revision-Date: 2006-03-19 12:30+0100\n"
++"PO-Revision-Date: 2006-05-27 19:50+0200\n"
  "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
  "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
  "MIME-Version: 1.0\n"
@@ -37,7 +37,7 @@
 @@ -571,7 +571,6 @@
  msgstr "[re]cls [opcje] [¶cie¿ka/][maska]"
  
- #: src/commands.cc:165
+ #: src/commands.cc:166
 -#, fuzzy
  msgid ""
  "List remote files. You can redirect output of this command to file\n"
@@ -68,29 +68,40 @@
 @@ -1446,9 +1446,9 @@
  msgstr "U¿ycie: %s [OPCJE] komenda argumenty...\n"
  
- #: src/commands.cc:1124
+ #: src/commands.cc:1125
 -#, fuzzy, c-format
 +#, c-format
  msgid "%s: -n: positive number expected. "
 -msgstr "%s: -n: Oczekiwano liczby. "
 +msgstr "%s: -n: Oczekiwano liczby dodatniej. "
  
- #: src/commands.cc:1176
+ #: src/commands.cc:1177
  #, c-format
 @@ -1650,9 +1650,9 @@
  msgstr "Dwuznaczne polecenie `%s'. U¿yj `help' by uzyskaæ spis komend.\n"
  
- #: src/commands.cc:2557
+ #: src/commands.cc:2558
 -#, fuzzy, c-format
 +#, c-format
- msgid "LFTP | Version %s | Copyright (c) 1996-2006 Alexander V. Lukyanov\n"
+ msgid "LFTP | Version %s | Copyright (c) 1996-%d Alexander V. Lukyanov\n"
 -msgstr "LFTP | Wersja %s | Copyright (c) 1996-2005 Alexander V. Lukyanov\n"
-+msgstr "LFTP | Wersja %s | Copyright (c) 1996-2006 Alexander V. Lukyanov\n"
++msgstr "LFTP | Wersja %s | Copyright (c) 1996-%d Alexander V. Lukyanov\n"
  
- #: src/commands.cc:2560
+ #: src/commands.cc:2561
  #, c-format
-@@ -2438,9 +2438,3 @@
- #: src/SFtp.cc:1081
+@@ -2111,9 +2111,8 @@
+ msgstr "naruszony format"
+ 
+ #: src/Http.cc:1707
+-#, fuzzy
+ msgid "Received last chunk"
+-msgstr "Przes³ano wszystko"
++msgstr "Otrzymano ostatni fragment"
+ 
+ #: src/Http.cc:1892
+ msgid "Fetching headers..."
+@@ -2442,9 +2441,3 @@
+ #: src/SFtp.cc:1086
  msgid "invalid server response format"
  msgstr "nieprawid³owy format odpowiedzi serwera"
 -
