@@ -86,6 +86,8 @@ sed -i -e 's/jm_AC/gl_AC/' m4/human.m4
 
 %{!?with_gnutls:echo 'AC_DEFUN([AM_PATH_LIBGNUTLS],[/bin/true])' > m4/gnutls.m4}
 
+sed -i '/liblftp_tasks_la_LIBADD/a\\nliblftp_jobs_la_LIBADD = liblftp-tasks.la' -i src/Makefile.am
+
 %build
 %{__libtoolize}
 %{__gettextize}
