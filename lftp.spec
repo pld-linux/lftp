@@ -30,6 +30,9 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.
 Source2:	%{name}.desktop
 Patch0:		%{name}-home_etc.patch
 Patch1:		%{name}-pl.po-update.patch
+Patch2:		%{name}-makefile.patch
+Patch3:		%{name}-gettext-m4.patch
+Patch4:		%{name}-as_needed-fix.patch
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -40,7 +43,6 @@ BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel >= 5.2
 %{?with_openssl:BuildRequires:	openssl-devel >= 0.9.7d}
 BuildRequires:	readline-devel >= 4.2
-BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_gcc_ver	%(%{__cc} -dumpversion | cut -b 1)
@@ -78,15 +80,12 @@ o arquivo FEATURES para uma lista mais detalhada.
 %setup -q
 #%patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 rm -f po/stamp-po
 
-sed -i -e 's#pkgverlibdir.*=.*#pkgverlibdir = $(pkglibdir)#g' src/Makefile*
-# for gettext >= 0.14.2
-sed -i -e 's/jm_AC/gl_AC/' m4/human.m4
-
 %{!?with_gnutls:echo 'AC_DEFUN([AM_PATH_LIBGNUTLS],[/bin/true])' > m4/gnutls.m4}
-
-sed -i '/liblftp_tasks_la_LIBADD/a\\nliblftp_jobs_la_LIBADD = liblftp-tasks.la' -i src/Makefile.am
 
 %build
 %{__libtoolize}
