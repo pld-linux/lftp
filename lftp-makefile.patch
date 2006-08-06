@@ -8,15 +8,3 @@ diff -Nur lftp-3.5.1/src/Makefile.am lftp-3.5.1.makefile/src/Makefile.am
  
  bin_PROGRAMS = lftp
  bin_SCRIPTS = lftpget
-diff -Nur lftp-3.5.1/src/Makefile.in lftp-3.5.1.makefile/src/Makefile.in
---- lftp-3.5.1/src/Makefile.in	2006-07-05 19:20:00.000000000 +0200
-+++ lftp-3.5.1.makefile/src/Makefile.in	2006-08-02 01:23:10.000000000 +0200
-@@ -390,7 +390,7 @@
- sysconfdir = @sysconfdir@
- target_alias = @target_alias@
- localedir = $(datadir)/locale
--pkgverlibdir = $(pkglibdir)/$(VERSION)
-+pkgverlibdir = $(pkglibdir)
- bin_SCRIPTS = lftpget
- pkgdata_SCRIPTS = import-ncftp import-netscape verify-file convert-netscape-cookies
- noinst_SCRIPTS = ftpget
