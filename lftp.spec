@@ -33,7 +33,7 @@ Patch1:		%{name}-pl.po-update.patch
 Patch2:		%{name}-makefile.patch
 Patch3:		%{name}-as_needed-fix.patch
 URL:		http://lftp.yar.ru/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
 BuildRequires:	gettext-devel >= 0.14.2
 %{?with_gnutls:BuildRequires:	gnutls-devel >= 1.2.5}
