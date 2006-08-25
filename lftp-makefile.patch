@@ -8,12 +8,3 @@ diff -Nur lftp-3.5.1/src/Makefile.am lftp-3.5.1.makefile/src/Makefile.am
  
  bin_PROGRAMS = lftp
  bin_SCRIPTS = lftpget
---- lftp-3.5.2/src/Makefile.am.orig	2006-07-27 08:14:13.000000000 +0200
-+++ lftp-3.5.2/src/Makefile.am	2006-08-06 15:58:40.462519000 +0200
-@@ -117,5 +117,5 @@
- 	case " $(LDFLAGS) " in *" -s "*) \
- 		echo $(STRIP) $(DESTDIR)$(pkgverlibdir)/*.so; \
- 		$(STRIP) $(DESTDIR)$(pkgverlibdir)/*.so;; \
--	esac; else rmdir $(DESTDIR)$(pkgverlibdir) 2>/dev/null || true;
-+	esac; rmdir $(DESTDIR)$(pkgverlibdir) 2>/dev/null || true;
- endif
