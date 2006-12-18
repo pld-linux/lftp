@@ -67,6 +67,17 @@
  "cls-completion-default na \"-s\".\n"
  "\n"
  "Porady: U¿yj --filesize z opcj± -D by lepiej upakowaæ listing. Je¶li nie\n"
+@@ -1077,8 +1077,8 @@
+ " -a  use ascii mode (binary is the default)\n"
+ " -O <base> specifies base directory or URL where files should be placed\n"
+ msgstr ""
+-"Umie¶æ plik <lo_plik> ze zdaln± nazw± <zd_plik>.\n"
+-" -o <zd_plik> precyzuje nazwê pliku (domy¶lnie - nazwa pliku ¼ród³owego)\n"
++"Umie¶æ plik <lplik> ze zdaln± nazw± <zplik>.\n"
++" -o <zplik> precyzuje nazwê pliku (domy¶lnie - nazwa pliku ¼ród³owego)\n"
+ " -c  kontynuuj, reput\n"
+ "     wymaga prawa do nadpisywania odleg³ych plików\n"
+ " -E  kasowanie zdalnego pliku po zakoñczonej pomy¶lnie operacji\n"
 @@ -1199,12 +1199,10 @@
  "Podobnie jak `nlist', lecz nie zagl±da do pamiêci podrêcznej\n"
  
