@@ -1,0 +1,22 @@
+--- lftp-3.5.7/po/pl.po~	2006-12-08 13:42:05.000000000 +0100
++++ lftp-3.5.7/po/pl.po	2006-12-18 08:27:37.173557204 +0100
+@@ -707,7 +707,7 @@
+ 
+ #: src/commands.cc:250
+ msgid "get [OPTS] <rfile> [-o <lfile>]"
+-msgstr "get [OPCJE] <zd_plik> [-p <lo_plik>]"
++msgstr "get [OPCJE] <zd_plik> [-o <lo_plik>]"
+ 
+ #: src/commands.cc:251
+ msgid ""
+@@ -1075,8 +1075,8 @@
+ " -a  use ascii mode (binary is the default)\n"
+ " -O <base> specifies base directory or URL where files should be placed\n"
+ msgstr ""
+-"Umie¶æ plik <lo_plik> ze zdaln± nazw± <zd_plik>.\n"
+-" -o <zd_plik> precyzuje nazwê pliku (domy¶lnie - nazwa pliku ¼ród³owego)\n"
++"Umie¶æ plik <lplik> ze zdaln± nazw± <zplik>.\n"
++" -o <zplik> precyzuje nazwê pliku (domy¶lnie - nazwa pliku ¼ród³owego)\n"
+ " -c  kontynuuj, reput\n"
+ "     wymaga prawa do nadpisywania odleg³ych plików\n"
+ " -E  kasowanie zdalnego pliku po zakoñczonej pomy¶lnie operacji\n"

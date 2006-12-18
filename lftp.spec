@@ -31,6 +31,7 @@ Source2:	%{name}.desktop
 Patch0:		%{name}-home_etc.patch
 Patch1:		%{name}-makefile.patch
 Patch2:		%{name}-as_needed-fix.patch
+Patch3:		%{name}-pl.po-update.patch
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
@@ -79,6 +80,7 @@ o arquivo FEATURES para uma lista mais detalhada.
 #%patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %{!?with_gnutls:echo 'AC_DEFUN([AM_PATH_LIBGNUTLS],[/bin/true])' > m4/gnutls.m4}
 
