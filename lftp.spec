@@ -82,6 +82,8 @@ o arquivo FEATURES para uma lista mais detalhada.
 %patch2 -p1
 %patch3 -p1
 
+rm -f po/stamp-po
+
 %{!?with_gnutls:echo 'AC_DEFUN([AM_PATH_LIBGNUTLS],[/bin/true])' > m4/gnutls.m4}
 
 %build
