@@ -14,10 +14,10 @@
 %endif
 
 Summary:	Sophisticated command line FTP/HTTP client
-Summary(ko):	¸í·ÉÁÙ¿¡¼­ µ¹¾Æ°¡´Â FTP/HTTP Å¬¶óÀÌ¾ğÆ®
-Summary(pl):	Zaawansowany klient FTP/HTTP
-Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente FTP/HTTP)
-Summary(zh_CN):	lftp ¿Í»§¶Ë³ÌĞò
+Summary(ko.UTF-8):   ëª…ë ¹ì¤„ì—ì„œ ëŒì•„ê°€ëŠ” FTP/HTTP í´ë¼ì´ì–¸íŠ¸
+Summary(pl.UTF-8):   Zaawansowany klient FTP/HTTP
+Summary(pt_BR.UTF-8):   Sofisticado programa de transferÃªncia de arquivos (cliente FTP/HTTP)
+Summary(zh_CN.UTF-8):   lftp å®¢æˆ·ç«¯ç¨‹åº
 Name:		lftp
 Version:	3.5.9
 Release:	2
@@ -60,19 +60,19 @@ done, you can just exit lftp and it automatically moves to nohup mode
 and completes the transfers. It has also such nice features as reput
 and mirror.
 
-%description -l pl
+%description -l pl.UTF-8
 Lftp jest zaawansowanym klientem FTP/HTTP. Potrafi automatycznie
-po³±czyæ siê z serwerem FTP po zerwanym po³±czeniu i dokoñczyæ
-¶ci±ganie archiwów. Lftp mo¿e pracowaæ w tle i nie zrywa przy tym
-po³±czenia po tym jak siê wylogujesz. Program ten honoruje komendy
-pow³oki podczas sesji, np. `ls -al | less` itp. Doskonale siê spisuje
-jako aplikacja do mirrorowania serwerów FTP.
+poÅ‚Ä…czyÄ‡ siÄ™ z serwerem FTP po zerwanym poÅ‚Ä…czeniu i dokoÅ„czyÄ‡
+Å›ciÄ…ganie archiwÃ³w. Lftp moÅ¼e pracowaÄ‡ w tle i nie zrywa przy tym
+poÅ‚Ä…czenia po tym jak siÄ™ wylogujesz. Program ten honoruje komendy
+powÅ‚oki podczas sesji, np. `ls -al | less` itp. Doskonale siÄ™ spisuje
+jako aplikacja do mirrorowania serwerÃ³w FTP.
 
-%description -l pt_BR
-O lftp é um programa de transferência de arquivos por linha de
+%description -l pt_BR.UTF-8
+O lftp Ã© um programa de transferÃªncia de arquivos por linha de
 comando. Ele suporta os protocolos FTP/HTTP. Suporta: proxy FTP, proxy
-HTTP, FTP sobre HTTP, opie/skey, transferências fxp, repetição de
-tentativa automática em erros não-fatais e timeouts, ipv6, socks. Veja
+HTTP, FTP sobre HTTP, opie/skey, transferÃªncias fxp, repetiÃ§Ã£o de
+tentativa automÃ¡tica em erros nÃ£o-fatais e timeouts, ipv6, socks. Veja
 o arquivo FEATURES para uma lista mais detalhada.
 
 %prep
