@@ -14,10 +14,10 @@
 %endif
 
 Summary:	Sophisticated command line FTP/HTTP client
-Summary(ko.UTF-8):   명령줄에서 돌아가는 FTP/HTTP 클라이언트
-Summary(pl.UTF-8):   Zaawansowany klient FTP/HTTP
-Summary(pt_BR.UTF-8):   Sofisticado programa de transferência de arquivos (cliente FTP/HTTP)
-Summary(zh_CN.UTF-8):   lftp 客户端程序
+Summary(ko.UTF-8):	명령줄에서 돌아가는 FTP/HTTP 클라이언트
+Summary(pl.UTF-8):	Zaawansowany klient FTP/HTTP
+Summary(pt_BR.UTF-8):	Sofisticado programa de transferência de arquivos (cliente FTP/HTTP)
+Summary(zh_CN.UTF-8):	lftp 客户端程序
 Name:		lftp
 Version:	3.5.9
 Release:	2
