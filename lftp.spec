@@ -90,7 +90,7 @@ rm -f po/stamp-po
 %{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
-CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions -fno-implicit-templates"
+CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 %configure \
 	--with-modules \
 	--with%{!?with_ssl:out}-ssl \
