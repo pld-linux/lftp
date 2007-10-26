@@ -14,26 +14,25 @@
 %endif
 
 Summary:	Sophisticated command line FTP/HTTP client
-Summary(ko):	¸í·ÉÁÙ¿¡¼­ µ¹¾Æ°¡´Â FTP/HTTP Å¬¶óÀÌ¾ğÆ®
-Summary(pl):	Zaawansowany klient FTP/HTTP
-Summary(pt_BR):	Sofisticado programa de transferência de arquivos (cliente FTP/HTTP)
-Summary(zh_CN):	lftp ¿Í»§¶Ë³ÌĞò
+Summary(ko.UTF-8):	ëª…ë ¹ì¤„ì—ì„œ ëŒì•„ê°€ëŠ” FTP/HTTP í´ë¼ì´ì–¸íŠ¸
+Summary(pl.UTF-8):	Zaawansowany klient FTP/HTTP
+Summary(pt_BR.UTF-8):	Sofisticado programa de transferÃªncia de arquivos (cliente FTP/HTTP)
+Summary(zh_CN.UTF-8):	lftp å®¢æˆ·ç«¯ç¨‹åº
 Name:		lftp
-Version:	3.5.2
-Release:	2
-License:	GPL
+Version:	3.5.15
+Release:	1
+License:	GPL v2+
 Group:		Applications/Networking
 Source0:	ftp://ftp.yars.free.net/pub/source/lftp/%{name}-%{version}.tar.bz2
-# Source0-md5:	9f40e9963de53c111d676171b9f810cd
+# Source0-md5:	9a079022d835f7155cc4f7304d0abd5a
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Source2:	%{name}.desktop
 Patch0:		%{name}-home_etc.patch
-Patch1:		%{name}-pl.po-update.patch
-Patch2:		%{name}-makefile.patch
-Patch3:		%{name}-as_needed-fix.patch
+Patch1:		%{name}-makefile.patch
+Patch2:		%{name}-as_needed-fix.patch
 URL:		http://lftp.yar.ru/
-BuildRequires:	autoconf >= 2.60
+BuildRequires:	autoconf >= 2.61-3
 BuildRequires:	automake
 BuildRequires:	gettext-devel >= 0.14.2
 %{?with_gnutls:BuildRequires:	gnutls-devel >= 1.2.5}
@@ -60,27 +59,27 @@ done, you can just exit lftp and it automatically moves to nohup mode
 and completes the transfers. It has also such nice features as reput
 and mirror.
 
-%description -l pl
+%description -l pl.UTF-8
 Lftp jest zaawansowanym klientem FTP/HTTP. Potrafi automatycznie
-po³±czyæ siê z serwerem FTP po zerwanym po³±czeniu i dokoñczyæ
-¶ci±ganie archiwów. Lftp mo¿e pracowaæ w tle i nie zrywa przy tym
-po³±czenia po tym jak siê wylogujesz. Program ten honoruje komendy
-pow³oki podczas sesji, np. `ls -al | less` itp. Doskonale siê spisuje
-jako aplikacja do mirrorowania serwerów FTP.
+poÅ‚Ä…czyÄ‡ siÄ™ z serwerem FTP po zerwanym poÅ‚Ä…czeniu i dokoÅ„czyÄ‡
+Å›ciÄ…ganie archiwÃ³w. Lftp moÅ¼e pracowaÄ‡ w tle i nie zrywa przy tym
+poÅ‚Ä…czenia po tym jak siÄ™ wylogujesz. Program ten honoruje komendy
+powÅ‚oki podczas sesji, np. `ls -al | less` itp. Doskonale siÄ™ spisuje
+jako aplikacja do mirrorowania serwerÃ³w FTP.
 
-%description -l pt_BR
-O lftp é um programa de transferência de arquivos por linha de
+%description -l pt_BR.UTF-8
+O lftp Ã© um programa de transferÃªncia de arquivos por linha de
 comando. Ele suporta os protocolos FTP/HTTP. Suporta: proxy FTP, proxy
-HTTP, FTP sobre HTTP, opie/skey, transferências fxp, repetição de
-tentativa automática em erros não-fatais e timeouts, ipv6, socks. Veja
+HTTP, FTP sobre HTTP, opie/skey, transferÃªncias fxp, repetiÃ§Ã£o de
+tentativa automÃ¡tica em erros nÃ£o-fatais e timeouts, ipv6, socks. Veja
 o arquivo FEATURES para uma lista mais detalhada.
 
 %prep
 %setup -q
-#%patch0 -p1
+#%%patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
+
 rm -f po/stamp-po
 
 %{!?with_gnutls:echo 'AC_DEFUN([AM_PATH_LIBGNUTLS],[/bin/true])' > m4/gnutls.m4}
