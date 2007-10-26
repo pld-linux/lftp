@@ -32,7 +32,7 @@ Patch0:		%{name}-home_etc.patch
 Patch1:		%{name}-makefile.patch
 Patch2:		%{name}-as_needed-fix.patch
 URL:		http://lftp.yar.ru/
-BuildRequires:	autoconf >= 2.60
+BuildRequires:	autoconf >= 2.61-3
 BuildRequires:	automake
 BuildRequires:	gettext-devel >= 0.14.2
 %{?with_gnutls:BuildRequires:	gnutls-devel >= 1.2.5}
