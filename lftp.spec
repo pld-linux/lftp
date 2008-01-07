@@ -112,7 +112,7 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 rm -f $RPM_BUILD_ROOT%{_mandir}/{README.lftp-man-pages,lftpget.diff}
-rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
+rm -f $RPM_BUILD_ROOT%{_libdir}/*.{la,so}
 
 %find_lang %{name}
 
@@ -126,12 +126,15 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README NEWS FAQ FEATURES BUGS ChangeLog TODO
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/lftp.conf
-%attr(755,root,root) %{_bindir}/*
-%dir %{_libdir}/lftp
+%attr(755,root,root) %{_bindir}/lftp
+%attr(755,root,root) %{_bindir}/lftpget
 %attr(755,root,root) %{_libdir}/liblftp*.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/liblftp*.so.0
+%dir %{_libdir}/lftp
 %attr(755,root,root) %{_libdir}/lftp/*.so
 %attr(755,root,root) %{_datadir}/lftp
-%{_mandir}/man1/*
-%lang(pl) %{_mandir}/pl/man1/*
+%{_mandir}/man1/lftp.1*
+%{_mandir}/man1/lftpget.1*
+%lang(pl) %{_mandir}/pl/man1/lftpget.1*
 %{_desktopdir}/lftp.desktop
 %{_pixmapsdir}/lftp.png
