@@ -47,6 +47,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %if %{_gcc_ver} == 2
 %define		__cxx		"%{__cc}"
 %endif
+# workaround for g++ bug triggered by strict-aliasing
+# (when initializing two const shorts in a class the first just after
+# being written is overwritten with its old value together with the second)
+%define		specflags_alpha	-fno-strict-aliasing
 
 %description
 LFTP is a shell-like command line FTP/HTTP client. The main two
