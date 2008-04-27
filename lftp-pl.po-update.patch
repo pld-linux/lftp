@@ -1,5 +1,5 @@
---- lftp-3.7.0/po/pl.po.orig	2008-03-07 12:54:44.000000000 +0100
-+++ lftp-3.7.0/po/pl.po	2008-03-15 03:25:27.470007898 +0100
+--- lftp-3.7.1/po/pl.po~	2008-04-18 09:59:20.000000000 +0200
++++ lftp-3.7.1/po/pl.po	2008-04-27 19:53:57.767612363 +0200
 @@ -1,16 +1,16 @@
  # Polish translation of lftp.
  # Copyright (C) 1998-2000 Free Software Foundation, Inc.
@@ -14,9 +14,9 @@
 -"Project-Id-Version: lftp 3.6.0\n"
 +"Project-Id-Version: lftp 3.7.0\n"
  "Report-Msgid-Bugs-To: lftp-bugs@lftp.yar.ru\n"
- "POT-Creation-Date: 2008-03-07 14:54+0300\n"
+ "POT-Creation-Date: 2008-04-18 11:59+0400\n"
 -"PO-Revision-Date: 2007-10-29 21:30+0100\n"
-+"PO-Revision-Date: 2008-03-15 03:13+0100\n"
++"PO-Revision-Date: 2008-04-27 21:30+0100\n"
  "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
  "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
  "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@
 +#, c-format
  msgid "invalid argument %s for %s"
 -msgstr "nieprawid³owy argument dla `--sort'"
-+msgstr "b³êdny argument %s opcji %s"
++msgstr "bÂ³Ãªdny argument %s opcji %s"
  
  #: lib/argmatch.c:138
  #, c-format
@@ -41,12 +41,12 @@
 +#, c-format
  msgid "Valid arguments are:"
 -msgstr "nieprawid³owy argument dla `--sort'"
-+msgstr "Prawid³owe argumenty to:"
++msgstr "PrawidÂ³owe argumenty to:"
  
  #: lib/error.c:121
  msgid "Unknown system error"
 -msgstr ""
-+msgstr "Nieznany b³±d systemowy"
++msgstr "Nieznany bÂ³Â±d systemowy"
  
  #: lib/getopt.c:681
  #, c-format
@@ -58,19 +58,19 @@
  #, c-format
  msgid "%s: option `--%s' doesn't allow an argument\n"
 -msgstr ""
-+msgstr "%s: opcja `--%s' nie mo¿e mieæ argumentów\n"
++msgstr "%s: opcja `--%s' nie moÂ¿e mieÃ¦ argumentÃ³w\n"
  
  #: lib/getopt.c:711
  #, c-format
  msgid "%s: option `%c%s' doesn't allow an argument\n"
 -msgstr ""
-+msgstr "%s: opcja `%c%s' nie mo¿e mieæ argumentów\n"
++msgstr "%s: opcja `%c%s' nie moÂ¿e mieÃ¦ argumentÃ³w\n"
  
  #: lib/getopt.c:729 lib/getopt.c:902
  #, c-format
  msgid "%s: option `%s' requires an argument\n"
 -msgstr ""
-+msgstr "%s: opcja `%s' musi mieæ argument\n"
++msgstr "%s: opcja `%s' musi mieÃ¦ argument\n"
  
  #: lib/getopt.c:758
 -#, fuzzy, c-format
@@ -90,20 +90,20 @@
  #, c-format
  msgid "%s: illegal option -- %c\n"
 -msgstr ""
-+msgstr "%s: niew³a¶ciwa opcja -- %c\n"
++msgstr "%s: niewÂ³aÂ¶ciwa opcja -- %c\n"
  
  #: lib/getopt.c:791
 -#, fuzzy, c-format
 +#, c-format
  msgid "%s: invalid option -- %c\n"
 -msgstr "%s: nieprawid³owy rozmiar bloku `%s'\n"
-+msgstr "%s: b³êdna opcja -- %c\n"
++msgstr "%s: bÂ³Ãªdna opcja -- %c\n"
  
  #: lib/getopt.c:821 lib/getopt.c:951
  #, c-format
  msgid "%s: option requires an argument -- %c\n"
 -msgstr ""
-+msgstr "%s: opcja musi mieæ argument -- %c\n"
++msgstr "%s: opcja musi mieÃ¦ argument -- %c\n"
  
  #: lib/getopt.c:868
  #, c-format
@@ -115,7 +115,7 @@
  #, c-format
  msgid "%s: option `-W %s' doesn't allow an argument\n"
 -msgstr ""
-+msgstr "%s: opcja `-W %s' nie mo¿e mieæ argumentów\n"
++msgstr "%s: opcja `-W %s' nie moÂ¿e mieÃ¦ argumentÃ³w\n"
  
  #: lib/human.c:486
 -#, fuzzy
@@ -140,14 +140,14 @@
  #: lib/xalloc-die.c:37
  msgid "memory exhausted"
 -msgstr ""
-+msgstr "pamiêæ wyczerpana"
++msgstr "pamiÃªÃ¦ wyczerpana"
  
  #: src/ChmodJob.cc:81
  #, c-format
 @@ -1522,7 +1521,6 @@
  msgstr "open [OPCJE] <site>"
  
- #: src/commands.cc:359
+ #: src/commands.cc:355
 -#, fuzzy
  msgid ""
  "Select a server, URL or bookmark\n"
@@ -156,19 +156,19 @@
  " -e <cmd>            wykonaj zaraz po wyborze polecenie <cmd>\n"
  " -u <user>[,<pass>]  u¿yj user/pass do uwierzytelnienia\n"
  " -p <port>           u¿yj portu <port> do po³±czenia\n"
-+" -s <slot>           przypisz po³±czenie do <slotu>\n"
++" -s <slot>           przypisz poÂ³Â±czenie do <slotu>\n"
  " <site>              nazwa hosta, URL lub zak³adka\n"
  
- #: src/commands.cc:365
+ #: src/commands.cc:361
 @@ -1809,6 +1808,9 @@
  "List assigned slots.\n"
  "If <label> is specified, switch to the slot named <label>.\n"
  msgstr ""
-+"U¿ycie: slot [<etykieta>]\n"
++"UÂ¿ycie: slot [<etykieta>]\n"
 +"Wypisz przypisane sloty.\n"
-+"Je¶li podano <etykietê>, prze³±cz na slot o tej <etykiecie>.\n"
++"JeÂ¶li podano <etykietÃª>, przeÂ³Â±cz na slot o tej <etykiecie>.\n"
  
- #: src/commands.cc:461
+ #: src/commands.cc:457
  msgid "source <file>"
 @@ -2383,13 +2385,12 @@
  msgstr "Oczekiwanie na zakoñczenie transferu"
@@ -177,12 +177,12 @@
 -#, fuzzy
  msgid "Waiting for TLS shutdown..."
 -msgstr "Czekanie na odpowied¼..."
-+msgstr "Oczekiwanie na zakoñczenie TLS..."
++msgstr "Oczekiwanie na zakoÃ±czenie TLS..."
  
  #: src/ftpclass.cc:4171
  msgid "Waiting for data connection..."
 -msgstr "Czekam na po³±czenie dla danych..."
-+msgstr "Oczekiwanie na po³±czenie dla danych..."
++msgstr "Oczekiwanie na poÂ³Â±czenie dla danych..."
  
  #: src/ftpclass.cc:4177
  msgid "Sending data/TLS"
@@ -191,7 +191,7 @@
  #: src/resource.cc:66
  msgid "ftp:proxy-auth-type must be one of: user, joined, joined-acct, open"
 -msgstr ""
-+msgstr "ftp:proxy-auth-type musi byæ jednym z: user, joined, joined-acct, open"
++msgstr "ftp:proxy-auth-type musi byÃ¦ jednym z: user, joined, joined-acct, open"
  
  #: src/resource.cc:90
  msgid "only PUT and POST values allowed"
