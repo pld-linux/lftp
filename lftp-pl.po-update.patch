@@ -1,0 +1,131 @@
+--- lftp-3.7.11/po/pl.po.orig	2009-03-20 17:53:18.000000000 +0100
++++ lftp-3.7.11/po/pl.po	2009-04-06 19:41:36.665720511 +0200
+@@ -1,16 +1,16 @@
+ # Polish translation of lftp.
+ # Copyright (C) 1998-2000 Free Software Foundation, Inc.
+ # Arkadiusz Mi¶kiewicz <misiek@pld-linux.org>, 1998-2004
+-# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2008
++# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2009
+ # some updates by Tomasz K³oczko <kloczek@pld.org.pl>, 2003
+ # Adam Go³êbiowski <adamg@pld-linux.org>, 2004-2006
+ #
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: lftp 3.7.1\n"
++"Project-Id-Version: lftp 3.7.11\n"
+ "Report-Msgid-Bugs-To: lftp-bugs@lftp.yar.ru\n"
+ "POT-Creation-Date: 2009-03-20 19:53+0300\n"
+-"PO-Revision-Date: 2008-05-06 21:20+0200\n"
++"PO-Revision-Date: 2009-04-06 19:34+0200\n"
+ "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
+ "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
+ "MIME-Version: 1.0\n"
+@@ -759,9 +759,8 @@
+ msgstr "nieprawid³owa liczba zmiennoprzecinkowa"
+ 
+ #: src/ResMgr.cc:478
+-#, fuzzy
+ msgid "invalid unsigned number"
+-msgstr "nieprawid³owy numer"
++msgstr "nieprawid³owa liczba bez znaku"
+ 
+ #: src/ResMgr.cc:707
+ msgid "Invalid time unit letter, only [smhd] are allowed."
+@@ -831,11 +830,11 @@
+ 
+ #: src/SleepJob.cc:100
+ msgid "Sleeping forever"
+-msgstr ""
++msgstr "Zasypianie na zawsze"
+ 
+ #: src/SleepJob.cc:101
+ msgid "Sleep time left: "
+-msgstr ""
++msgstr "Pozosta³y czas snu: "
+ 
+ #: src/SleepJob.cc:110
+ #, c-format
+@@ -1908,6 +1907,11 @@
+ "lftp will automatically terminate when all jobs are finished.\n"
+ "Use `fg' shell command to return to lftp if it is still running.\n"
+ msgstr ""
++"\n"
++"lftp teraz oszukuje pow³okê, aby przej¶æ do grupy procesów w tle.\n"
++"lftp nadal dzia³a w tle wbrew komunikatowi `Zatrzymany'.\n"
++"Wy³±czy siê automatycznie, kiedy wszystkie zadania zostan± zakoñczone.\n"
++"Aby powróciæ do lftp, je¶li nadal dzia³a, nale¿y u¿yæ polecenia `fg'.\n"
+ 
+ #: src/commands.cc:877 src/commands.cc:3336
+ #, c-format
+@@ -2155,11 +2159,23 @@
+ "You should have received a copy of the GNU General Public License\n"
+ "along with LFTP.  If not, see <http://www.gnu.org/licenses/>.\n"
+ msgstr ""
++"LFTP to oprogramowanie wolnodostêpne: mo¿na je rozprowadzaæ i/lub\n"
++"modyfikowaæ na warunkach Powszechnej Licencji Publicznej GNU (General\n"
++"Public License), opublikowanej przez Free Software Foundation, w wersji\n"
++"3 lub wy¿szej.\n"
++"\n"
++"Ten program jest rozprowadzany w nadziei, ¿e bêdzie przydatny, ale BEZ\n"
++"¯ADNEJ GWARANCJI, nawet bez domy¶lnej gwarancji SPRZEDAWALNO¦CI lub\n"
++"PRZYDATNO¦CI DO KONKRETNYCH ZASTOSOWAÑ. Szczegó³y znajduj± siê\n"
++"w Powszechnej Licencji Publicznej GNU.\n"
++"\n"
++"Kopia Powszechnej Licencji Publicznej GNU powinna byæ dostarczona wraz\n"
++"z LFTP. Je¶li nie, mo¿na j± znale¼æ pod <http://www.gnu.org/licenses/>.\n"
+ 
+ #: src/commands.cc:2590
+-#, fuzzy, c-format
++#, c-format
+ msgid "Send bug reports and questions to the mailing list <%s>.\n"
+-msgstr "Raporty o b³êdach oraz pytania proszê przesy³aæ do <%s>.\n"
++msgstr "Raporty o b³êdach oraz pytania proszê przesy³aæ na listê <%s>.\n"
+ 
+ #: src/commands.cc:2596
+ msgid "Libraries used: "
+@@ -2516,11 +2532,10 @@
+ msgstr "ftp:proxy has³o: "
+ 
+ #: src/resource.cc:68
+-#, fuzzy
+ msgid ""
+ "ftp:proxy-auth-type must be one of: user, joined, joined-acct, open, proxy-"
+ "user@host"
+-msgstr "ftp:proxy-auth-type musi byæ jednym z: user, joined, joined-acct, open"
++msgstr "ftp:proxy-auth-type musi byæ jednym z: user, joined, joined-acct, open, proxy-user@host"
+ 
+ #: src/resource.cc:92
+ msgid "only PUT and POST values allowed"
+@@ -2558,32 +2573,3 @@
+ #, c-format
+ msgid "%s ok, %d file$|s$ removed\n"
+ msgstr "%s ok, %d plik$|i|ów$ usuniêto\n"
+-
+-#~ msgid "day"
+-#~ msgstr "dzieñ"
+-
+-#~ msgid "hour"
+-#~ msgstr "godzina"
+-
+-#~ msgid "minute"
+-#~ msgstr "minuta"
+-
+-#~ msgid "second"
+-#~ msgstr "sekunda"
+-
+-#~ msgid ""
+-#~ "LFTP is free software, covered by the GNU General Public License, and you "
+-#~ "are\n"
+-#~ "welcome to change it and/or distribute copies of it under certain "
+-#~ "conditions.\n"
+-#~ "There is absolutely no warranty for LFTP.  See COPYING for details.\n"
+-#~ msgstr ""
+-#~ "LFTP to oprogramowanie wolnodostêpne, chronione Powszechn± Licencj± "
+-#~ "Publiczn±\n"
+-#~ "GNU (General Public License), pozwalaj±c± modyfikowaæ i/lub "
+-#~ "rozpowszechniaæ\n"
+-#~ "kopie pod pewnymi warunkami.\n"
+-#~ "Nie ma ¿adnej gwarancji na LFTP. Szczegó³y w pliku COPYING.\n"
+-
+-#~ msgid "block size"
+-#~ msgstr "rozmiar bloku"
