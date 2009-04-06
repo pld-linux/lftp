@@ -30,6 +30,7 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.
 Source2:	%{name}.desktop
 Patch0:		%{name}-home_etc.patch
 Patch1:		%{name}-makefile.patch
+Patch2:		%{name}-pl.po-update.patch
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
@@ -77,6 +78,7 @@ o arquivo FEATURES para uma lista mais detalhada.
 %setup -q
 #%%patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 rm -f po/stamp-po
 
