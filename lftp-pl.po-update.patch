@@ -1,5 +1,5 @@
---- lftp-3.7.11/po/pl.po.orig	2009-03-20 17:53:18.000000000 +0100
-+++ lftp-3.7.11/po/pl.po	2009-04-06 19:41:36.665720511 +0200
+--- lftp-3.7.13/po/pl.po~	2009-05-06 10:09:54.000000000 +0200
++++ lftp-3.7.13/po/pl.po	2009-05-06 10:09:18.000000000 +0200
 @@ -1,16 +1,16 @@
  # Polish translation of lftp.
  # Copyright (C) 1998-2000 Free Software Foundation, Inc.
@@ -12,11 +12,11 @@
  msgid ""
  msgstr ""
 -"Project-Id-Version: lftp 3.7.1\n"
-+"Project-Id-Version: lftp 3.7.11\n"
++"Project-Id-Version: lftp 3.7.13\n"
  "Report-Msgid-Bugs-To: lftp-bugs@lftp.yar.ru\n"
- "POT-Creation-Date: 2009-03-20 19:53+0300\n"
+ "POT-Creation-Date: 2009-04-30 18:31+0400\n"
 -"PO-Revision-Date: 2008-05-06 21:20+0200\n"
-+"PO-Revision-Date: 2009-04-06 19:34+0200\n"
++"PO-Revision-Date: 2009-05-06 10:05+0200\n"
  "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
  "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
  "MIME-Version: 1.0\n"
