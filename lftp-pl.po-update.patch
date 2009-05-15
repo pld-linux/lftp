@@ -12,9 +12,9 @@
  msgid ""
  msgstr ""
 -"Project-Id-Version: lftp 3.7.1\n"
-+"Project-Id-Version: lftp 3.7.13\n"
++"Project-Id-Version: lftp 3.7.14\n"
  "Report-Msgid-Bugs-To: lftp-bugs@lftp.yar.ru\n"
- "POT-Creation-Date: 2009-04-30 18:31+0400\n"
+ "POT-Creation-Date: 2009-05-15 10:43+0400\n"
 -"PO-Revision-Date: 2008-05-06 21:20+0200\n"
 +"PO-Revision-Date: 2009-05-06 10:05+0200\n"
  "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
@@ -33,17 +33,17 @@
  msgid "Invalid time unit letter, only [smhd] are allowed."
 @@ -831,11 +830,11 @@
  
- #: src/SleepJob.cc:100
+ #: src/SleepJob.cc:102
  msgid "Sleeping forever"
 -msgstr ""
 +msgstr "Zasypianie na zawsze"
  
- #: src/SleepJob.cc:101
+ #: src/SleepJob.cc:103
  msgid "Sleep time left: "
 -msgstr ""
 +msgstr "Pozosta³y czas snu: "
  
- #: src/SleepJob.cc:110
+ #: src/SleepJob.cc:112
  #, c-format
 @@ -1908,6 +1907,11 @@
  "lftp will automatically terminate when all jobs are finished.\n"
