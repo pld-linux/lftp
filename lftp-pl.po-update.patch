@@ -1,5 +1,5 @@
---- lftp-3.7.13/po/pl.po~	2009-05-06 10:09:54.000000000 +0200
-+++ lftp-3.7.13/po/pl.po	2009-05-06 10:09:18.000000000 +0200
+--- lftp-3.7.15/po/pl.po.orig	2009-07-23 08:25:56.000000000 +0200
++++ lftp-3.7.15/po/pl.po	2009-07-23 08:34:48.000000000 +0200
 @@ -1,16 +1,16 @@
  # Polish translation of lftp.
  # Copyright (C) 1998-2000 Free Software Foundation, Inc.
@@ -12,11 +12,11 @@
  msgid ""
  msgstr ""
 -"Project-Id-Version: lftp 3.7.1\n"
-+"Project-Id-Version: lftp 3.7.14\n"
++"Project-Id-Version: lftp 3.7.15\n"
  "Report-Msgid-Bugs-To: lftp-bugs@lftp.yar.ru\n"
- "POT-Creation-Date: 2009-05-15 10:43+0400\n"
+ "POT-Creation-Date: 2009-07-21 13:33+0400\n"
 -"PO-Revision-Date: 2008-05-06 21:20+0200\n"
-+"PO-Revision-Date: 2009-05-06 10:05+0200\n"
++"PO-Revision-Date: 2009-07-23 10:00+0200\n"
  "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
  "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
  "MIME-Version: 1.0\n"
@@ -55,7 +55,7 @@
 +"Wy³±czy siê automatycznie, kiedy wszystkie zadania zostan± zakoñczone.\n"
 +"Aby powróciæ do lftp, je¶li nadal dzia³a, nale¿y u¿yæ polecenia `fg'.\n"
  
- #: src/commands.cc:877 src/commands.cc:3336
+ #: src/commands.cc:876 src/commands.cc:3334
  #, c-format
 @@ -2155,11 +2159,23 @@
  "You should have received a copy of the GNU General Public License\n"
@@ -74,14 +74,14 @@
 +"Kopia Powszechnej Licencji Publicznej GNU powinna byæ dostarczona wraz\n"
 +"z LFTP. Je¶li nie, mo¿na j± znale¼æ pod <http://www.gnu.org/licenses/>.\n"
  
- #: src/commands.cc:2590
+ #: src/commands.cc:2588
 -#, fuzzy, c-format
 +#, c-format
  msgid "Send bug reports and questions to the mailing list <%s>.\n"
 -msgstr "Raporty o b³êdach oraz pytania proszê przesy³aæ do <%s>.\n"
 +msgstr "Raporty o b³êdach oraz pytania proszê przesy³aæ na listê <%s>.\n"
  
- #: src/commands.cc:2596
+ #: src/commands.cc:2594
  msgid "Libraries used: "
 @@ -2516,11 +2532,10 @@
  msgstr "ftp:proxy has³o: "
