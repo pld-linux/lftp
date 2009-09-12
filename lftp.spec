@@ -19,18 +19,20 @@ Summary(pl.UTF-8):	Zaawansowany klient FTP/HTTP
 Summary(pt_BR.UTF-8):	Sofisticado programa de transferência de arquivos (cliente FTP/HTTP)
 Summary(zh_CN.UTF-8):	lftp 客户端程序
 Name:		lftp
-Version:	3.7.15
+Version:	4.0.0
 Release:	1
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	ftp://ftp.yars.free.net/pub/source/lftp/%{name}-%{version}.tar.lzma
-# Source0-md5:	7407a8eadacae90c9c6caf542c3f46d2
+# Source0-md5:	3a0baead3174e6d10c3262b03bc642c3
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Source2:	%{name}.desktop
 Patch0:		%{name}-home_etc.patch
 Patch1:		%{name}-makefile.patch
+# ALWAYS send updated patch to lftp mailing lists
 Patch2:		%{name}-pl.po-update.patch
+Patch3:		%{name}-m4.patch
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
@@ -78,7 +80,8 @@ o arquivo FEATURES para uma lista mais detalhada.
 %setup -q
 #%%patch0 -p1
 %patch1 -p1
-%patch2 -p1
+#%patch2 -p1
+%patch3 -p1
 
 rm -f po/stamp-po
 

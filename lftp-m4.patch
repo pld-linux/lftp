@@ -1,0 +1,25 @@
+--- lftp-4.0.0/configure.ac~	2009-09-12 19:39:22.434759846 +0200
++++ lftp-4.0.0/configure.ac	2009-09-12 19:39:56.352256686 +0200
+@@ -254,9 +254,9 @@
+ 
+ AC_ARG_WITH(gnutls, AS_HELP_STRING([--without-gnutls], [don't use GNUTLS library]),
+       [with_gnutls=$withval], [with_gnutls=yes])
+-AC_ARG_WITH(openssl,
++AC_ARG_WITH(openssl,[
+ AS_HELP_STRING([--with-openssl[[=/path]]], [use OpenSSL [at /path]])
+-AS_HELP_STRING([--without-openssl], [don't use OpenSSL (default)]),
++AS_HELP_STRING([--without-openssl], [don't use OpenSSL (default)])],
+       [with_openssl=$withval], [with_openssl=no])
+ case "$with_openssl" in
+ 	yes)		with_gnutls=no;;
+--- lftp-4.0.0/configure.ac~	2009-09-12 19:40:40.005586037 +0200
++++ lftp-4.0.0/configure.ac	2009-09-12 19:43:06.141403565 +0200
+@@ -255,7 +255,7 @@
+ AC_ARG_WITH(gnutls, AS_HELP_STRING([--without-gnutls], [don't use GNUTLS library]),
+       [with_gnutls=$withval], [with_gnutls=yes])
+ AC_ARG_WITH(openssl,[
+-AS_HELP_STRING([--with-openssl[[=/path]]], [use OpenSSL [at /path]])
++AS_HELP_STRING([--with-openssl=/path], [use OpenSSL at /path])
+ AS_HELP_STRING([--without-openssl], [don't use OpenSSL (default)])],
+       [with_openssl=$withval], [with_openssl=no])
+ case "$with_openssl" in
