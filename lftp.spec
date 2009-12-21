@@ -19,15 +19,16 @@ Summary(pl.UTF-8):	Zaawansowany klient FTP/HTTP
 Summary(pt_BR.UTF-8):	Sofisticado programa de transferência de arquivos (cliente FTP/HTTP)
 Summary(zh_CN.UTF-8):	lftp 客户端程序
 Name:		lftp
-Version:	4.0.4
+Version:	4.0.5
 Release:	1
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	ftp://ftp.yars.free.net/pub/source/lftp/%{name}-%{version}.tar.lzma
-# Source0-md5:	9dd9974e39e337bdfe0b30455b7012d3
+# Source0-md5:	07803bc69f5f78538e2534a484af174f
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Source2:	%{name}.desktop
+Source3:	%{name}-icon.png
 Patch0:		%{name}-home_etc.patch
 Patch1:		%{name}-makefile.patch
 # ALWAYS send updated patch to lftp mailing lists
@@ -109,8 +110,8 @@ install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_pixmapsdir},%{_desktopdir}}
 	DESTDIR=$RPM_BUILD_ROOT
 
 install lftp.conf $RPM_BUILD_ROOT%{_sysconfdir}
-install contrib/lftp-icon.png $RPM_BUILD_ROOT%{_pixmapsdir}/lftp.png
 install %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
+install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}/lftp.png
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 rm -f $RPM_BUILD_ROOT%{_mandir}/{README.lftp-man-pages,lftpget.diff}
