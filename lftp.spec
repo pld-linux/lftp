@@ -23,7 +23,7 @@ Version:	4.0.7
 Release:	1
 License:	GPL v3+
 Group:		Applications/Networking
-Source0:	ftp://ftp.yars.free.net/pub/source/lftp/%{name}-%{version}.tar.lzma
+Source0:	http://ftp.yars.free.net/pub/source/lftp/%{name}-%{version}.tar.lzma
 # Source0-md5:	cf8211552682c9edba5cf4172943a5f1
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
