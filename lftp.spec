@@ -29,6 +29,7 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Source2:	%{name}.desktop
 Source3:	%{name}-icon.png
+# outdated and nobody cared for 8+ years... will be dropped
 Patch0:		%{name}-home_etc.patch
 Patch1:		%{name}-makefile.patch
 # ALWAYS send updated patch to lftp mailing lists
@@ -82,10 +83,10 @@ o arquivo FEATURES para uma lista mais detalhada.
 %setup -q
 #%%patch0 -p1
 %patch1 -p1
-#%patch2 -p1
+%patch2 -p1
 %patch3 -p1
 
-rm -f po/stamp-po
+%{__rm} po/stamp-po
 
 %{!?with_gnutls:echo 'AC_DEFUN([AM_PATH_LIBGNUTLS],[/bin/true])' > m4/gnutls.m4}
 
@@ -115,8 +116,8 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}/lftp.png
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
-rm -f $RPM_BUILD_ROOT%{_mandir}/{README.lftp-man-pages,lftpget.diff}
-rm -f $RPM_BUILD_ROOT%{_libdir}/*.{la,so}
+%{__rm} $RPM_BUILD_ROOT%{_mandir}/{README.lftp-man-pages,lftpget.diff}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.{la,so}
 
 %find_lang %{name}
 
