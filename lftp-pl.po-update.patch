@@ -1,5 +1,5 @@
---- lftp-4.1.0/po/pl.po.orig	2010-11-22 16:28:22.000000000 +0200
-+++ lftp-4.1.0/po/pl.po	2010-11-23 17:48:47.643677278 +0200
+--- lftp-4.1.1/po/pl.po.orig	2010-11-24 17:10:46.000000000 +0200
++++ lftp-4.1.1/po/pl.po	2010-11-25 12:43:34.214281316 +0200
 @@ -1,16 +1,16 @@
  # Polish translation of lftp.
  # Copyright (C) 1998-2000 Free Software Foundation, Inc.
@@ -12,9 +12,9 @@
  msgid ""
  msgstr ""
 -"Project-Id-Version: lftp 3.7.1\n"
-+"Project-Id-Version: lftp 4.1.0\n"
++"Project-Id-Version: lftp 4.1.1\n"
  "Report-Msgid-Bugs-To: lftp-bugs@lftp.yar.ru\n"
- "POT-Creation-Date: 2010-11-22 17:28+0300\n"
+ "POT-Creation-Date: 2010-11-24 18:10+0300\n"
 -"PO-Revision-Date: 2008-05-06 21:20+0200\n"
 +"PO-Revision-Date: 2010-09-11 13:01+0200\n"
  "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
