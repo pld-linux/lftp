@@ -1,5 +1,5 @@
---- lftp-4.1.1/po/pl.po.orig	2010-11-24 17:10:46.000000000 +0200
-+++ lftp-4.1.1/po/pl.po	2010-11-25 12:43:34.214281316 +0200
+--- lftp-4.1.2/po/pl.po.orig	2010-12-31 13:08:45.000000000 +0200
++++ lftp-4.1.2/po/pl.po	2011-01-04 13:52:14.256292837 +0200
 @@ -1,16 +1,16 @@
  # Polish translation of lftp.
  # Copyright (C) 1998-2000 Free Software Foundation, Inc.
@@ -12,9 +12,9 @@
  msgid ""
  msgstr ""
 -"Project-Id-Version: lftp 3.7.1\n"
-+"Project-Id-Version: lftp 4.1.1\n"
++"Project-Id-Version: lftp 4.1.2\n"
  "Report-Msgid-Bugs-To: lftp-bugs@lftp.yar.ru\n"
- "POT-Creation-Date: 2010-11-24 18:10+0300\n"
+ "POT-Creation-Date: 2010-12-31 14:08+0300\n"
 -"PO-Revision-Date: 2008-05-06 21:20+0200\n"
 +"PO-Revision-Date: 2010-09-11 13:01+0200\n"
  "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
@@ -136,15 +136,15 @@
  
  #: src/SleepJob.cc:112
  #, c-format
-@@ -1703,7 +1702,6 @@
+@@ -1713,7 +1712,6 @@
  msgstr "repeat [OPCJE] [opó¼nienie] [komenda]"
  
- #: src/commands.cc:426
+ #: src/commands.cc:428
 -#, fuzzy
  msgid ""
  "Repeat specified command with a delay between iterations.\n"
  "Default delay is one second, default command is empty.\n"
-@@ -1714,9 +1712,12 @@
+@@ -1724,9 +1722,12 @@
  " --weak      stop when lftp moves to background.\n"
  msgstr ""
  "Powtarzaj podan± komendê z opó¼nieniem pomiêdzy iteracjami.\n"
@@ -157,18 +157,18 @@
 +" --until-ok       zatrzymanie kiedy polecenie zakoñczy siê kodem zerowym\n"
 +" --weak           zatrzymanie kiedy lftp przejdzie w t³o.\n"
  
- #: src/commands.cc:434
+ #: src/commands.cc:436
  msgid ""
-@@ -1825,7 +1826,7 @@
+@@ -1835,7 +1836,7 @@
  
- #: src/commands.cc:468
+ #: src/commands.cc:470
  msgid "torrent [-O <dir>] <file|URL>..."
 -msgstr ""
 +msgstr "torrent [-O <katalog>] <plik>"
  
- #: src/commands.cc:469
+ #: src/commands.cc:471
  msgid "user <user|URL> [<pass>]"
-@@ -1922,6 +1923,11 @@
+@@ -1932,6 +1933,11 @@
  "lftp will automatically terminate when all jobs are finished.\n"
  "Use `fg' shell command to return to lftp if it is still running.\n"
  msgstr ""
@@ -178,9 +178,9 @@
 +"lftp wy³±czy siê automatycznie po zakoñczeniu wszystkich zadañ.\n"
 +"Dopóki lftp dzia³a, mo¿na go przywróciæ w normalnym trybie poleceniem `fg'.\n"
  
- #: src/commands.cc:884 src/commands.cc:3360
+ #: src/commands.cc:886 src/commands.cc:3389
  #, c-format
-@@ -2169,11 +2175,23 @@
+@@ -2179,11 +2185,23 @@
  "You should have received a copy of the GNU General Public License\n"
  "along with LFTP.  If not, see <http://www.gnu.org/licenses/>.\n"
  msgstr ""
@@ -197,16 +197,16 @@
 +"Je¶li nie, mo¿na j± zobaczyæ pod <http://www.gnu.org/licenses/>.\n"
 +
  
- #: src/commands.cc:2609
+ #: src/commands.cc:2638
 -#, fuzzy, c-format
 +#, c-format
  msgid "Send bug reports and questions to the mailing list <%s>.\n"
 -msgstr "Raporty o b³êdach oraz pytania proszê przesy³aæ do <%s>.\n"
 +msgstr "Raporty o b³êdach oraz pytania proszê przesy³aæ na listê <%s>.\n"
  
- #: src/commands.cc:2615
+ #: src/commands.cc:2644
  msgid "Libraries used: "
-@@ -2459,9 +2477,9 @@
+@@ -2469,9 +2487,9 @@
  "maj± byæ wy¶wietlone lub \"all\" by wy¶wietliæ wszystkie wpisy.\n"
  
  #: src/mgetJob.cc:125 src/mgetJob.cc:209
@@ -218,7 +218,7 @@
  
  #: src/mkdirJob.cc:122
  #, c-format
-@@ -2530,11 +2548,10 @@
+@@ -2540,11 +2558,10 @@
  msgstr "ftp:proxy has³o: "
  
  #: src/resource.cc:68
@@ -231,7 +231,7 @@
  
  #: src/resource.cc:92
  msgid "only PUT and POST values allowed"
-@@ -2572,35 +2589,3 @@
+@@ -2582,35 +2599,3 @@
  #, c-format
  msgid "%s ok, %d file$|s$ removed\n"
  msgstr "%s ok, %d plik$|i|ów$ usuniêto\n"
