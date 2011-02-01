@@ -35,6 +35,7 @@ Patch1:		%{name}-makefile.patch
 # ALWAYS send updated patch to lftp mailing lists
 Patch2:		%{name}-pl.po-update.patch
 Patch3:		%{name}-m4.patch
+Patch4:		aliases.patch
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
@@ -85,6 +86,7 @@ o arquivo FEATURES para uma lista mais detalhada.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %{__rm} po/stamp-po
 
@@ -107,13 +109,12 @@ CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_pixmapsdir},%{_desktopdir}}
-
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install lftp.conf $RPM_BUILD_ROOT%{_sysconfdir}
-install %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
-install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}/lftp.png
+cp -p lftp.conf $RPM_BUILD_ROOT%{_sysconfdir}
+cp -p %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
+cp -p %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}/lftp.png
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 %{__rm} $RPM_BUILD_ROOT%{_mandir}/{README.lftp-man-pages,lftpget.diff}

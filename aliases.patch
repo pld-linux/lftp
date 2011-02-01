@@ -1,0 +1,10 @@
+--- etc/lftp.conf~	2011-01-04 14:01:30.000000000 +0200
++++ etc/lftp.conf	2011-02-01 20:36:45.626670765 +0200
+@@ -1,5 +1,7 @@
+ ## some useful aliases
+ alias dir ls
++alias l cls -hl
++alias la ls -la
+ alias less more
+ alias zless zmore
+ alias bzless bzmore
