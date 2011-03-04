@@ -47,6 +47,8 @@ BuildRequires:	ncurses-devel >= 5.2
 %{?with_openssl:BuildRequires:	openssl-devel >= 0.9.7d}
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel >= 4.2
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_gcc_ver	%(%{__cc} -dumpversion | cut -b 1)
