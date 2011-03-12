@@ -32,10 +32,8 @@ Source3:	%{name}-icon.png
 # outdated and nobody cared for 8+ years... will be dropped
 Patch0:		%{name}-home_etc.patch
 Patch1:		%{name}-makefile.patch
-# ALWAYS send updated patch to lftp mailing lists
-Patch2:		%{name}-pl.po-update.patch
-Patch3:		%{name}-m4.patch
-Patch4:		aliases.patch
+Patch2:		%{name}-m4.patch
+Patch3:		aliases.patch
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
@@ -88,9 +86,6 @@ o arquivo FEATURES para uma lista mais detalhada.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
-
-%{__rm} po/stamp-po
 
 %{!?with_gnutls:echo 'AC_DEFUN([AM_PATH_LIBGNUTLS],[/bin/true])' > m4/gnutls.m4}
 
