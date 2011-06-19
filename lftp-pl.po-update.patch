@@ -1,0 +1,101 @@
+--- lftp-4.3.0/po/pl.po.orig	2011-06-17 15:33:02.000000000 +0200
++++ lftp-4.3.0/po/pl.po	2011-06-19 11:16:45.041197913 +0200
+@@ -7,10 +7,10 @@
+ #
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: lftp 4.1.2\n"
++"Project-Id-Version: lftp 4.3.0\n"
+ "Report-Msgid-Bugs-To: lftp-bugs@lftp.yar.ru\n"
+ "POT-Creation-Date: 2011-06-17 17:33+0400\n"
+-"PO-Revision-Date: 2011-01-06 15:18+0100\n"
++"PO-Revision-Date: 2011-06-19 11:13+0200\n"
+ "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
+ "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
+ "Language: pl\n"
+@@ -38,9 +38,9 @@
+ msgstr "Nieznany b³±d systemowy"
+ 
+ #: lib/getopt.c:547 lib/getopt.c:576
+-#, fuzzy, c-format
++#, c-format
+ msgid "%s: option '%s' is ambiguous; possibilities:"
+-msgstr "%s: opcja '%s' jest niejednoznaczna\n"
++msgstr "%s: opcja '%s' jest niejednoznaczna; mo¿liwo¶ci:"
+ 
+ #: lib/getopt.c:624 lib/getopt.c:628
+ #, c-format
+@@ -2429,24 +2429,24 @@
+ msgstr "Otrzymujê dane/TLS"
+ 
+ #: src/lftp.cc:353
+-#, fuzzy, c-format
++#, c-format
+ msgid "[%u] Terminated by signal %d. %s\n"
+-msgstr "[%lu] Przerwany przez sygna³ %d. %s"
++msgstr "[%u] Przerwany przez sygna³ %d. %s\n"
+ 
+ #: src/lftp.cc:427
+-#, fuzzy, c-format
++#, c-format
+ msgid "[%u] Started.  %s\n"
+-msgstr "[%lu] Zosta³ uruchomiony.  %s"
++msgstr "[%u] Zosta³ uruchomiony.  %s\n"
+ 
+ #: src/lftp.cc:440
+-#, fuzzy, c-format
++#, c-format
+ msgid "[%u] Finished. %s\n"
+-msgstr "[%lu] Zakoñczono. %s"
++msgstr "[%u] Zakoñczono. %s\n"
+ 
+ #: src/lftp.cc:444
+-#, fuzzy, c-format
++#, c-format
+ msgid "[%u] Moving to background to complete transfers...\n"
+-msgstr "[%lu] Przechodzenie w t³o w celu dokoñczenia transferów...\n"
++msgstr "[%u] Przechodzenie w t³o w celu dokoñczenia transferów...\n"
+ 
+ #: src/lftp.cc:498
+ msgid "history -w file|-r file|-c|-l [cnt]"
+@@ -2470,22 +2470,22 @@
+ 
+ #: src/lftp.cc:506
+ msgid "Attach the terminal to specified backgrounded lftp process.\n"
+-msgstr ""
++msgstr "Do³±czenie terminala do podanego procesu lftp dzia³aj±cego w tle.\n"
+ 
+ #: src/lftp.cc:542
+-#, fuzzy, c-format
++#, c-format
+ msgid "[%u] Detaching from the terminal to complete transfers...\n"
+-msgstr "[%lu] Przechodzenie w t³o w celu dokoñczenia transferów...\n"
++msgstr "[%u] Od³±czanie od terminala w celu dokoñczenia transferów...\n"
+ 
+ #: src/lftp.cc:547
+ #, c-format
+ msgid "[%u] Detached from terminal. %s\n"
+-msgstr ""
++msgstr "[%u] Od³±czono od terminala. %s\n"
+ 
+ #: src/lftp.cc:561
+ #, c-format
+ msgid "[%u] Exiting and detaching from the terminal.\n"
+-msgstr ""
++msgstr "[%u] Koñczenie i od³±czanie od terminala.\n"
+ 
+ #: src/mgetJob.cc:121 src/mgetJob.cc:205
+ #, c-format
+@@ -2602,12 +2602,3 @@
+ #, c-format
+ msgid "%s ok, %d file$|s$ removed\n"
+ msgstr "%s ok, %d plik$|i|ów$ usuniêto\n"
+-
+-#~ msgid "Can only edit plain queues.\n"
+-#~ msgstr "Mo¿na edytowaæ jedynie zwyk³e kolejki.\n"
+-
+-#~ msgid "Couldn't create temporary file `%s': %s.\n"
+-#~ msgstr "Nie mo¿na utworzyæ pliku tymczasowego `%s': %s.\n"
+-
+-#~ msgid "%s: error writing %s: %s\n"
+-#~ msgstr "%s: b³±d podczas zapisu %s: %s\n"
