@@ -7,7 +7,7 @@
 -"Project-Id-Version: lftp 4.1.2\n"
 +"Project-Id-Version: lftp 4.3.0\n"
  "Report-Msgid-Bugs-To: lftp-bugs@lftp.yar.ru\n"
- "POT-Creation-Date: 2011-06-17 17:33+0400\n"
+ "POT-Creation-Date: 2011-06-28 13:36+0400\n"
 -"PO-Revision-Date: 2011-01-06 15:18+0100\n"
 +"PO-Revision-Date: 2011-06-19 11:13+0200\n"
  "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
@@ -86,11 +86,10 @@
  
  #: src/mgetJob.cc:121 src/mgetJob.cc:205
  #, c-format
-@@ -2602,12 +2602,3 @@
- #, c-format
- msgid "%s ok, %d file$|s$ removed\n"
- msgstr "%s ok, %d plik$|i|ów$ usuniêto\n"
--
+@@ -2715,11 +2715,3 @@
+ msgid "[%u] Attached to terminal.\n"
+ msgstr ""
+ 
 -#~ msgid "Can only edit plain queues.\n"
 -#~ msgstr "Mo¿na edytowaæ jedynie zwyk³e kolejki.\n"
 -
@@ -99,3 +98,4 @@
 -
 -#~ msgid "%s: error writing %s: %s\n"
 -#~ msgstr "%s: b³±d podczas zapisu %s: %s\n"
+
