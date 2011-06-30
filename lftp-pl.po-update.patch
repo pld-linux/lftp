@@ -1,15 +1,15 @@
---- lftp-4.3.0/po/pl.po.orig	2011-06-17 15:33:02.000000000 +0200
-+++ lftp-4.3.0/po/pl.po	2011-06-19 11:16:45.041197913 +0200
+--- lftp-4.3.1/po/pl.po.orig	2011-06-28 11:36:34.000000000 +0200
++++ lftp-4.3.1/po/pl.po	2011-06-30 18:01:42.907167710 +0200
 @@ -7,10 +7,10 @@
  #
  msgid ""
  msgstr ""
 -"Project-Id-Version: lftp 4.1.2\n"
-+"Project-Id-Version: lftp 4.3.0\n"
++"Project-Id-Version: lftp 4.3.1\n"
  "Report-Msgid-Bugs-To: lftp-bugs@lftp.yar.ru\n"
  "POT-Creation-Date: 2011-06-28 13:36+0400\n"
 -"PO-Revision-Date: 2011-01-06 15:18+0100\n"
-+"PO-Revision-Date: 2011-06-19 11:13+0200\n"
++"PO-Revision-Date: 2011-06-29 21:05+0200\n"
  "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
  "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
  "Language: pl\n"
@@ -25,7 +25,22 @@
  
  #: lib/getopt.c:624 lib/getopt.c:628
  #, c-format
-@@ -2429,24 +2429,24 @@
+@@ -853,12 +853,12 @@
+ #: src/SleepJob.cc:265
+ #, c-format
+ msgid "%s: date-time specification missed\n"
+-msgstr ""
++msgstr "%s: brak okre¶lenia daty-czasu\n"
+ 
+ #: src/SleepJob.cc:272
+ #, c-format
+ msgid "%s: date-time parse error\n"
+-msgstr ""
++msgstr "%s: b³±d sk³adni daty-czasu\n"
+ 
+ #: src/Speedometer.cc:97
+ #, c-format
+@@ -2441,24 +2441,24 @@
  msgstr "Otrzymujê dane/TLS"
  
  #: src/lftp.cc:353
@@ -58,7 +73,7 @@
  
  #: src/lftp.cc:498
  msgid "history -w file|-r file|-c|-l [cnt]"
-@@ -2470,22 +2470,22 @@
+@@ -2482,22 +2482,22 @@
  
  #: src/lftp.cc:506
  msgid "Attach the terminal to specified backgrounded lftp process.\n"
@@ -86,10 +101,132 @@
  
  #: src/mgetJob.cc:121 src/mgetJob.cc:205
  #, c-format
-@@ -2715,11 +2715,3 @@
- msgid "[%u] Attached to terminal.\n"
- msgstr ""
+@@ -2618,108 +2618,95 @@
+ #: src/Torrent.cc:483
+ #, c-format
+ msgid "Received valid info about %d peer$|s$"
+-msgstr ""
++msgstr "Otrzymano poprawne informacje o %d u¿ytkownik$u|ach|ach$"
  
+ #: src/Torrent.cc:500
+ #, c-format
+ msgid "Received valid info about %d IPv6 peer$|s$"
+-msgstr ""
++msgstr "Otrzymano poprawne informacje o %d u¿ytkownik$u|ach|ach$ IPv6"
+ 
+ #: src/Torrent.cc:1396
+ #, c-format
+ msgid "Getting meta-data: %s"
+-msgstr ""
++msgstr "Pobieranie metadanych: %s"
+ 
+ #: src/Torrent.cc:1398
+ #, c-format
+ msgid "Validation: %u/%u (%u%%) %s%s"
+-msgstr ""
++msgstr "Sprawdzanie poprawno¶ci: %u/%u (%u%%) %s%s"
+ 
+ #: src/Torrent.cc:1408
+ msgid "Shutting down: "
+-msgstr ""
++msgstr "Zamykanie: "
+ 
+ #: src/Torrent.cc:2015
+-#, fuzzy, c-format
++#, c-format
+ msgid "Connecting to peer %s port %u"
+-msgstr "£±czenie siê z %s%s (%s) port %u"
++msgstr "£±czenie siê z u¿ytkownikiem %s na porcie %u"
+ 
+ #: src/Torrent.cc:2065 src/Torrent.cc:2152
+-#, fuzzy, c-format
++#, c-format
+ msgid "peer unexpectedly closed connection after %s"
+-msgstr "Komputer po drugiej stronie zamkn±³ po³±czenie"
++msgstr "druga strona nieoczekiwanie zamknê³a po³±czenie po %s"
+ 
+ #: src/Torrent.cc:2067
+-#, fuzzy
+ msgid "peer closed connection (before handshake)"
+-msgstr "Komputer po drugiej stronie zamkn±³ po³±czenie"
++msgstr "druga strona zamknê³a po³±czenie (przed jego ustanowieniem)"
+ 
+ #: src/Torrent.cc:2140
+-#, fuzzy
+ msgid "peer closed connection"
+-msgstr "Komputer po drugiej stronie zamkn±³ po³±czenie"
++msgstr "druga strona zamknê³a po³±czenie"
+ 
+ #: src/Torrent.cc:2154
+-#, fuzzy
+ msgid "invalid peer response format"
+-msgstr "nieprawid³owy format odpowiedzi serwera"
++msgstr "nieprawid³owy format odpowiedzi u¿ytkownika"
+ 
+ #: src/Torrent.cc:2282
+ msgid "Handshaking..."
+-msgstr ""
++msgstr "£±czenie..."
+ 
+ #: src/Torrent.cc:2517
+ msgid "Cannot bind a socket for torrent:port-range"
+-msgstr ""
++msgstr "Nie mo¿na dowi±zaæ gniazda do torrent:zakres-portów"
+ 
+ #: src/Torrent.cc:2545
+-#, fuzzy, c-format
++#, c-format
+ msgid "Accepted connection from [%s]:%d"
+-msgstr "Przyjmowanie po³±czenia danych z (%s) portu %u"
++msgstr "Przyjêto po³±czenie od [%s]:%d"
+ 
+ #: src/Torrent.cc:2579
+ msgid "peer handshake timeout"
+-msgstr ""
++msgstr "up³yn±³ limit czasu nawi±zywania po³±czenia z drug± stron±"
+ 
+ #: src/Torrent.cc:2591
+ msgid "peer short handshake"
+-msgstr ""
++msgstr "nawi±zanie po³±czenia z drug± stron± zosta³o uciête"
+ 
+ #: src/Torrent.cc:2593
+-#, fuzzy
+ msgid "peer closed just accepted connection"
+-msgstr "Komputer po drugiej stronie zamkn±³ po³±czenie"
++msgstr "druga strona zamknê³a ¶wie¿o przyjête po³±czenie"
+ 
+ #: src/Torrent.cc:2644
+-#, fuzzy, c-format
++#, c-format
+ msgid "Seeding in background...\n"
+-msgstr "Wysy³anie komend..."
++msgstr "Karmienie w tle...\n"
+ 
+ #: src/Torrent.cc:2659
+ #, c-format
+ msgid "next request in %s"
+-msgstr ""
++msgstr "nastêpne ¿±danie w %s"
+ 
+ #: src/Torrent.cc:2810
+ #, c-format
+ msgid "%s: Please specify meta-info file or URL.\n"
+-msgstr ""
++msgstr "%s: Proszê podaæ plik z metadanymi lub URL.\n"
+ 
+ #: src/attach.h:124
+-#, fuzzy, c-format
++#, c-format
+ msgid "[%u] Attached to terminal %s. %s\n"
+-msgstr "[%lu] Przerwany przez sygna³ %d. %s"
++msgstr "[%u] Do³±czono do terminala %s. %s\n"
+ 
+ #: src/attach.h:136
+ #, c-format
+ msgid "[%u] Attached to terminal.\n"
+-msgstr ""
+-
 -#~ msgid "Can only edit plain queues.\n"
 -#~ msgstr "Mo¿na edytowaæ jedynie zwyk³e kolejki.\n"
 -
@@ -98,4 +235,4 @@
 -
 -#~ msgid "%s: error writing %s: %s\n"
 -#~ msgstr "%s: b³±d podczas zapisu %s: %s\n"
-
++msgstr "[%u] Do³±czono do terminala.\n"
