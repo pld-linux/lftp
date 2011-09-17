@@ -34,6 +34,7 @@ Patch0:		%{name}-home_etc.patch
 Patch1:		%{name}-makefile.patch
 Patch2:		%{name}-m4.patch
 Patch3:		aliases.patch
+# maintained by me, sent upstream from time to time  --qboosh
 Patch4:		%{name}-pl.po-update.patch
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf >= 2.60
@@ -87,8 +88,7 @@ o arquivo FEATURES para uma lista mais detalhada.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-# manually updated or is there some source for this?
-# %patch4 -p1
+%patch4 -p1
 
 %{!?with_gnutls:echo 'AC_DEFUN([AM_PATH_LIBGNUTLS],[/bin/true])' > m4/gnutls.m4}
 
