@@ -29,15 +29,15 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Source2:	%{name}.desktop
 Source3:	%{name}-icon.png
-
-Patch1:		%{name}-makefile.patch
-Patch2:		%{name}-m4.patch
-Patch3:		aliases.patch
+Patch0:		%{name}-makefile.patch
+Patch1:		%{name}-m4.patch
+Patch2:		aliases.patch
 # maintained by me, sent upstream from time to time  --qboosh
-Patch4:		%{name}-pl.po-update.patch
+Patch3:		%{name}-pl.po-update.patch
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
+BuildRequires:	expat-devel
 BuildRequires:	gettext-devel >= 0.14.2
 %{?with_gnutls:BuildRequires:	gnutls-devel >= 1.2.5}
 BuildRequires:	libstdc++-devel
@@ -83,11 +83,10 @@ o arquivo FEATURES para uma lista mais detalhada.
 
 %prep
 %setup -q
-
+%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-#%patch4 -p1
 
 %{!?with_gnutls:echo 'AC_DEFUN([AM_PATH_LIBGNUTLS],[/bin/true])' > m4/gnutls.m4}
 
