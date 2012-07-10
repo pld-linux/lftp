@@ -1,18 +1,5 @@
 --- lftp-4.3.7/po/pl.po.orig	2012-04-01 20:50:49.000000000 +0200
 +++ lftp-4.3.7/po/pl.po	2012-04-02 20:00:16.430993843 +0200
-@@ -7,10 +7,10 @@
- #
- msgid ""
- msgstr ""
--"Project-Id-Version: lftp 4.3.2\n"
-+"Project-Id-Version: lftp 4.3.7\n"
- "Report-Msgid-Bugs-To: lftp-bugs@lftp.yar.ru\n"
- "POT-Creation-Date: 2012-05-30 10:39+0400\n"
--"PO-Revision-Date: 2011-09-17 15:45+0200\n"
-+"PO-Revision-Date: 2012-06-06 10:38+0200\n"
- "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
- "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
- "Language: pl\n"
 @@ -220,14 +220,14 @@
  msgstr "%s: komenda `%s' nie zosta³a wkompilowana.\n"
  
