@@ -1,16 +1,13 @@
---- lftp-4.3.7/po/pl.po.orig	2012-04-01 20:50:49.000000000 +0200
-+++ lftp-4.3.7/po/pl.po	2012-04-02 20:00:16.430993843 +0200
-@@ -220,14 +220,14 @@
- msgstr "%s: komenda `%s' nie zosta³a wkompilowana.\n"
- 
- #: src/CmdExec.cc:1229
--#, fuzzy, c-format
-+#, c-format
+--- lftp-4.4.0/po/pl.po~	2012-09-27 15:16:22.000000000 +0200
++++ lftp-4.4.0/po/pl.po	2012-10-07 07:38:08.538144244 +0200
+@@ -222,12 +222,12 @@ msgstr "%s: komenda `%s' nie zosta³a wko
+ #: src/CmdExec.cc:1231
+ #, fuzzy, c-format
  msgid "Usage: %s cmd [args...]\n"
 -msgstr "U¿ycie: %s module [argumenty...]\n"
 +msgstr "U¿ycie: %s polecenie [argumenty...]\n"
  
- #: src/CmdExec.cc:1235
+ #: src/CmdExec.cc:1237
  #, c-format
  msgid "%s: cannot create local session\n"
 -msgstr ""

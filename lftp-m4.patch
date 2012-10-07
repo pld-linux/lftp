@@ -5,10 +5,10 @@
  AC_ARG_WITH(gnutls, AS_HELP_STRING([--without-gnutls], [don't use GNUTLS library]),
        [with_gnutls=$withval], [with_gnutls=yes])
 -AC_ARG_WITH(openssl,
--AS_HELP_STRING([--with-openssl[[=/path]]], [use OpenSSL [at /path]])
+-AS_HELP_STRING([--with-openssl@<:@=/path@:>@], [use OpenSSL @<:@at /path@:>@])
 -AS_HELP_STRING([--without-openssl], [don't use OpenSSL (default)]),
 +AC_ARG_WITH(openssl,[
-+AS_HELP_STRING([--with-openssl=/path], [use OpenSSL at /path])
++AS_HELP_STRING([--with-openssl@<:@=/path@:>@], [use OpenSSL @<:@at /path@:>@])
 +AS_HELP_STRING([--without-openssl], [don't use OpenSSL (default)])],
        [with_openssl=$withval], [with_openssl=no])
  case "$with_openssl" in
