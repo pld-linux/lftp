@@ -1,8 +1,20 @@
---- lftp-4.4.0/po/pl.po~	2012-09-27 15:16:22.000000000 +0200
-+++ lftp-4.4.0/po/pl.po	2012-10-07 07:38:08.538144244 +0200
-@@ -222,12 +222,12 @@ msgstr "%s: komenda `%s' nie zosta³a wko
+--- lftp-4.4.0/po/pl.po.orig	2012-09-27 15:16:22.000000000 +0200
++++ lftp-4.4.0/po/pl.po	2012-10-07 14:26:58.298746610 +0200
+@@ -1,7 +1,7 @@
+ # Polish translation of lftp.
+ # Copyright (C) 1998-2000 Free Software Foundation, Inc.
+ # Arkadiusz Mi¶kiewicz <misiek@pld-linux.org>, 1998-2004
+-# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2011
++# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2012
+ # some updates by Tomasz K³oczko <kloczek@pld.org.pl>, 2003
+ # Adam Go³êbiowski <adamg@pld-linux.org>, 2004-2006
+ #
+@@ -220,14 +220,14 @@
+ msgstr "%s: komenda `%s' nie zosta³a wkompilowana.\n"
+ 
  #: src/CmdExec.cc:1231
- #, fuzzy, c-format
+-#, fuzzy, c-format
++#, c-format
  msgid "Usage: %s cmd [args...]\n"
 -msgstr "U¿ycie: %s module [argumenty...]\n"
 +msgstr "U¿ycie: %s polecenie [argumenty...]\n"
@@ -15,3 +27,49 @@
  
  #: src/CopyJob.cc:79
  #, c-format
+@@ -782,9 +782,8 @@
+ msgstr "Nieprawid³owy format czasu. Format to <czas><jednostka>, np. 2h30m."
+ 
+ #: src/ResMgr.cc:756
+-#, fuzzy
+ msgid "integer overflow"
+-msgstr "Przepe³nienie liczby ca³kowitej"
++msgstr "przepe³nienie liczby ca³kowitej"
+ 
+ #: src/ResMgr.cc:843
+ msgid "Invalid IPv4 numeric address"
+@@ -812,9 +811,8 @@
+ msgstr "Znaleziono %d adres$|y|ów$"
+ 
+ #: src/Resolver.cc:733
+-#, fuzzy
+ msgid "DNS resolution not trusted."
+-msgstr "Rozwi±zanie nazwy przez DNS jest niezaufane."
++msgstr "Niezaufane rozwi±zanie nazwy przez DNS."
+ 
+ #: src/Resolver.cc:839
+ msgid "Host name lookup failure"
+@@ -2632,9 +2630,8 @@
+ msgstr "Pobieranie metadanych: %s"
+ 
+ #: src/Torrent.cc:1791
+-#, fuzzy
+ msgid "Waiting for meta-data..."
+-msgstr "\tOczekiwanie na komendê\n"
++msgstr "Oczekiwanie na metadane..."
+ 
+ #: src/Torrent.cc:1796
+ #, c-format
+@@ -2716,12 +2713,3 @@
+ #, c-format
+ msgid "[%u] Attached to terminal.\n"
+ msgstr "[%u] Do³±czono do terminala.\n"
+-
+-#~ msgid "Invalid suffix. Valid suffixes are: k, M, G, T, P, E, Z, Y"
+-#~ msgstr "Nieprawid³owy przyrostek. Poprawne to: k, M, G, T, P, E, Z, Y"
+-
+-#~ msgid "invalid pair of numbers"
+-#~ msgstr "nieprawid³owa para liczb"
+-
+-#~ msgid "Saw `unknown', assume failed login"
+-#~ msgstr "Pojawi³o siê `unknown', przypuszczalnie logowanie nie powiod³o siê"
