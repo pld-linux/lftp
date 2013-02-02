@@ -19,12 +19,12 @@ Summary(pl.UTF-8):	Zaawansowany klient FTP/HTTP
 Summary(pt_BR.UTF-8):	Sofisticado programa de transferência de arquivos (cliente FTP/HTTP)
 Summary(zh_CN.UTF-8):	lftp 客户端程序
 Name:		lftp
-Version:	4.4.0
-Release:	2
+Version:	4.4.2
+Release:	1
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	http://ftp.yars.free.net/pub/source/lftp/%{name}-%{version}.tar.xz
-# Source0-md5:	b057e3e01686a200c35753c3496c2130
+# Source0-md5:	3c9411d859e1df9c09d3de0f32774cf3
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Source2:	%{name}.desktop
@@ -38,6 +38,8 @@ Patch4:		lftp-4.3.8-gets.patch
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
+BuildRequires:	dante-devel
+BuildRequires:	dnssec-tools-devel
 BuildRequires:	expat-devel
 BuildRequires:	gettext-devel >= 0.14.2
 %{?with_gnutls:BuildRequires:	gnutls-devel >= 1.2.5}
@@ -87,7 +89,7 @@ o arquivo FEATURES para uma lista mais detalhada.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
+#%patch3 -p1
 %patch4 -p1
 
 %{!?with_gnutls:echo 'AC_DEFUN([AM_PATH_LIBGNUTLS],[/bin/true])' > m4/gnutls.m4}
@@ -100,7 +102,10 @@ o arquivo FEATURES para uma lista mais detalhada.
 %{__automake}
 CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 %configure \
+	--without-included-regex \
+	--with-dnssec-local-validation \
 	--with-modules \
+	--with-socksdante \
 	--with%{!?with_openssl:out}-openssl \
 	--with%{!?with_gnutls:out}-gnutls
 

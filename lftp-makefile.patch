@@ -1,8 +1,6 @@
-diff -Nur lftp-3.5.1/src/Makefile.am lftp-3.5.1.makefile/src/Makefile.am
---- lftp-3.5.1/src/Makefile.am	2006-06-12 01:59:23.000000000 +0200
-+++ lftp-3.5.1.makefile/src/Makefile.am	2006-08-02 01:23:10.000000000 +0200
-@@ -1,5 +1,5 @@
- localedir = $(datadir)/locale
+--- lftp-4.4.2/src/Makefile.am~	2013-01-31 10:49:50.000000000 +0100
++++ lftp-4.4.2/src/Makefile.am	2013-02-02 07:06:31.057591370 +0100
+@@ -1,4 +1,4 @@
 -pkgverlibdir = $(pkglibdir)/$(VERSION)
 +pkgverlibdir = $(pkglibdir)
  
