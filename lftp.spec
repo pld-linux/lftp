@@ -4,7 +4,9 @@
 # Conditional build:
 %bcond_without	ssl	# do not use SSL
 %bcond_with	gnutls	# use gnutls, otherwise openssl is used when ssl is on
-
+%bcond_without	dante	# Dante-based SOCKS support
+%bcond_without	dnssec	# DNSSEC local validation
+#
 %if %{with ssl}
 %define with_openssl 1
 %endif
@@ -35,11 +37,12 @@ Patch2:		aliases.patch
 # maintained by me, sent upstream from time to time  --qboosh
 Patch3:		%{name}-pl.po-update.patch
 Patch4:		lftp-4.3.8-gets.patch
+Patch5:		%{name}-am.patch
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
-BuildRequires:	dante-devel
-BuildRequires:	dnssec-tools-devel
+%{?with_dante:BuildRequires:	dante-devel}
+%{?with_dnssec:BuildRequires:	dnssec-tools-devel}
 BuildRequires:	expat-devel
 BuildRequires:	gettext-devel >= 0.14.2
 %{?with_gnutls:BuildRequires:	gnutls-devel >= 1.2.5}
@@ -91,6 +94,7 @@ o arquivo FEATURES para uma lista mais detalhada.
 %patch2 -p1
 #%patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %{!?with_gnutls:echo 'AC_DEFUN([AM_PATH_LIBGNUTLS],[/bin/true])' > m4/gnutls.m4}
 
@@ -103,9 +107,9 @@ o arquivo FEATURES para uma lista mais detalhada.
 CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 %configure \
 	--without-included-regex \
-	--with-dnssec-local-validation \
+	--with-dnssec-local-validation%{!?with_dnssec:=no} \
 	--with-modules \
-	--with-socksdante \
+	--with-socksdante%{!?with_dante:=no} \
 	--with%{!?with_openssl:out}-openssl \
 	--with%{!?with_gnutls:out}-gnutls
 

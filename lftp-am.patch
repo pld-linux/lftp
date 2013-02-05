@@ -1,0 +1,11 @@
+--- lftp-4.4.2/configure.ac.orig	2013-02-05 18:55:29.963634348 +0100
++++ lftp-4.4.2/configure.ac	2013-02-05 19:05:22.556955327 +0100
+@@ -5,7 +5,7 @@
+ AC_CONFIG_MACRO_DIR([m4])
+ AC_CONFIG_LIBOBJ_DIR([lib])
+ AC_CONFIG_SRCDIR([src/ftpclass.cc])
+-AM_CONFIG_HEADER([lib/config.h])
++AC_CONFIG_HEADERS([lib/config.h])
+ AM_INIT_AUTOMAKE
+ 
+ dnl This doesn't *require* GNU extensions; it merely enables them if
