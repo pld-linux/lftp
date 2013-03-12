@@ -1,75 +1,62 @@
---- lftp-4.4.0/po/pl.po.orig	2012-09-27 15:16:22.000000000 +0200
-+++ lftp-4.4.0/po/pl.po	2012-10-07 14:26:58.298746610 +0200
-@@ -1,7 +1,7 @@
+--- lftp-4.4.4/po/pl.po.orig	2013-02-27 10:35:30.000000000 +0100
++++ lftp-4.4.4/po/pl.po	2013-03-11 21:16:55.387941830 +0100
+@@ -1,16 +1,16 @@
  # Polish translation of lftp.
  # Copyright (C) 1998-2000 Free Software Foundation, Inc.
  # Arkadiusz Mi¶kiewicz <misiek@pld-linux.org>, 1998-2004
--# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2011
-+# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2012
+-# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2012
++# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2013
  # some updates by Tomasz K³oczko <kloczek@pld.org.pl>, 2003
  # Adam Go³êbiowski <adamg@pld-linux.org>, 2004-2006
  #
-@@ -220,14 +220,14 @@
- msgstr "%s: komenda `%s' nie zosta³a wkompilowana.\n"
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: lftp 4.4.0\n"
++"Project-Id-Version: lftp 4.4.4\n"
+ "Report-Msgid-Bugs-To: lftp-bugs@lftp.yar.ru\n"
+ "POT-Creation-Date: 2013-02-27 13:35+0400\n"
+-"PO-Revision-Date: 2012-10-07 14:23+0200\n"
++"PO-Revision-Date: 2013-03-11 21:12+0100\n"
+ "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
+ "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
+ "Language: pl\n"
+@@ -1042,7 +1042,6 @@
+ msgstr "[re]cls [opcje] [¶cie¿ka/][maska]"
  
- #: src/CmdExec.cc:1231
--#, fuzzy, c-format
-+#, c-format
- msgid "Usage: %s cmd [args...]\n"
--msgstr "U¿ycie: %s module [argumenty...]\n"
-+msgstr "U¿ycie: %s polecenie [argumenty...]\n"
- 
- #: src/CmdExec.cc:1237
- #, c-format
- msgid "%s: cannot create local session\n"
--msgstr ""
-+msgstr "%s: nie mo¿na utworzyæ sesji lokalnej\n"
- 
- #: src/CopyJob.cc:79
- #, c-format
-@@ -782,9 +782,8 @@
- msgstr "Nieprawid³owy format czasu. Format to <czas><jednostka>, np. 2h30m."
- 
- #: src/ResMgr.cc:756
+ #: src/commands.cc:166
 -#, fuzzy
- msgid "integer overflow"
--msgstr "Przepe³nienie liczby ca³kowitej"
-+msgstr "przepe³nienie liczby ca³kowitej"
+ msgid ""
+ "List remote files. You can redirect output of this command to file\n"
+ "or via pipe to external command.\n"
+@@ -1086,6 +1085,7 @@
+ "lub poprzez potok do zewnêtrznej polecenia.\n"
+ "\n"
+ " -1                   - wy¶wietlaj w jednej kolumnie\n"
++" -a, --all            - wy¶wietlaj pliki z kropk±\n"
+ " -B, --basename       - wy¶wietlaj jedynie nazwê bazow± plików\n"
+ "     --block-size=ROZ - u¿yj bloków o rozmiarze ROZ bajtów\n"
+ " -d, --directory      - wy¶wietlaj listê katalogów zamiast ich zawarto¶ci\n"
+@@ -1106,6 +1106,7 @@
+ " -S                   - sortuj wg rozmiaru pliku\n"
+ " --user, --group, --perms, --date, --linkcount, --links\n"
+ "                      - wy¶wietlaj poszczególne pola\n"
++" --time-style=STYL    - u¿yj okre¶lonego formatu czasu\n"
+ "\n"
+ "Domy¶lnie, wyj¶cie komendy cls jest zapamiêtywane w pamiêci podrêcznej. By\n"
+ "zobaczyæ nowe listy plików u¿yj komendy `recls' lub `cache flush'.\n"
+@@ -1269,13 +1270,13 @@
+ "Wy¶wietla pomoc dla polecenia <komenda>, lub listê dostêpnych poleceñ\n"
  
- #: src/ResMgr.cc:843
- msgid "Invalid IPv4 numeric address"
-@@ -812,9 +811,8 @@
- msgstr "Znaleziono %d adres$|y|ów$"
- 
- #: src/Resolver.cc:733
+ #: src/commands.cc:271
 -#, fuzzy
- msgid "DNS resolution not trusted."
--msgstr "Rozwi±zanie nazwy przez DNS jest niezaufane."
-+msgstr "Niezaufane rozwi±zanie nazwy przez DNS."
+ msgid ""
+ "List running jobs. -v means verbose, several -v can be specified.\n"
+ "If <job_no> is specified, only list a job with that number.\n"
+ msgstr ""
+ "Wy¶wietla dzia³aj±ce procesy. -v podaje dodatkowe informacje.\n"
+-"Mo¿e byæ podane kilka -v.\n"
++"Mo¿e byæ podane kilka -v. Z podanym <nr_proc> wy¶wietla tylko\n"
++"dany proces.\n"
  
- #: src/Resolver.cc:839
- msgid "Host name lookup failure"
-@@ -2632,9 +2630,8 @@
- msgstr "Pobieranie metadanych: %s"
- 
- #: src/Torrent.cc:1791
--#, fuzzy
- msgid "Waiting for meta-data..."
--msgstr "\tOczekiwanie na komendê\n"
-+msgstr "Oczekiwanie na metadane..."
- 
- #: src/Torrent.cc:1796
- #, c-format
-@@ -2716,12 +2713,3 @@
- #, c-format
- msgid "[%u] Attached to terminal.\n"
- msgstr "[%u] Do³±czono do terminala.\n"
--
--#~ msgid "Invalid suffix. Valid suffixes are: k, M, G, T, P, E, Z, Y"
--#~ msgstr "Nieprawid³owy przyrostek. Poprawne to: k, M, G, T, P, E, Z, Y"
--
--#~ msgid "invalid pair of numbers"
--#~ msgstr "nieprawid³owa para liczb"
--
--#~ msgid "Saw `unknown', assume failed login"
--#~ msgstr "Pojawi³o siê `unknown', przypuszczalnie logowanie nie powiod³o siê"
+ #: src/commands.cc:273
+ msgid "kill all|<job_no>"
