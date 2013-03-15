@@ -22,12 +22,12 @@ Summary(pl.UTF-8):	Zaawansowany klient FTP/HTTP
 Summary(pt_BR.UTF-8):	Sofisticado programa de transferência de arquivos (cliente FTP/HTTP)
 Summary(zh_CN.UTF-8):	lftp 客户端程序
 Name:		lftp
-Version:	4.4.4
+Version:	4.4.5
 Release:	1
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	ftp://ftp.yar.ru/pub/source/lftp/%{name}-%{version}.tar.xz
-# Source0-md5:	a5742ec5d6112faacde4cd7d83cf0629
+# Source0-md5:	f4f81016c961e4438ebe1e1ee7a0ae97
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Source2:	%{name}.desktop
