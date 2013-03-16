@@ -1,5 +1,5 @@
---- lftp-4.4.4/po/pl.po.orig	2013-02-27 10:35:30.000000000 +0100
-+++ lftp-4.4.4/po/pl.po	2013-03-11 21:16:55.387941830 +0100
+--- lftp-4.4.5/po/pl.po.orig	2013-03-14 09:53:19.000000000 +0100
++++ lftp-4.4.5/po/pl.po	2013-03-16 17:03:23.424567587 +0100
 @@ -1,16 +1,16 @@
  # Polish translation of lftp.
  # Copyright (C) 1998-2000 Free Software Foundation, Inc.
@@ -12,7 +12,7 @@
  msgid ""
  msgstr ""
 -"Project-Id-Version: lftp 4.4.0\n"
-+"Project-Id-Version: lftp 4.4.4\n"
++"Project-Id-Version: lftp 4.4.5\n"
  "Report-Msgid-Bugs-To: lftp-bugs@lftp.yar.ru\n"
  "POT-Creation-Date: 2013-03-14 12:53+0400\n"
 -"PO-Revision-Date: 2012-10-07 14:23+0200\n"
@@ -44,7 +44,24 @@
  "\n"
  "Domy¶lnie, wyj¶cie komendy cls jest zapamiêtywane w pamiêci podrêcznej. By\n"
  "zobaczyæ nowe listy plików u¿yj komendy `recls' lub `cache flush'.\n"
-@@ -1269,13 +1270,13 @@
+@@ -1219,7 +1220,6 @@
+ msgstr "get [OPCJE] <zd_plik> [-o <lo_plik>]"
+ 
+ #: src/commands.cc:252
+-#, fuzzy
+ msgid ""
+ "Retrieve remote file <rfile> and store it to local file <lfile>.\n"
+ " -o <lfile> specifies local file name (default - basename of rfile)\n"
+@@ -1231,7 +1231,7 @@
+ "Uzyskanie zdalnego pliku <zd_plik> i zachowanie go lokalnie jako <lo_plik>.\n"
+ " -o <lo_plik> ustala nazwê lokalnego pliku (domy¶lnie - nazwa pliku "
+ "odleg³ego)\n"
+-" -c  kontynuowanie, reget\n"
++" -c  kontynuowanie, wznowienie przesy³ania\n"
+ " -E  kasowanie zdalnego pliku po zakoñczonej pomy¶lnie operacji\n"
+ " -a  tryb ascii (domy¶lnym jest tryb binarny)\n"
+ " -O <base> podaje bazowy katalog lub adres URL gdzie nale¿y umieszczaæ "
+@@ -1270,13 +1270,13 @@
  "Wy¶wietla pomoc dla polecenia <komenda>, lub listê dostêpnych poleceñ\n"
  
  #: src/commands.cc:271
@@ -60,3 +77,20 @@
  
  #: src/commands.cc:273
  msgid "kill all|<job_no>"
+@@ -1358,7 +1358,6 @@
+ msgstr "mget [OPTS] <pliki>"
+ 
+ #: src/commands.cc:301
+-#, fuzzy
+ msgid ""
+ "Gets selected files with expanded wildcards\n"
+ " -c  continue, resume transfer\n"
+@@ -1369,7 +1368,7 @@
+ " -O <base> specifies base directory or URL where files should be placed\n"
+ msgstr ""
+ "Pobiera wskazane pliki pasuj±ce do maski\n"
+-" -c  kontynuacja, reget\n"
++" -c  kontynuacja, wznowienie przesy³ania\n"
+ " -d  utwórz katalogi o nazwie takiej samej jak pliki i pobierz pliki do\n"
+ "     nich zamiast do bie¿±cego katalogu\n"
+ " -E  kasuj odleg³e pliki po udanej operacji transferu\n"
