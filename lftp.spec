@@ -93,7 +93,10 @@ o arquivo FEATURES para uma lista mais detalhada.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-#%patch3 -p1
+# file incorrectly recoded to UTF-8 (input set as iso-8859-1 instead of iso-8859-2)
+iconv -f utf-8 -t iso-8859-1 po/pl.po > po/pl.po.tmp
+mv po/pl.po.tmp po/pl.po
+%patch3 -p1
 %patch4 -p1
 %patch5 -p1
 
