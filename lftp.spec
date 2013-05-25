@@ -22,12 +22,12 @@ Summary(pl.UTF-8):	Zaawansowany klient FTP/HTTP
 Summary(pt_BR.UTF-8):	Sofisticado programa de transferência de arquivos (cliente FTP/HTTP)
 Summary(zh_CN.UTF-8):	lftp 客户端程序
 Name:		lftp
-Version:	4.4.6
-Release:	5
+Version:	4.4.7
+Release:	1
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	ftp://ftp.yar.ru/pub/source/lftp/%{name}-%{version}.tar.xz
-# Source0-md5:	4f5c1a35acf0a0ee3b2e47dabd440a0e
+# Source0-md5:	b06b2440efc085fc9a64c653eefa8802
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Source2:	%{name}.desktop
@@ -39,7 +39,6 @@ Patch2:		aliases.patch
 Patch3:		%{name}-pl.po-update.patch
 Patch4:		lftp-4.3.8-gets.patch
 Patch5:		%{name}-am.patch
-Patch6:		lftp-git.patch
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
@@ -94,13 +93,9 @@ o arquivo FEATURES para uma lista mais detalhada.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-# file incorrectly recoded to UTF-8 (input set as iso-8859-1 instead of iso-8859-2)
-iconv -f utf-8 -t iso-8859-1 po/pl.po > po/pl.po.tmp
-mv po/pl.po.tmp po/pl.po
-%patch3 -p1
+#%patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 
 %{__rm} po/stamp-po
 
