@@ -23,7 +23,7 @@ Summary(pt_BR.UTF-8):	Sofisticado programa de transferência de arquivos (client
 Summary(zh_CN.UTF-8):	lftp 客户端程序
 Name:		lftp
 Version:	4.4.8
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	ftp://ftp.yar.ru/pub/source/lftp/%{name}-%{version}.tar.xz
@@ -39,6 +39,7 @@ Patch2:		aliases.patch
 Patch3:		%{name}-pl.po-update.patch
 Patch4:		lftp-4.3.8-gets.patch
 Patch5:		%{name}-am.patch
+Patch6:		%{name}-git.patch
 URL:		http://lftp.yar.ru/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
@@ -96,6 +97,7 @@ o arquivo FEATURES para uma lista mais detalhada.
 #%patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %{__rm} po/stamp-po
 
