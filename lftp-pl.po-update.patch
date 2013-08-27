@@ -1,96 +1,41 @@
---- lftp-4.4.6/po/pl.po.orig	2013-05-18 22:14:16.005865510 +0200
-+++ lftp-4.4.6/po/pl.po	2013-05-19 08:46:23.927607156 +0200
-@@ -1,16 +1,16 @@
- # Polish translation of lftp.
- # Copyright (C) 1998-2000 Free Software Foundation, Inc.
- # Arkadiusz Mi¶kiewicz <misiek@pld-linux.org>, 1998-2004
--# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2012
-+# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2013
- # some updates by Tomasz K³oczko <kloczek@pld.org.pl>, 2003
- # Adam Go³êbiowski <adamg@pld-linux.org>, 2004-2006
+--- lftp-4.4.9/po/pl.po.orig	2013-08-23 11:54:19.000000000 +0200
++++ lftp-4.4.9/po/pl.po	2013-08-27 17:40:29.295929415 +0200
+@@ -7,10 +7,10 @@
  #
  msgid ""
  msgstr ""
--"Project-Id-Version: lftp 4.4.0\n"
-+"Project-Id-Version: lftp 4.4.6\n"
+-"Project-Id-Version: lftp 4.4.6\n"
++"Project-Id-Version: lftp 4.4.9\n"
  "Report-Msgid-Bugs-To: lftp-bugs@lftp.yar.ru\n"
- "POT-Creation-Date: 2013-05-17 14:34+0400\n"
--"PO-Revision-Date: 2012-10-07 14:23+0200\n"
-+"PO-Revision-Date: 2013-05-19 08:40+0200\n"
+ "POT-Creation-Date: 2013-08-23 13:54+0400\n"
+-"PO-Revision-Date: 2013-05-19 08:40+0200\n"
++"PO-Revision-Date: 2013-08-27 17:35+0200\n"
  "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
  "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
  "Language: pl\n"
-@@ -1046,7 +1046,6 @@
- msgstr "[re]cls [opcje] [¶cie¿ka/][maska]"
+@@ -875,19 +875,19 @@
+ msgstr "%.2fM/s"
  
- #: src/commands.cc:164
--#, fuzzy
- msgid ""
- "List remote files. You can redirect output of this command to file\n"
- "or via pipe to external command.\n"
-@@ -1091,6 +1090,7 @@
- "lub poprzez potok do zewnêtrznej polecenia.\n"
- "\n"
- " -1                   - wy¶wietlaj w jednej kolumnie\n"
-+" -a, --all            - wy¶wietlaj pliki z kropk±\n"
- " -B, --basename       - wy¶wietlaj jedynie nazwê bazow± plików\n"
- "     --block-size=ROZ - u¿yj bloków o rozmiarze ROZ bajtów\n"
- " -d, --directory      - wy¶wietlaj listê katalogów zamiast ich "
-@@ -1112,6 +1112,7 @@
- " -S                   - sortuj wg rozmiaru pliku\n"
- " --user, --group, --perms, --date, --linkcount, --links\n"
- "                      - wy¶wietlaj poszczególne pola\n"
-+" --time-style=STYL    - u¿yj okre¶lonego formatu czasu\n"
- "\n"
- "Domy¶lnie, wyj¶cie komendy cls jest zapamiêtywane w pamiêci podrêcznej. "
- "By\n"
-@@ -1234,7 +1235,6 @@
- msgstr "get [OPCJE] <zd_plik> [-o <lo_plik>]"
+ #: src/Speedometer.cc:108
+-#, fuzzy, c-format
++#, c-format
+ msgid "%.0f B/s"
+-msgstr "%.0fb/s"
++msgstr "%.0f B/s"
  
- #: src/commands.cc:250
--#, fuzzy
- msgid ""
- "Retrieve remote file <rfile> and store it to local file <lfile>.\n"
- " -o <lfile> specifies local file name (default - basename of rfile)\n"
-@@ -1246,7 +1246,7 @@
- "Uzyskanie zdalnego pliku <zd_plik> i zachowanie go lokalnie jako <lo_plik>.\n"
- " -o <lo_plik> ustala nazwê lokalnego pliku (domy¶lnie - nazwa pliku "
- "odleg³ego)\n"
--" -c  kontynuowanie, reget\n"
-+" -c  kontynuowanie, wznowienie przesy³ania\n"
- " -E  kasowanie zdalnego pliku po zakoñczonej pomy¶lnie operacji\n"
- " -a  tryb ascii (domy¶lnym jest tryb binarny)\n"
- " -O <base> podaje bazowy katalog lub adres URL gdzie nale¿y umieszczaæ "
-@@ -1286,13 +1286,13 @@
- "Wy¶wietla pomoc dla polecenia <komenda>, lub listê dostêpnych poleceñ\n"
+ #: src/Speedometer.cc:110
+-#, fuzzy, c-format
++#, c-format
+ msgid "%.1f KiB/s"
+-msgstr "%.1fK/s"
++msgstr "%.1f KiB/s"
  
- #: src/commands.cc:269
--#, fuzzy
- msgid ""
- "List running jobs. -v means verbose, several -v can be specified.\n"
- "If <job_no> is specified, only list a job with that number.\n"
- msgstr ""
- "Wy¶wietla dzia³aj±ce procesy. -v podaje dodatkowe informacje.\n"
--"Mo¿e byæ podane kilka -v.\n"
-+"Mo¿e byæ podane kilka -v. Z podanym <nr_proc> wy¶wietla tylko\n"
-+"dany proces.\n"
+ #: src/Speedometer.cc:112
+-#, fuzzy, c-format
++#, c-format
+ msgid "%.2f MiB/s"
+-msgstr "%.2fM/s"
++msgstr "%.2f MiB/s"
  
- #: src/commands.cc:271
- msgid "kill all|<job_no>"
-@@ -1375,7 +1375,6 @@
- msgstr "mget [OPTS] <pliki>"
- 
- #: src/commands.cc:299
--#, fuzzy
- msgid ""
- "Gets selected files with expanded wildcards\n"
- " -c  continue, resume transfer\n"
-@@ -1386,7 +1385,7 @@
- " -O <base> specifies base directory or URL where files should be placed\n"
- msgstr ""
- "Pobiera wskazane pliki pasuj±ce do maski\n"
--" -c  kontynuacja, reget\n"
-+" -c  kontynuacja, wznowienie przesy³ania\n"
- " -d  utwórz katalogi o nazwie takiej samej jak pliki i pobierz pliki do\n"
- "     nich zamiast do bie¿±cego katalogu\n"
- " -E  kasuj odleg³e pliki po udanej operacji transferu\n"
+ #: src/Speedometer.cc:134
+ msgid "eta:"
