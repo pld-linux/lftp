@@ -35,7 +35,7 @@ Source3:	%{name}-icon.png
 Patch0:		%{name}-makefile.patch
 Patch1:		%{name}-m4.patch
 Patch2:		aliases.patch
-# maintained by me, sent upstream from time to time  --qboosh
+# when updated attach at https://github.com/lavv17/lftp/issues
 Patch3:		%{name}-pl.po-update.patch
 Patch4:		lftp-4.3.8-gets.patch
 Patch5:		%{name}-am.patch
