@@ -1,0 +1,337 @@
+diff --git a/doc/lftp.1 b/doc/lftp.1
+index f81ad01..0ad75be 100644
+--- a/doc/lftp.1
++++ b/doc/lftp.1
+@@ -41,7 +41,7 @@
+ .fi
+ .in
+ ..
+-.TH lftp 1 "08 Oct 2013"
++.TH lftp 1 "15 Nov 2013"
+ .SH NAME
+ lftp \- Sophisticated file transfer program
+ .SH SYNTAX
+@@ -58,7 +58,7 @@ lftp \- Sophisticated file transfer program
+ .B lftp \-\-help
+ 
+ .SH VERSION
+-This man page documents lftp version 4.4.10.
++This man page documents lftp version 4.4.12.
+ 
+ .SH "DESCRIPTION"
+ \fBlftp\fR is a file transfer program that allows sophisticated ftp, http
+@@ -261,12 +261,19 @@ command is used.
+ .PP
+ Alias for `wait'.
+ 
+-.B find
+-.RI " [" directory "] "
++.BR find " [" OPTS "] " \fIdirectory...\fP
+ .PP
+ List files in the directory (current directory by default) recursively.
+ This can help with servers lacking ls \-R support. You can redirect output
+-of this command.
++of this command. Options:
++.Sp
++.in +0.5i
++.TS
++l1	l	lx	.
++\-d \fIMD\fP,	\-\-max\-depth=\fIMD\fP	specify maximum scan depth
++\-l,	\-\-list 	use long listing format
++.TE
++.PP
+ 
+ .BR ftpcopy
+ .PP
+diff --git a/src/ChangeLog b/src/ChangeLog
+index dbd6879..22686d1 100644
+--- a/src/ChangeLog
++++ b/src/ChangeLog
+@@ -1,3 +1,9 @@
++2013-11-15  Alexander V. Lukyanov <lav@yars.free.net>
++
++	* FileCopy.cc: fixed spinning when GetArrayInfo gives an error.
++	* commands.cc, FindJob.cc, FindJob.h, FileSet.h: add find -l (--ls)
++	  option to show long listing.
++
+ 2013-11-11  Alexander V. Lukyanov <lav@yars.free.net>
+ 
+ 	* Torrent.cc: don't show verbose 100% peer completeness.
+diff --git a/src/FileCopy.cc b/src/FileCopy.cc
+index f195b95..e0d25d8 100644
+--- a/src/FileCopy.cc
++++ b/src/FileCopy.cc
+@@ -786,21 +786,23 @@ int FileCopyPeerFA::Do()
+       return m;
+    }
+ 
+-   if((want_size && size==NO_SIZE_YET && (mode==PUT || !start_transfer))
+-   || (want_date && date==NO_DATE_YET))
++   // if we need some info and cannot start the transfer (yet),
++   // then use ARRAY_INFO to fetch the file information.
++   if(((want_size && size==NO_SIZE_YET) || (want_date && date==NO_DATE_YET))
++   && (mode==PUT || !start_transfer) && session->IsClosed())
++   {
++      FileInfo *fi=new FileInfo(file);
++      if(want_size)
++	 fi->Need(fi->SIZE);
++      if(want_date)
++	 fi->Need(fi->DATE);
++      info.Empty();
++      info.Add(fi);
++      session->GetInfoArray(&info);
++      m=MOVED;
++   }
++   if(session->OpenMode()==FA::ARRAY_INFO)
+    {
+-      if(session->IsClosed())
+-      {
+-	 FileInfo *fi=new FileInfo(file);
+-	 if(want_size)
+-	    fi->Need(fi->SIZE);
+-	 if(want_date)
+-	    fi->Need(fi->DATE);
+-	 info.Empty();
+-	 info.Add(fi);
+-	 session->GetInfoArray(&info);
+-	 m=MOVED;
+-      }
+       res=session->Done();
+       if(res==FA::IN_PROGRESS)
+ 	 return m;
+@@ -808,6 +810,7 @@ int FileCopyPeerFA::Do()
+       {
+ 	 session->Close();
+ 	 SetSize(NO_SIZE);
++	 SetDate(NO_DATE);
+ 	 return MOVED;
+       }
+       FileInfo *fi=info[0];
+diff --git a/src/FileSet.h b/src/FileSet.h
+index 51ccdf1..a2d69ae 100644
+--- a/src/FileSet.h
++++ b/src/FileSet.h
+@@ -89,6 +89,7 @@ public:
+    ~FileInfo();
+ 
+    void SetName(const char *n) { name.set(n); def(NAME); }
++   void SetName(const xstring& n) { name.set(n); def(NAME); }
+    void SetUser(const char *n);
+    void SetGroup(const char *n);
+    void LocalFile(const char *name, bool follow_symlinks);
+diff --git a/src/FindJob.cc b/src/FindJob.cc
+index b42f0b0..8275b0d 100644
+--- a/src/FindJob.cc
++++ b/src/FindJob.cc
+@@ -360,24 +360,36 @@ FinderJob::prf_res FinderJob_List::ProcessFile(const char *d,const FileInfo *fi)
+       fg_data=buf->GetFgData(fg);
+    if(buf->Size()>0x10000)
+       return PRF_LATER;
++
++   xstring path_to_show;
+    if(ProcessingURL())
+    {
+       FileAccess::Path old_cwd=session->GetCwd();
+       session->SetCwd(init_dir);
+       session->Chdir(dir_file(d,fi->name),false);
+-      buf->Put(session->GetConnectURL());
++      path_to_show.set(session->GetConnectURL());
+       session->SetCwd(old_cwd);
+    }
+    else
+-      buf->Put(dir_file(d,fi->name));
++      path_to_show.set(dir_file(d,fi->name));
+    if((fi->defined&fi->TYPE) && fi->filetype==fi->DIRECTORY && strcmp(fi->name,"/"))
+-      buf->Put("/");
++      path_to_show.append('/');
++
++   if(long_listing) {
++      FileInfo n(*fi);
++      n.SetName(path_to_show);
++      n.MakeLongName();
++      buf->Put(n.longname);
++   } else {
++      buf->Put(path_to_show);
++   }
++
+    buf->Put("\n");
+    return FinderJob::ProcessFile(d,fi);
+ }
+ 
+ FinderJob_List::FinderJob_List(FileAccess *s,ArgV *a,FDStream *o)
+-   : FinderJob(s), args(a)
++   : FinderJob(s), args(a), long_listing(false)
+ {
+    if(o)
+       buf=new IOBufferFDStream(o,IOBuffer::PUT);
+diff --git a/src/FindJob.h b/src/FindJob.h
+index a6767a3..6d88b49 100644
+--- a/src/FindJob.h
++++ b/src/FindJob.h
+@@ -117,12 +117,14 @@ class FinderJob_List : public FinderJob
+ {
+    SMTaskRef<IOBuffer> buf;
+    Ref<ArgV> args;
++   bool long_listing;
+ protected:
+    prf_res ProcessFile(const char *d,const FileInfo *fi);
+    void Finish();
+ 
+ public:
+    FinderJob_List(FileAccess *s,ArgV *a,FDStream *o);
++   void DoLongListing(bool yes=true) { long_listing=yes; }
+ 
+    int Done() { return FinderJob::Done() && buf->Done(); }
+ };
+diff --git a/src/Http.cc b/src/Http.cc
+index 1b6495d..d0eb857 100644
+--- a/src/Http.cc
++++ b/src/Http.cc
+@@ -64,6 +64,8 @@ CDECL char *strptime(const char *buf, const char *format, struct tm *tm);
+ #define EINPROGRESS -1
+ #endif
+ 
++enum { CHUNK_SIZE_UNKNOWN=-1 };
++
+ Http::Connection::Connection(int s,const char *c)
+    : closure(c), sock(s)
+ {
+@@ -103,7 +105,7 @@ void Http::Init()
+    array_send=0;
+ 
+    chunked=false;
+-   chunk_size=-1;
++   chunk_size=CHUNK_SIZE_UNKNOWN;
+    chunk_pos=0;
+    chunked_trailer=false;
+ 
+@@ -190,7 +192,7 @@ void Http::ResetRequestData()
+    keep_alive_max=-1;
+    array_send=fileset_for_info?fileset_for_info->curr_index():0;
+    chunked=false;
+-   chunk_size=-1;
++   chunk_size=CHUNK_SIZE_UNKNOWN;
+    chunk_pos=0;
+    chunked_trailer=false;
+    propfind=0;
+@@ -688,7 +690,7 @@ void Http::SendRequest(const char *connection,const char *f)
+ 
+    keep_alive=false;
+    chunked=false;
+-   chunk_size=-1;
++   chunk_size=CHUNK_SIZE_UNKNOWN;
+    chunk_pos=0;
+    chunked_trailer=false;
+    inflate=0;
+@@ -864,7 +866,7 @@ void Http::HandleHeaderLine(const char *name,const char *value)
+       if(!strcasecmp(value,"chunked"));
+       {
+ 	 chunked=true;
+-	 chunk_size=-1;	// to indicate "before first chunk"
++	 chunk_size=CHUNK_SIZE_UNKNOWN;	  // expecting first chunk
+ 	 chunk_pos=0;
+ 	 chunked_trailer=false;
+       }
+@@ -1337,6 +1339,15 @@ int Http::Do()
+ 	       }
+ 	       if(mode==ARRAY_INFO)
+ 	       {
++		  if((status_code==400 || status_code==501)
++		  && !xstrcmp(last_method,"PROPFIND"))
++		  {
++		     ResMgr::Set("http:use-propfind",hostname,"no");
++		     use_propfind_now=false;
++		     try_time=0;
++		     Disconnect();
++		     return MOVED;
++		  }
+ 		  // we'll have to receive next header
+ 		  status.set(0);
+ 		  status_code=0;
+@@ -1566,8 +1577,7 @@ int Http::Do()
+ 		  if(!xstrcmp(last_method,"MKCOL"))
+ 		     ResMgr::Set("http:use-mkcol",hostname,"no");
+ 	       }
+-	       if((mode==CHANGE_DIR || mode==ARRAY_INFO)
+-	       && !xstrcmp(last_method,"PROPFIND"))
++	       if(mode==CHANGE_DIR && !xstrcmp(last_method,"PROPFIND"))
+ 	       {
+ 		  use_propfind_now=false;
+ 		  try_time=0;
+@@ -1776,7 +1786,7 @@ get_again:
+       if(chunked_trailer && state==RECEIVING_HEADER)
+ 	 return DO_AGAIN;
+       const char *nl;
+-      if(chunk_size==-1) // expecting first/next chunk
++      if(chunk_size==CHUNK_SIZE_UNKNOWN) // expecting first/next chunk
+       {
+ 	 nl=(const char*)memchr(buf1,'\n',size1);
+ 	 if(nl==0)  // not yet
+@@ -1794,6 +1804,7 @@ get_again:
+ 	 }
+ 	 conn->recv_buf->Skip(nl-buf1+1);
+ 	 chunk_pos=0;
++	 LogNote(9,"next chunk size: %ld",chunk_size);
+ 	 goto get_again;
+       }
+       if(chunk_size==0) // eof
+@@ -1815,7 +1826,7 @@ get_again:
+ 	    return FATAL;
+ 	 }
+ 	 conn->recv_buf->Skip(2);
+-	 chunk_size=-1;
++	 chunk_size=CHUNK_SIZE_UNKNOWN;
+ 	 goto get_again;
+       }
+       // ok, now we may get portion of data
+diff --git a/src/commands.cc b/src/commands.cc
+index 6c24185..d70a7bc 100644
+--- a/src/commands.cc
++++ b/src/commands.cc
+@@ -2850,13 +2850,15 @@ CMD(find)
+    static struct option find_options[]=
+    {
+       {"maxdepth",required_argument,0,'d'},
++      {"ls",no_argument,0,'l'},
+       {0,0,0,0}
+    };
+    int opt;
+    int maxdepth = -1;
++   bool long_listing=false;
+    const char *op=args->a0();
+ 
+-   while((opt=args->getopt_long("+d:",find_options))!=EOF)
++   while((opt=args->getopt_long("+d:l",find_options))!=EOF)
+    {
+       switch(opt)
+       {
+@@ -2868,6 +2870,9 @@ CMD(find)
+ 	 }
+ 	 maxdepth = atoi(optarg);
+ 	 break;
++      case 'l':
++	 long_listing=true;
++	 break;
+       case '?':
+ 	 eprintf(_("Usage: %s [-d #] dir\n"),op);
+ 	 return 0;
+@@ -2878,6 +2883,7 @@ CMD(find)
+       args->Append(".");
+    FinderJob_List *j=new class FinderJob_List(session->Clone(),args.borrow(),output.borrow());
+    j->set_maxdepth(maxdepth);
++   j->DoLongListing(long_listing);
+    return j;
+ }
+ 
+diff --git a/src/ftpclass.cc b/src/ftpclass.cc
+index 72cc04e..09d39ad 100644
+--- a/src/ftpclass.cc
++++ b/src/ftpclass.cc
+@@ -2743,6 +2743,7 @@ int Ftp::ReceiveOneLine()
+       if(nl==resp+resp_size-1 && now-conn->control_recv->EventTime()>5)
+       {
+ 	 LogError(1,"server bug: single <NL>");
++	 nl=find_char(resp,resp_size,'\n');
+ 	 line_len=nl-resp;
+ 	 skip_len=nl-resp+1;
+ 	 break;
