@@ -44,10 +44,19 @@ index f81ad01..0ad75be 100644
  .BR ftpcopy
  .PP
 diff --git a/src/ChangeLog b/src/ChangeLog
-index dbd6879..22686d1 100644
+index dbd6879..dde2382 100644
 --- a/src/ChangeLog
 +++ b/src/ChangeLog
-@@ -1,3 +1,9 @@
+@@ -1,3 +1,18 @@
++2013-11-25  Alexander V. Lukyanov <lavv17f@gmail.com>
++
++	* Http.cc: add debug message on chunk sizes; handle 400/501 codes
++	  to turn off PROPFIND in ARRAY_INFO mode.
++	* FileCopy.cc: clean up GetArrayInfo call condition, don't call it
++	  if not needed.
++	* OutputJob.cc: free input and output in PrepareToDie.
++	* FileCopy.cc, FileCopy.h: add check for file size at EOF.
++
 +2013-11-15  Alexander V. Lukyanov <lav@yars.free.net>
 +
 +	* FileCopy.cc: fixed spinning when GetArrayInfo gives an error.
@@ -58,10 +67,121 @@ index dbd6879..22686d1 100644
  
  	* Torrent.cc: don't show verbose 100% peer completeness.
 diff --git a/src/FileCopy.cc b/src/FileCopy.cc
-index f195b95..e0d25d8 100644
+index f195b95..8c0b977 100644
 --- a/src/FileCopy.cc
 +++ b/src/FileCopy.cc
-@@ -786,21 +786,23 @@ int FileCopyPeerFA::Do()
+@@ -345,6 +345,11 @@ int FileCopy::Do()
+       put_eof_pos=put->GetRealPos();
+       debug((10,"copy: waiting for put confirmation\n"));
+       set_state(CONFIRM_WAIT);
++      if(!CheckFileSizeAtEOF())
++      {
++	 SetError(_("file size decreased during transfer"));
++	 return MOVED;
++      }
+       m=MOVED;
+    case(CONFIRM_WAIT):
+       if(put->Error())
+@@ -475,7 +480,7 @@ void FileCopy::LineBuffered(int s)
+    line_buffer_max=s;
+ }
+ 
+-off_t FileCopy::GetPos()
++off_t FileCopy::GetPos() const
+ {
+    if(put)
+       return put->GetRealPos() - put->Buffered();
+@@ -484,14 +489,14 @@ off_t FileCopy::GetPos()
+    return 0;
+ }
+ 
+-off_t FileCopy::GetSize()
++off_t FileCopy::GetSize() const
+ {
+    if(get)
+       return get->GetSize();
+    return NO_SIZE;
+ }
+ 
+-int FileCopy::GetPercentDone()
++int FileCopy::GetPercentDone() const
+ {
+    if(!get || !put)
+       return 100;
+@@ -512,7 +517,7 @@ int FileCopy::GetPercentDone()
+       return -1;
+    return percent(ppos,psize);
+ }
+-const char *FileCopy::GetPercentDoneStr()
++const char *FileCopy::GetPercentDoneStr() const
+ {
+    int pct=GetPercentDone();
+    if(pct==-1)
+@@ -532,19 +537,19 @@ void FileCopy::RateReset()
+    rate->Reset();
+    rate_for_eta->Reset();
+ }
+-float FileCopy::GetRate()
++float FileCopy::GetRate() const
+ {
+    if(!rate->Valid() || !put)
+       return 0;
+    return rate->Get();
+ }
+-const char *FileCopy::GetRateStr()
++const char *FileCopy::GetRateStr() const
+ {
+    if(!rate->Valid() || !put)
+       return "";
+    return rate->GetStrS();
+ }
+-off_t FileCopy::GetBytesRemaining()
++off_t FileCopy::GetBytesRemaining() const
+ {
+    if(!get)
+       return 0;
+@@ -557,14 +562,14 @@ off_t FileCopy::GetBytesRemaining()
+    }
+    return get->range_limit-GetPos();
+ }
+-const char *FileCopy::GetETAStr()
++const char *FileCopy::GetETAStr() const
+ {
+    off_t b=GetBytesRemaining();
+    if(b<0 || !put)
+       return "";
+    return rate_for_eta->GetETAStrSFromSize(b);
+ }
+-long FileCopy::GetETA(off_t b)
++long FileCopy::GetETA(off_t b) const
+ {
+    if(b<0 || !rate_for_eta->Valid())
+       return -1;
+@@ -658,6 +663,23 @@ void FileCopy::SetRange(off_t s,off_t lim)
+    put->SetRange(s,lim);
+ }
+ 
++bool FileCopy::CheckFileSizeAtEOF() const
++{
++   const long long size=GetSize();
++   if(size==NO_SIZE || size==NO_SIZE_YET)
++      return true;   // nothing to compare with.
++
++   long long range_limit=GetRangeLimit();
++   if(range_limit==FILE_END)
++      range_limit=size;
++
++   const long long pos=put_eof_pos;
++   if(pos>=range_limit)
++      return true;
++
++   debug((0,"expected pos=%lld, actual pos=%lld\n",range_limit,pos));
++   return false;
++}
+ 
+ // FileCopyPeer implementation
+ #undef super
+@@ -786,21 +808,23 @@ int FileCopyPeerFA::Do()
        return m;
     }
  
@@ -99,7 +219,7 @@ index f195b95..e0d25d8 100644
        res=session->Done();
        if(res==FA::IN_PROGRESS)
  	 return m;
-@@ -808,6 +810,7 @@ int FileCopyPeerFA::Do()
+@@ -808,6 +832,7 @@ int FileCopyPeerFA::Do()
        {
  	 session->Close();
  	 SetSize(NO_SIZE);
@@ -107,6 +227,58 @@ index f195b95..e0d25d8 100644
  	 return MOVED;
        }
        FileInfo *fi=info[0];
+diff --git a/src/FileCopy.h b/src/FileCopy.h
+index 3304365..86e80fd 100644
+--- a/src/FileCopy.h
++++ b/src/FileCopy.h
+@@ -187,23 +187,25 @@ private:
+    Ref<Buffer> line_buffer;
+    int  line_buffer_max;
+ 
++   bool CheckFileSizeAtEOF() const;
++
+ protected:
+    void RateAdd(int a);
+    void RateReset();
+    off_t bytes_count;
+ 
+ public:
+-   off_t GetPos();
+-   off_t GetSize();
+-   int  GetPercentDone();
+-   const char *GetPercentDoneStr();
+-   float GetRate();
+-   const char *GetRateStr();
+-   off_t GetBytesRemaining();
+-   long GetETA() { return GetETA(GetBytesRemaining()); }
+-   long GetETA(off_t b);
+-   const char *GetETAStr();
+-   const char *GetETAStrSFromTime(time_t t) { return rate_for_eta->GetETAStrSFromTime(t); }
++   off_t GetPos() const;
++   off_t GetSize() const;
++   int  GetPercentDone() const;
++   const char *GetPercentDoneStr() const;
++   float GetRate() const;
++   const char *GetRateStr() const;
++   off_t GetBytesRemaining() const;
++   long GetETA() const { return GetETA(GetBytesRemaining()); }
++   long GetETA(off_t b) const;
++   const char *GetETAStr() const;
++   const char *GetETAStrSFromTime(time_t t) const { return rate_for_eta->GetETAStrSFromTime(t); }
+    const char *GetStatus();
+    FgData *GetFgData(bool fg);
+    pid_t GetProcGroup();
+@@ -229,8 +231,8 @@ public:
+    void FailIfCannotSeek() { fail_if_cannot_seek=true; }
+    void SetRange(off_t s,off_t lim);
+    void SetRangeLimit(off_t lim) { get->range_limit=lim; }
+-   off_t GetRangeStart() { return get->range_start; }
+-   off_t GetRangeLimit() { return get->range_limit; }
++   off_t GetRangeStart() const { return get->range_start; }
++   off_t GetRangeLimit() const { return get->range_limit; }
+    void RemoveSourceLater() { remove_source_later=true; }
+    void RemoveTargetFirst() { remove_target_first=true; put->Resume(); put->RemoveFile(); }
+    void LineBuffered(int size=0x1000);
 diff --git a/src/FileSet.h b/src/FileSet.h
 index 51ccdf1..a2d69ae 100644
 --- a/src/FileSet.h
@@ -284,6 +456,43 @@ index 1b6495d..d0eb857 100644
  	 goto get_again;
        }
        // ok, now we may get portion of data
+diff --git a/src/OutputJob.cc b/src/OutputJob.cc
+index fc09524..ebaa090 100644
+--- a/src/OutputJob.cc
++++ b/src/OutputJob.cc
+@@ -228,7 +228,7 @@ OutputJob::OutputJob(const char *path, const char *a0, FileAccess *fa0)
+    Init(a0);
+ }
+ 
+-OutputJob::~OutputJob()
++void OutputJob::PrepareToDie()
+ {
+    Bg();
+    AcceptSig(SIGTERM);
+@@ -236,6 +236,10 @@ OutputJob::~OutputJob()
+    Delete(input);
+    if(input != output)
+       Delete(output);
++   input=0;
++   output=0;
++
++   super::PrepareToDie();
+ }
+ 
+ /* This is called to ask us "permission" to display a status line. */
+diff --git a/src/OutputJob.h b/src/OutputJob.h
+index f925b01..99e3292 100644
+--- a/src/OutputJob.h
++++ b/src/OutputJob.h
+@@ -71,7 +71,7 @@ class OutputJob : public Job
+ public:
+    OutputJob(FDStream *output, const char *a0);
+    OutputJob(const char *path, const char *a0, FA *fa=0);
+-   ~OutputJob();
++   void PrepareToDie();
+ 
+    /* Set the main filter: */
+    void SetFilter(const char *f) { filter.set(f); }
 diff --git a/src/commands.cc b/src/commands.cc
 index 6c24185..d70a7bc 100644
 --- a/src/commands.cc
