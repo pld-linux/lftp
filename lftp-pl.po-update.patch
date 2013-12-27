@@ -28,28 +28,28 @@
 @@ -889,19 +889,19 @@
  msgstr "%.2fM/s"
  
- #: src/Speedometer.cc:108
+ #: src/Speedometer.cc:103
 -#, fuzzy, c-format
 +#, c-format
  msgid "%.0f B/s"
 -msgstr "%.0fb/s"
 +msgstr "%.0f B/s"
  
- #: src/Speedometer.cc:110
+ #: src/Speedometer.cc:105
 -#, fuzzy, c-format
 +#, c-format
  msgid "%.1f KiB/s"
 -msgstr "%.1fK/s"
 +msgstr "%.1f KiB/s"
  
- #: src/Speedometer.cc:112
+ #: src/Speedometer.cc:107
 -#, fuzzy, c-format
 +#, c-format
  msgid "%.2f MiB/s"
 -msgstr "%.2fM/s"
 +msgstr "%.2f MiB/s"
  
- #: src/Speedometer.cc:134
+ #: src/Speedometer.cc:129
  msgid "eta:"
 @@ -2651,12 +2651,12 @@
  
