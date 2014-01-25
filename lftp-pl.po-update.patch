@@ -53,17 +53,17 @@
  msgid "eta:"
 @@ -2651,12 +2651,12 @@
  
- #: src/Torrent.cc:560
+ #: src/Torrent.cc:564
  msgid "announced via "
 -msgstr ""
 +msgstr "ogłoszony poprzez "
  
- #: src/Torrent.cc:572
+ #: src/Torrent.cc:576
 -#, fuzzy, c-format
 +#, c-format
  msgid "next announce in %s"
 -msgstr "następne żądanie w %s"
 +msgstr "następne ogłoszenie w %s"
  
- #: src/Torrent.cc:1591 src/Torrent.cc:1594
+ #: src/Torrent.cc:1595 src/Torrent.cc:1598
  #, c-format
