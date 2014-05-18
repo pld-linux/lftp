@@ -1,5 +1,25 @@
---- lftp-4.4.13/po/pl.po.orig	2013-11-26 08:00:22.000000000 +0100
-+++ lftp-4.4.13/po/pl.po	2013-11-28 19:19:47.984353101 +0100
+--- lftp-4.4.16/po/pl.po.orig	2014-05-07 10:47:35.000000000 +0200
++++ lftp-4.4.16/po/pl.po	2014-05-18 06:59:25.184321039 +0200
+@@ -1,16 +1,16 @@
+ # Polish translation of lftp.
+ # Copyright (C) 1998-2000 Free Software Foundation, Inc.
+ # Arkadiusz Miśkiewicz <misiek@pld-linux.org>, 1998-2004
+-# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2013
++# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2014
+ # some updates by Tomasz Kłoczko <kloczek@pld.org.pl>, 2003
+ # Adam Gołębiowski <adamg@pld-linux.org>, 2004-2006
+ #
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: lftp 4.4.6\n"
++"Project-Id-Version: lftp 4.4.16\n"
+ "Report-Msgid-Bugs-To: lftp-bugs@lftp.yar.ru\n"
+ "POT-Creation-Date: 2014-05-07 12:47+0400\n"
+-"PO-Revision-Date: 2013-05-19 08:40+0200\n"
++"PO-Revision-Date: 2014-05-18 06:54+0200\n"
+ "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
+ "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
+ "Language: pl\n"
 @@ -333,7 +333,7 @@
  
  #: src/FileCopy.cc:339
@@ -10,13 +30,13 @@
  #: src/FileCopy.cc:1103
  #, c-format
 @@ -681,12 +681,12 @@
- #: src/MirrorJob.cc:1664
+ #: src/MirrorJob.cc:1666
  #, c-format
  msgid "%s: ambiguous source directory (`%s' or `%s'?)\n"
 -msgstr ""
 +msgstr "%s: niejednoznaczny katalog źródłowy (`%s' czy `%s'?)\n"
  
- #: src/MirrorJob.cc:1686
+ #: src/MirrorJob.cc:1688
 -#, fuzzy, c-format
 +#, c-format
  msgid "%s: ambiguous target directory (`%s' or `%s'?)\n"
@@ -56,14 +76,14 @@
  #: src/Torrent.cc:564
  msgid "announced via "
 -msgstr ""
-+msgstr "ogłoszony poprzez "
++msgstr "rozgłoszony poprzez "
  
  #: src/Torrent.cc:576
 -#, fuzzy, c-format
 +#, c-format
  msgid "next announce in %s"
 -msgstr "następne żądanie w %s"
-+msgstr "następne ogłoszenie w %s"
++msgstr "następne rozgłoszenie w %s"
  
  #: src/Torrent.cc:1595 src/Torrent.cc:1598
  #, c-format
