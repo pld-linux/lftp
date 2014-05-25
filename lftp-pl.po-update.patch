@@ -1,89 +1,30 @@
---- lftp-4.4.16/po/pl.po.orig	2014-05-07 10:47:35.000000000 +0200
-+++ lftp-4.4.16/po/pl.po	2014-05-18 06:59:25.184321039 +0200
-@@ -1,16 +1,16 @@
- # Polish translation of lftp.
- # Copyright (C) 1998-2000 Free Software Foundation, Inc.
- # Arkadiusz Miśkiewicz <misiek@pld-linux.org>, 1998-2004
--# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2013
-+# Jakub Bogusz <qboosh@pld-linux.org>, 2002-2014
- # some updates by Tomasz Kłoczko <kloczek@pld.org.pl>, 2003
- # Adam Gołębiowski <adamg@pld-linux.org>, 2004-2006
- #
+--- lftp-4.5.0/po/pl.po.orig	2014-05-23 08:30:30.000000000 +0200
++++ lftp-4.5.0/po/pl.po	2014-05-25 06:59:09.598382130 +0200
+@@ -1152,12 +1152,10 @@
+ "uczyni dopełnianie nazw plików nie rozpoznającym wielkości liter.\n"
+ 
+ #: src/commands.cc:214
+-#, fuzzy
+ msgid "debug [OPTS] [<level>|off]"
+-msgstr "debug [<poziom>|off] [-o <plik>]"
++msgstr "debug [OPCJE] [<poziom>|off]"
+ 
+ #: src/commands.cc:215
+-#, fuzzy
  msgid ""
+ "Set debug level to given value or turn debug off completely.\n"
+ " -o <file>  redirect debug output to the file\n"
+@@ -1165,8 +1163,11 @@
+ " -p  show PID\n"
+ " -t  show timestamps\n"
  msgstr ""
--"Project-Id-Version: lftp 4.4.6\n"
-+"Project-Id-Version: lftp 4.4.16\n"
- "Report-Msgid-Bugs-To: lftp-bugs@lftp.yar.ru\n"
- "POT-Creation-Date: 2014-05-07 12:47+0400\n"
--"PO-Revision-Date: 2013-05-19 08:40+0200\n"
-+"PO-Revision-Date: 2014-05-18 06:54+0200\n"
- "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
- "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
- "Language: pl\n"
-@@ -333,7 +333,7 @@
+-"Ustaw poziom debugowania na daną wartość lub wyłącz zupełnie.\n"
+-" -o <plik>  przekieruj wyjście debugowania do pliku.\n"
++"Ustaw poziom diagnostyki na daną wartość lub wyłącz zupełnie.\n"
++" -o <plik>  przekieruj wyjście diagnostyki do pliku.\n"
++" -c  wypisuj kontekst komunikatu\n"
++" -p  wypisuj PID\n"
++" -t  wypisuj znaczniki czasu\n"
  
- #: src/FileCopy.cc:339
- msgid "file size decreased during transfer"
--msgstr ""
-+msgstr "rozmiar pliku zmniejszył się w trakcie przesyłania"
- 
- #: src/FileCopy.cc:1103
- #, c-format
-@@ -681,12 +681,12 @@
- #: src/MirrorJob.cc:1666
- #, c-format
- msgid "%s: ambiguous source directory (`%s' or `%s'?)\n"
--msgstr ""
-+msgstr "%s: niejednoznaczny katalog źródłowy (`%s' czy `%s'?)\n"
- 
- #: src/MirrorJob.cc:1688
--#, fuzzy, c-format
-+#, c-format
- msgid "%s: ambiguous target directory (`%s' or `%s'?)\n"
--msgstr "niejednoznaczny argument %s opcji %s"
-+msgstr "%s: niejednoznaczny katalog docelowy (`%s' czy `%s'?)\n"
- 
- #: src/NetAccess.cc:128
- #, c-format
-@@ -889,19 +889,19 @@
- msgstr "%.2fM/s"
- 
- #: src/Speedometer.cc:103
--#, fuzzy, c-format
-+#, c-format
- msgid "%.0f B/s"
--msgstr "%.0fb/s"
-+msgstr "%.0f B/s"
- 
- #: src/Speedometer.cc:105
--#, fuzzy, c-format
-+#, c-format
- msgid "%.1f KiB/s"
--msgstr "%.1fK/s"
-+msgstr "%.1f KiB/s"
- 
- #: src/Speedometer.cc:107
--#, fuzzy, c-format
-+#, c-format
- msgid "%.2f MiB/s"
--msgstr "%.2fM/s"
-+msgstr "%.2f MiB/s"
- 
- #: src/Speedometer.cc:129
- msgid "eta:"
-@@ -2651,12 +2651,12 @@
- 
- #: src/Torrent.cc:564
- msgid "announced via "
--msgstr ""
-+msgstr "rozgłoszony poprzez "
- 
- #: src/Torrent.cc:576
--#, fuzzy, c-format
-+#, c-format
- msgid "next announce in %s"
--msgstr "następne żądanie w %s"
-+msgstr "następne rozgłoszenie w %s"
- 
- #: src/Torrent.cc:1595 src/Torrent.cc:1598
- #, c-format
+ #: src/commands.cc:220
+ msgid "du [options] <dirs>"
