@@ -52,3 +52,22 @@ index 4eb1e4d..1ce4ea6 100644
        return MOVED;
     }
     reply->DropData(recv_buf);
+commit c6c77d67316126c79d446baff27aa3b3a2f8baa8
+Author: Alexander V. Lukyanov <lav@yars.free.net>
+Date:   Mon May 26 11:02:40 2014 +0400
+
+    fixed redirection handling
+
+diff --git a/src/FileCopy.cc b/src/FileCopy.cc
+index f7e774c..30c2bdb 100644
+--- a/src/FileCopy.cc
++++ b/src/FileCopy.cc
+@@ -1134,7 +1134,7 @@ int FileCopyPeerFA::Get_LL(int len)
+ 	    if(FAmode==FA::QUOTE_CMD)
+ 	       FAmode=FA::RETRIEVE;
+ 
+-	    xstring& loc=xstring::get_tmp(loc_c);
++	    xstring loc(loc_c);
+ 	    session->Close(); // loc_c is no longer valid.
+ 	    loc_c=0;
+ 
