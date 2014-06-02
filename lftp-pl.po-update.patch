@@ -28,3 +28,26 @@
  
  #: src/commands.cc:220
  msgid "du [options] <dirs>"
+@@ -2376,9 +2376,9 @@
+ msgstr "protokół nie jest obsługiwany"
+ 
+ #: src/ftpclass.cc:2131 src/ftpclass.cc:2226
+-#, fuzzy, c-format
++#, c-format
+ msgid "Data socket error (%s) - reconnecting"
+-msgstr "Błąd połączenia (%s) - powtórne łączenie"
++msgstr "Błąd gniazda danych (%s) - powtórne łączenie"
+ 
+ #: src/ftpclass.cc:2159
+ #, c-format
+@@ -2698,9 +2698,8 @@
+ msgstr "druga strona nieoczekiwanie zamknęła połączenie po %s"
+ 
+ #: src/Torrent.cc:2900 src/Torrent.cc:3017
+-#, fuzzy
+ msgid "peer unexpectedly closed connection"
+-msgstr "druga strona nieoczekiwanie zamknęła połączenie po %s"
++msgstr "druga strona nieoczekiwanie zamknęła połączenie"
+ 
+ #: src/Torrent.cc:2902 src/Torrent.cc:2903
+ msgid "peer closed connection (before handshake)"
