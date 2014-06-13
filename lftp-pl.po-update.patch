@@ -1,15 +1,15 @@
---- lftp-4.5.0/po/pl.po.orig	2014-05-23 08:30:30.000000000 +0200
-+++ lftp-4.5.0/po/pl.po	2014-05-25 06:59:09.598382130 +0200
+--- lftp-4.5.2/po/pl.po.orig	2014-06-11 09:52:55.000000000 +0200
++++ lftp-4.5.2/po/pl.po	2014-06-13 22:03:02.206369014 +0200
 @@ -1152,12 +1152,10 @@
  "uczyni dopełnianie nazw plików nie rozpoznającym wielkości liter.\n"
  
- #: src/commands.cc:214
+ #: src/commands.cc:216
 -#, fuzzy
  msgid "debug [OPTS] [<level>|off]"
 -msgstr "debug [<poziom>|off] [-o <plik>]"
 +msgstr "debug [OPCJE] [<poziom>|off]"
  
- #: src/commands.cc:215
+ #: src/commands.cc:217
 -#, fuzzy
  msgid ""
  "Set debug level to given value or turn debug off completely.\n"
@@ -26,9 +26,31 @@
 +" -p  wypisuj PID\n"
 +" -t  wypisuj znaczniki czasu\n"
  
- #: src/commands.cc:220
+ #: src/commands.cc:222
  msgid "du [options] <dirs>"
-@@ -2376,9 +2376,9 @@
+@@ -1477,12 +1478,10 @@
+ "podano nazw obu katalogów, to będą użyte bieżące katalogi lokalny i zdalny.\n"
+ 
+ #: src/commands.cc:339
+-#, fuzzy
+ msgid "mkdir [OPTS] <dirs>"
+-msgstr "mkdir [-p] <katalogi>"
++msgstr "mkdir [OPCJE] <katalogi>"
+ 
+ #: src/commands.cc:340
+-#, fuzzy
+ msgid ""
+ "Make remote directories\n"
+ " -p  make all levels of path\n"
+@@ -1490,6 +1489,7 @@
+ msgstr ""
+ "Utwórz zdalne katalogi\n"
+ " -p  tworzy wszystkie poziomy ścieżki\n"
++" -f  ciche działanie, bez komunikatów\n"
+ 
+ #: src/commands.cc:343
+ msgid "module name [args]"
+@@ -2378,9 +2378,9 @@
  msgstr "protokół nie jest obsługiwany"
  
  #: src/ftpclass.cc:2131 src/ftpclass.cc:2226
@@ -40,14 +62,14 @@
  
  #: src/ftpclass.cc:2159
  #, c-format
-@@ -2698,9 +2698,8 @@
+@@ -2700,9 +2700,8 @@
  msgstr "druga strona nieoczekiwanie zamknęła połączenie po %s"
  
- #: src/Torrent.cc:2900 src/Torrent.cc:3017
+ #: src/Torrent.cc:2902 src/Torrent.cc:3019
 -#, fuzzy
  msgid "peer unexpectedly closed connection"
 -msgstr "druga strona nieoczekiwanie zamknęła połączenie po %s"
 +msgstr "druga strona nieoczekiwanie zamknęła połączenie"
  
- #: src/Torrent.cc:2902 src/Torrent.cc:2903
+ #: src/Torrent.cc:2904 src/Torrent.cc:2905
  msgid "peer closed connection (before handshake)"
