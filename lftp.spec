@@ -23,7 +23,7 @@ Summary(pt_BR.UTF-8):	Sofisticado programa de transferência de arquivos (client
 Summary(zh_CN.UTF-8):	lftp 客户端程序
 Name:		lftp
 Version:	4.5.2
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	http://lftp.yar.ru/ftp/%{name}-%{version}.tar.xz
@@ -32,6 +32,7 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Source2:	%{name}.desktop
 Source3:	%{name}-icon.png
+Patch100:	%{name}-git.patch
 Patch0:		%{name}-makefile.patch
 Patch1:		%{name}-m4.patch
 Patch2:		aliases.patch
@@ -90,6 +91,7 @@ o arquivo FEATURES para uma lista mais detalhada.
 
 %prep
 %setup -q
+%patch100 -p1
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1

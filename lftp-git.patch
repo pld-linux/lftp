@@ -1,0 +1,398 @@
+diff --git a/NEWS b/NEWS
+index 70ab658..e0198df 100644
+--- a/NEWS
++++ b/NEWS
+@@ -2,7 +2,7 @@ Version 4.5.2 - 2014-06-11
+ 
+ * fixed a coredump on startup when compiled with certain gcc versions.
+ * mkdir -q option for quiet operation.
+-* glob --exists and --not-exist options.
++* glob --exist and --not-exist options.
+ * improved torrent status, show piece availability statistics.
+ * remove unconnectable torrent peers on trackerless torrents.
+ 
+diff --git a/src/DHT.cc b/src/DHT.cc
+index dc7fdf7..069257e 100644
+--- a/src/DHT.cc
++++ b/src/DHT.cc
+@@ -119,7 +119,7 @@ int DHT::Do()
+       if(nodes.count()>MAX_NODES) {
+ 	 // remove some nodes.
+ 	 int to_remove=nodes.count()-MAX_NODES;
+-	 for(Node *n=nodes.each_begin(); n; n=nodes.each_next()) {
++	 for(Node *n=nodes.each_begin(); n && to_remove>0; n=nodes.each_next()) {
+ 	    if(!n->IsGood() && !n->in_routes) {
+ 	       LogNote(9,"removing node %s (not good)",n->GetName());
+ 	       RemoveNode(n);
+@@ -518,6 +518,10 @@ void DHT::HandlePacket(BeNode *p,const sockaddr_u& src)
+       LogError(2,"got DHT reply with unknown `t' from %s",src.to_string());
+       return;
+    }
++   if(req->addr!=src) {
++      LogError(2,"got DHT reply from %s instead of %s",src.to_string(),req->addr.to_string());
++      return;
++   }
+ 
+    const xstring& q=req->data->lookup_str("q");
+    if(y.eq("r")) {
+@@ -747,10 +751,6 @@ DHT::Node *DHT::FoundNode(const xstring& id,const sockaddr_u& a,bool responded,S
+ void DHT::RemoveNode(Node *n)
+ {
+    RemoveRoute(n);
+-   for(const Request *r=sent_req.each_begin(); r; r=sent_req.each_next()) {
+-      if(r->addr==n->addr)
+-	 sent_req.remove(sent_req.each_key());
+-   }
+    node_by_addr.remove(n->addr.compact());
+    nodes.remove(n->id);
+ }
+diff --git a/src/Http.cc b/src/Http.cc
+index bcf5961..dffb1c2 100644
+--- a/src/Http.cc
++++ b/src/Http.cc
+@@ -869,11 +869,6 @@ void Http::HandleHeaderLine(const char *name,const char *value)
+       if(bs<0) // try to workaround broken servers
+ 	 bs+=0x100000000LL;
+       body_size=bs;
+-      if(pos==0 && mode!=STORE && mode!=MAKE_DIR && !inflate)
+-	 entity_size=body_size;
+-      if(pos==0 && opt_size && H_2XX(status_code) && !inflate)
+-	 *opt_size=body_size;
+-
+       if(mode==ARRAY_INFO && H_2XX(status_code)
+       && xstrcmp(last_method,"PROPFIND"))
+       {
+@@ -967,19 +962,7 @@ void Http::HandleHeaderLine(const char *name,const char *value)
+       return;
+ 
+    case_hh("Content-Encoding",'C')
+-      if(!QueryBool("decode",hostname))
+-	 return;
+-      if(!strcmp(value,"deflate")
+-      || !strcmp(value,"gzip") || !strcmp(value,"compress")
+-      || !strcmp(value,"x-gzip") || !strcmp(value,"x-compress")) {
+-	 // inflated size if unknown beforehand
+-	 entity_size=NO_SIZE;
+-	 if(opt_size)
+-	    *opt_size=NO_SIZE;
+-	 // start the inflation
+-	 inflate=new DirectedBuffer(DirectedBuffer::GET);
+-	 inflate->SetTranslator(new DataInflator());
+-      }
++      content_encoding.set(value);
+       return;
+ 
+    case_hh("Accept-Ranges",'A')
+@@ -1712,6 +1695,26 @@ int Http::Do()
+ 	 return MOVED;
+       }
+ 
++      // Many servers send application/x-gzip with x-gzip encoding,
++      // don't decode in such a case.
++      if(CompressedContentEncoding() && !CompressedContentType()
++      && QueryBool("decode",hostname)) {
++	 // inflated size is unknown beforehand
++	 entity_size=NO_SIZE;
++	 if(opt_size)
++	    *opt_size=NO_SIZE;
++	 // start the inflation
++	 inflate=new DirectedBuffer(DirectedBuffer::GET);
++	 inflate->SetTranslator(new DataInflator());
++      }
++      // sometimes it's possible to derive entity size from body size.
++      if(entity_size==NO_SIZE && body_size!=NO_SIZE
++      && pos==0 && mode!=STORE && mode!=MAKE_DIR && !inflate) {
++	 entity_size=body_size;
++	 if(opt_size && H_2XX(status_code))
++	    *opt_size=body_size;
++      }
++
+       LogNote(9,_("Receiving body..."));
+       rate_limit=new RateLimit(hostname);
+       if(real_pos<0) // assume Range: did not work
+@@ -2580,6 +2583,27 @@ Http::atotm (const char *time_string)
+    return ut;
+ }
+ 
++bool Http::IsCompressed(const char *s)
++{
++   static const char *const values[] = {
++      "x-gzip", "gzip", "deflate", "compress", "x-compress", NULL
++   };
++   for(const char *const *v=values; *v; v++)
++      if(!strcmp(s,*v))
++	 return true;
++   return false;
++}
++
++bool Http::CompressedContentEncoding() const
++{
++   return content_encoding && IsCompressed(content_encoding);
++}
++bool Http::CompressedContentType() const
++{
++   static const char app[]="application/";
++   return entity_content_type && entity_content_type.begins_with(app)
++      && IsCompressed(entity_content_type+sizeof(app)-1);
++}
+ 
+ #include "modconfig.h"
+ #ifdef MODULE_PROTO_HTTP
+diff --git a/src/Http.h b/src/Http.h
+index 131254d..c481ec9 100644
+--- a/src/Http.h
++++ b/src/Http.h
+@@ -140,6 +140,10 @@ class Http : public NetAccess
+ 
+    Ref<DirectedBuffer> inflate;
+    SMTaskRef<IOBuffer> propfind;
++   xstring_c content_encoding;
++   static bool IsCompressed(const char *s);
++   bool CompressedContentEncoding() const;
++   bool CompressedContentType() const;
+ 
+    bool no_ranges;
+    bool seen_ranges_bytes;
+diff --git a/src/Torrent.cc b/src/Torrent.cc
+index 50b1049..ffe6433 100644
+--- a/src/Torrent.cc
++++ b/src/Torrent.cc
+@@ -1565,7 +1565,7 @@ void Torrent::ScanPeers() {
+       const char *blacklist_time="2h";
+       if(peer->Failed()) {
+ 	 LogError(2,"peer %s failed: %s",peer->GetName(),peer->ErrorText());
+-      } else if(peer->Disconnected()) {
++      } else if(peer->Disconnected() && peer->ActivityTimedOut()) {
+ 	 LogNote(4,"peer %s disconnected",peer->GetName());
+       } else if(peer->myself) {
+ 	 LogNote(4,"removing myself-connected peer %s",peer->GetName());
+@@ -1574,6 +1574,7 @@ void Torrent::ScanPeers() {
+ 	 LogNote(4,"removing duplicate peer %s",peer->GetName());
+       } else if(complete && peer->Seed()) {
+ 	 LogNote(4,"removing unneeded peer %s (%s)",peer->GetName(),peers[i]->Status());
++	 blacklist_time="1d";
+       } else {
+ 	 // keep the peer.
+ 	 continue;
+@@ -3548,8 +3549,7 @@ void Torrent::Dispatch(const xstring& info_hash,int sock,const sockaddr_u *remot
+ {
+    Torrent *t=FindTorrent(info_hash);
+    if(!t) {
+-      LogError(3,"peer %s sent unknown info_hash=%s in handshake",
+-	 remote_addr->to_string(),info_hash.hexdump());
++      LogError(3,_("peer sent unknown info_hash=%s in handshake"),info_hash.hexdump());
+       close(sock);
+       Delete(recv_buf);
+       return;
+@@ -3560,7 +3560,8 @@ void Torrent::Dispatch(const xstring& info_hash,int sock,const sockaddr_u *remot
+ TorrentDispatcher::TorrentDispatcher(int s,const sockaddr_u *a)
+    : sock(s), addr(*a),
+      recv_buf(new IOBufferFDStream(new FDStream(sock,"<input-socket>"),IOBuffer::GET)),
+-     timeout_timer(60)
++     timeout_timer(60),
++     peer_name(addr.to_xstring())
+ {
+ }
+ TorrentDispatcher::~TorrentDispatcher()
+diff --git a/src/Torrent.h b/src/Torrent.h
+index 0015311..a9943c6 100644
+--- a/src/Torrent.h
++++ b/src/Torrent.h
+@@ -785,11 +785,12 @@ class TorrentDispatcher : public SMTask, protected ProtoLog
+    const sockaddr_u addr;
+    SMTaskRef<IOBuffer> recv_buf;
+    Timer timeout_timer;
++   xstring_c peer_name;
+ public:
+    TorrentDispatcher(int s,const sockaddr_u *a);
+    ~TorrentDispatcher();
+    int Do();
+-   const char *GetLogContext() { return "torrent"; }
++   const char *GetLogContext() { return peer_name; }
+ };
+ 
+ #include "Job.h"
+diff --git a/src/ftpclass.cc b/src/ftpclass.cc
+index aa4cf6a..51114b5 100644
+--- a/src/ftpclass.cc
++++ b/src/ftpclass.cc
+@@ -952,6 +952,7 @@ Ftp::Connection::Connection(const char *c)
+    : closure(c), send_cmd_buffer(DirectedBuffer::PUT)
+ {
+    control_sock=-1;
++   telnet_layer_send=0;
+    data_sock=-1;
+    aborted_data_sock=-1;
+ #if USE_SSL
+@@ -1559,6 +1560,7 @@ int   Ftp::Do()
+ 	 TuneConnectionAfterFEAT();
+       SendSiteGroup();
+       SendSiteIdle();
++      SendSiteCommands();
+ 
+       if(!home_auto)
+       {
+@@ -2648,6 +2650,23 @@ void Ftp::SendSiteGroup()
+    conn->SendCmd2("SITE GROUP",group);
+    expect->Push(Expect::IGNORE);
+ }
++void Ftp::SendSiteCommands()
++{
++   const char *site_commands=QueryStringWithUserAtHost("site");
++   if(!site_commands)
++      return;
++   char *cmd=alloca_strdup(site_commands);
++   for(;;) {
++      char *sep=strstr(cmd,"  ");
++      if(sep)
++	 *sep=0;
++      conn->SendCmd2("SITE",cmd);
++      expect->Push(Expect::IGNORE);
++      if(!sep)
++	 break;
++      cmd=sep+2;
++   }
++}
+ 
+ void Ftp::SendArrayInfoRequests()
+ {
+diff --git a/src/ftpclass.h b/src/ftpclass.h
+index c83c208..d762086 100644
+--- a/src/ftpclass.h
++++ b/src/ftpclass.h
+@@ -327,6 +327,7 @@ private:
+    void	SendSiteIdle();
+    void	SendAcct();
+    void	SendSiteGroup();
++   void	SendSiteCommands();
+    void	SendUTimeRequest();
+    void SendAuth(const char *auth);
+    void TuneConnectionAfterFEAT();
+diff --git a/src/network.h b/src/network.h
+index 441f3ef..22af2e9 100644
+--- a/src/network.h
++++ b/src/network.h
+@@ -74,9 +74,12 @@ union sockaddr_u
+ #endif
+       return sizeof(*this);
+    }
+-   int operator==(const sockaddr_u &o) const {
++   bool operator==(const sockaddr_u &o) const {
+       return !memcmp(this,&o,addr_len());
+    }
++   bool operator!=(const sockaddr_u &o) const {
++      return memcmp(this,&o,addr_len());
++   }
+    const char *address() const;
+    int port() const;
+    int bind_to(int s) const { return bind(s,&sa,addr_len()); }
+diff --git a/src/resource.cc b/src/resource.cc
+index 6f63ed7..4aa071a 100644
+--- a/src/resource.cc
++++ b/src/resource.cc
+@@ -181,6 +181,7 @@ static ResType lftp_vars[] = {
+    {"ftp:fxp-passive-source",	 "no",	  ResMgr::BoolValidate,ResMgr::NoClosure},
+    {"ftp:fxp-passive-sscn",	 "yes",   ResMgr::BoolValidate,ResMgr::NoClosure},
+    {"ftp:home",			 "",	  0,0},
++   {"ftp:site"			 "",	  0,0},
+    {"ftp:site-group",		 "",	  0,0},
+    {"ftp:lang",			 "",	  0,0},
+    {"ftp:list-empty-ok",	 "no",	  0,0},
+diff --git a/src/xstring.cc b/src/xstring.cc
+index 76f6d40..9eadeca 100644
+--- a/src/xstring.cc
++++ b/src/xstring.cc
+@@ -24,37 +24,6 @@
+ #include "trio.h"
+ #include "c-ctype.h"
+ 
+-int xstrcmp(const char *s1,const char *s2)
+-{
+-   if(s1==s2)
+-      return 0;
+-   if(s1==0 || s2==0)
+-      return 1;
+-   return strcmp(s1,s2);
+-}
+-int xstrncmp(const char *s1,const char *s2,size_t len)
+-{
+-   if(s1==s2 || len==0)
+-      return 0;
+-   if(s1==0 || s2==0)
+-      return 1;
+-   return strncmp(s1,s2,len);
+-}
+-int xstrcasecmp(const char *s1,const char *s2)
+-{
+-   if(s1==s2)
+-      return 0;
+-   if(s1==0 || s2==0)
+-      return 1;
+-   return strcasecmp(s1,s2);
+-}
+-size_t xstrlen(const char *s)
+-{
+-   if(s==0)
+-      return 0;
+-   return strlen(s);
+-}
+-
+ void xstring::get_space(size_t s)
+ {
+    get_space2(s,32);
+diff --git a/src/xstring.h b/src/xstring.h
+index 4dee3fb..264baf6 100644
+--- a/src/xstring.h
++++ b/src/xstring.h
+@@ -62,10 +62,36 @@ CDECL int vsnprintf(char *,size_t,const char *,va_list);
+ CDECL int snprintf(char *,size_t,const char *,...);
+ #endif
+ 
+-int xstrcmp(const char *s1,const char *s2);
+-int xstrncmp(const char *s1,const char *s2,size_t len);
+-int xstrcasecmp(const char *s1,const char *s2);
+-size_t xstrlen(const char *s);
++static inline int xstrcmp(const char *s1,const char *s2)
++{
++   if(s1==s2)
++      return 0;
++   if(s1==0 || s2==0)
++      return 1;
++   return strcmp(s1,s2);
++}
++static inline int xstrncmp(const char *s1,const char *s2,size_t len)
++{
++   if(s1==s2 || len==0)
++      return 0;
++   if(s1==0 || s2==0)
++      return 1;
++   return strncmp(s1,s2,len);
++}
++static inline int xstrcasecmp(const char *s1,const char *s2)
++{
++   if(s1==s2)
++      return 0;
++   if(s1==0 || s2==0)
++      return 1;
++   return strcasecmp(s1,s2);
++}
++static inline size_t xstrlen(const char *s)
++{
++   if(s==0)
++      return 0;
++   return strlen(s);
++}
+ 
+ #include <stdarg.h>
+ #include "xmalloc.h"
+@@ -112,8 +138,8 @@ public:
+    void truncate(size_t n=0) { if(buf) buf[n]=0; }
+    char *borrow() { return replace_value(buf,(char*)0); }
+    bool begins_with(const char *s) const { return !strncmp(buf,s,strlen(s)); };
+-   bool eq(const char *s) { return !xstrcmp(buf,s); }
+-   bool ne(const char *s) { return !eq(s); }
++   bool eq(const char *s) const { return !xstrcmp(buf,s); }
++   bool ne(const char *s) const { return !eq(s); }
+    size_t length() const { return xstrlen(buf); }
+    void set_length(size_t n) { if(buf) buf[n]=0; }
+ 
