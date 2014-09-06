@@ -1,6 +1,18 @@
---- lftp-4.5.4/po/pl.po.orig	2014-08-21 20:25:44.739016903 +0200
-+++ lftp-4.5.4/po/pl.po	2014-08-21 20:25:48.529016743 +0200
-@@ -2620,16 +2620,15 @@
+--- lftp-4.5.5/po/pl.po.orig	2014-09-04 13:36:02.000000000 +0200
++++ lftp-4.5.5/po/pl.po	2014-09-06 11:43:37.575651082 +0200
+@@ -598,9 +598,9 @@
+ msgstr "%sWykryto %d bł$ąd|ędy|ędów$\n"
+ 
+ #: src/MirrorJob.cc:224
+-#, fuzzy, c-format
++#, c-format
+ msgid "Finished %s"
+-msgstr "[%u] Zakończono. %s\n"
++msgstr "Zakończono %s"
+ 
+ #: src/MirrorJob.cc:314 src/MirrorJob.cc:493 src/MirrorJob.cc:1013
+ #, c-format
+@@ -2625,16 +2625,15 @@
  #: src/resource.cc:69
  #, c-format
  msgid "%s must be one of: "
