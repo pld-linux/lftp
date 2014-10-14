@@ -1,5 +1,5 @@
---- lftp-4.5.5/po/pl.po.orig	2014-09-04 13:36:02.000000000 +0200
-+++ lftp-4.5.5/po/pl.po	2014-09-06 11:43:37.575651082 +0200
+--- lftp-4.6.0/po/pl.po.orig	2014-10-13 11:44:41.000000000 +0200
++++ lftp-4.6.0/po/pl.po	2014-10-14 21:17:58.248991968 +0200
 @@ -598,9 +598,9 @@
  msgstr "%sWykryto %d bł$ąd|ędy|ędów$\n"
  
@@ -12,7 +12,16 @@
  
  #: src/MirrorJob.cc:314 src/MirrorJob.cc:493 src/MirrorJob.cc:1013
  #, c-format
-@@ -2625,16 +2625,15 @@
+@@ -701,7 +701,7 @@
+ #: src/MirrorJob.cc:1773
+ #, c-format
+ msgid "%s: source directory is required (mirror:require-source is set)\n"
+-msgstr ""
++msgstr "%s: katalog źródłowy jest wymagany (mirror:require-source jest ustawione)\n"
+ 
+ #: src/NetAccess.cc:148
+ #, c-format
+@@ -2630,16 +2630,15 @@
  #: src/resource.cc:69
  #, c-format
  msgid "%s must be one of: "
@@ -32,3 +41,38 @@
  
  #: src/resource.cc:115
  msgid "only PUT and POST values allowed"
+@@ -2682,12 +2681,12 @@
+ #: src/Torrent.cc:1088
+ #, c-format
+ msgid "%d file$|s$ found, now scanning %s"
+-msgstr ""
++msgstr "Znaleziono %d plik$|i|ów$, teraz przeszukiwanie %s"
+ 
+ #: src/Torrent.cc:1089
+-#, fuzzy, c-format
++#, c-format
+ msgid "%d file$|s$ found"
+-msgstr "Znaleziono %d adres$|y|ów$"
++msgstr "Znaleziono %d plik$|i|ów$"
+ 
+ #: src/Torrent.cc:1983 src/Torrent.cc:1993
+ #, c-format
+@@ -2769,14 +2768,14 @@
+ msgstr "Karmienie w tle...\n"
+ 
+ #: src/Torrent.cc:4046
+-#, fuzzy, c-format
++#, c-format
+ msgid "%s: --share conflicts with --output-directory.\n"
+-msgstr "%s: podsumowanie konfliktów z --max-depth=%i\n"
++msgstr "%s: --share jest w konflikcie z --output-directory.\n"
+ 
+ #: src/Torrent.cc:4088
+-#, fuzzy, c-format
++#, c-format
+ msgid "%s: Please specify a file or directory to share.\n"
+-msgstr "%s: Proszę podać plik z metadanymi lub URL.\n"
++msgstr "%s: Proszę podać plik lub katalog do współdzielenia.\n"
+ 
+ #: src/Torrent.cc:4090
+ #, c-format
