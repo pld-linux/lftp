@@ -4,7 +4,8 @@
 # Conditional build:
 %bcond_without	ssl	# do not use SSL
 %bcond_with	gnutls	# use gnutls, otherwise openssl is used when ssl is on
-%bcond_without	dante	# Dante-based SOCKS support
+# better just preload it instead forcing linking
+%bcond_with	dante	# Dante-based SOCKS support
 # broken currently https://www.dnssec-tools.org/trac/ticket/173
 %bcond_with	dnssec	# DNSSEC local validation
 #
@@ -23,7 +24,7 @@ Summary(pt_BR.UTF-8):	Sofisticado programa de transferência de arquivos (client
 Summary(zh_CN.UTF-8):	lftp 客户端程序
 Name:		lftp
 Version:	4.6.0
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	http://lftp.yar.ru/ftp/%{name}-%{version}.tar.xz
