@@ -107,10 +107,7 @@ o arquivo FEATURES para uma lista mais detalhada.
 %{!?with_gnutls:echo 'AC_DEFUN([AM_PATH_LIBGNUTLS],[/bin/true])' > m4/gnutls.m4}
 
 %build
-# libtoolize --force removed those files since libtool 2.4.3
-%{__mv} build-aux/snippet{,.pre-libtool}
 %{__libtoolize}
-%{__mv} build-aux/snippet{.pre-libtool,}
 %{__gettextize}
 %{__aclocal} -I m4
 %{__autoconf}
