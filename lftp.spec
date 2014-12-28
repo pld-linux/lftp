@@ -48,7 +48,7 @@ BuildRequires:	automake
 %{?with_dante:BuildRequires:	dante-devel}
 %{?with_dnssec:BuildRequires:	dnssec-tools-devel}
 BuildRequires:	expat-devel
-BuildRequires:	gettext-devel >= 0.14.2
+BuildRequires:	gettext-tools >= 0.14.2
 %{?with_gnutls:BuildRequires:	gnutls-devel >= 1.2.5}
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 1:1.4.2-9
