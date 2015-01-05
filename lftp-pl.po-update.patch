@@ -3,7 +3,7 @@
 @@ -598,9 +598,9 @@
  msgstr "%sWykryto %d bł$ąd|ędy|ędów$\n"
  
- #: src/MirrorJob.cc:224
+ #: src/MirrorJob.cc:230
 -#, fuzzy, c-format
 +#, c-format
  msgid "Finished %s"
