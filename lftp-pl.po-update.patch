@@ -1,5 +1,5 @@
---- lftp-4.6.0/po/pl.po.orig	2014-10-13 11:44:41.000000000 +0200
-+++ lftp-4.6.0/po/pl.po	2014-10-14 21:17:58.248991968 +0200
+--- lftp-4.6.1/po/pl.po.orig	2014-12-29 13:34:30.000000000 +0100
++++ lftp-4.6.1/po/pl.po	2015-01-08 15:53:41.790301269 +0100
 @@ -598,9 +598,9 @@
  msgstr "%sWykryto %d bł$ąd|ędy|ędów$\n"
  
@@ -10,10 +10,34 @@
 -msgstr "[%u] Zakończono. %s\n"
 +msgstr "Zakończono %s"
  
- #: src/MirrorJob.cc:314 src/MirrorJob.cc:493 src/MirrorJob.cc:1013
+ #: src/MirrorJob.cc:320 src/MirrorJob.cc:505 src/MirrorJob.cc:1103
  #, c-format
-@@ -701,7 +701,7 @@
- #: src/MirrorJob.cc:1773
+@@ -628,9 +628,9 @@
+ msgstr "Usuwanie starego lokalnego pliku `%s'"
+ 
+ #: src/MirrorJob.cc:473
+-#, fuzzy, c-format
++#, c-format
+ msgid "Scanning directory `%s'"
+-msgstr "Tworzenie katalogu `%s'"
++msgstr "Przeszukiwanie katalogu `%s'"
+ 
+ #: src/MirrorJob.cc:475
+ #, c-format
+@@ -673,9 +673,9 @@
+ msgstr "Usuwanie starego katalogu `%s'"
+ 
+ #: src/MirrorJob.cc:1252
+-#, fuzzy, c-format
++#, c-format
+ msgid "Removing source file `%s'"
+-msgstr "Usuwanie starego pliku `%s'"
++msgstr "Usuwanie pliku źródłowego `%s'"
+ 
+ #: src/MirrorJob.cc:1272
+ #, c-format
+@@ -711,7 +711,7 @@
+ #: src/MirrorJob.cc:1917
  #, c-format
  msgid "%s: source directory is required (mirror:require-source is set)\n"
 -msgstr ""
@@ -21,7 +45,7 @@
  
  #: src/NetAccess.cc:148
  #, c-format
-@@ -2630,16 +2630,15 @@
+@@ -2640,16 +2640,15 @@
  #: src/resource.cc:69
  #, c-format
  msgid "%s must be one of: "
@@ -41,7 +65,7 @@
  
  #: src/resource.cc:115
  msgid "only PUT and POST values allowed"
-@@ -2682,12 +2681,12 @@
+@@ -2692,12 +2691,12 @@
  #: src/Torrent.cc:1088
  #, c-format
  msgid "%d file$|s$ found, now scanning %s"
@@ -57,7 +81,7 @@
  
  #: src/Torrent.cc:1983 src/Torrent.cc:1993
  #, c-format
-@@ -2769,14 +2768,14 @@
+@@ -2779,14 +2778,14 @@
  msgstr "Karmienie w tle...\n"
  
  #: src/Torrent.cc:4046
