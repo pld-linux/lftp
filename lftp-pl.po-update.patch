@@ -27,7 +27,7 @@
 @@ -673,9 +673,9 @@
  msgstr "Usuwanie starego katalogu `%s'"
  
- #: src/MirrorJob.cc:1252
+ #: src/MirrorJob.cc:1253
 -#, fuzzy, c-format
 +#, c-format
  msgid "Removing source file `%s'"
