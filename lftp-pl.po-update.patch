@@ -1,6 +1,18 @@
---- lftp-4.6.1/po/pl.po.orig	2014-12-29 13:34:30.000000000 +0100
-+++ lftp-4.6.1/po/pl.po	2015-01-08 15:53:41.790301269 +0100
-@@ -598,9 +598,9 @@
+--- lftp-4.6.2/po/pl.po.orig	2015-04-16 12:51:34.000000000 +0200
++++ lftp-4.6.2/po/pl.po	2015-05-18 17:27:10.200684537 +0200
+@@ -42,9 +42,9 @@
+ msgstr "%s: opcja '%s' jest niejednoznaczna; możliwości:"
+ 
+ #: lib/getopt.c:619
+-#, fuzzy, c-format
++#, c-format
+ msgid "%s: option '%s' is ambiguous\n"
+-msgstr "%s: opcja '-W %s' jest niejednoznaczna\n"
++msgstr "%s: opcja '%s' jest niejednoznaczna\n"
+ 
+ #: lib/getopt.c:654 lib/getopt.c:658
+ #, c-format
+@@ -603,9 +603,9 @@
  msgstr "%sWykryto %d bł$ąd|ędy|ędów$\n"
  
  #: src/MirrorJob.cc:230
@@ -10,9 +22,9 @@
 -msgstr "[%u] Zakończono. %s\n"
 +msgstr "Zakończono %s"
  
- #: src/MirrorJob.cc:320 src/MirrorJob.cc:505 src/MirrorJob.cc:1103
+ #: src/MirrorJob.cc:320 src/MirrorJob.cc:505 src/MirrorJob.cc:1104
  #, c-format
-@@ -628,9 +628,9 @@
+@@ -633,9 +633,9 @@
  msgstr "Usuwanie starego lokalnego pliku `%s'"
  
  #: src/MirrorJob.cc:473
@@ -24,7 +36,7 @@
  
  #: src/MirrorJob.cc:475
  #, c-format
-@@ -673,9 +673,9 @@
+@@ -678,9 +678,9 @@
  msgstr "Usuwanie starego katalogu `%s'"
  
  #: src/MirrorJob.cc:1253
@@ -34,10 +46,10 @@
 -msgstr "Usuwanie starego pliku `%s'"
 +msgstr "Usuwanie pliku źródłowego `%s'"
  
- #: src/MirrorJob.cc:1272
+ #: src/MirrorJob.cc:1273
  #, c-format
-@@ -711,7 +711,7 @@
- #: src/MirrorJob.cc:1917
+@@ -716,7 +716,7 @@
+ #: src/MirrorJob.cc:1918
  #, c-format
  msgid "%s: source directory is required (mirror:require-source is set)\n"
 -msgstr ""
@@ -45,7 +57,29 @@
  
  #: src/NetAccess.cc:148
  #, c-format
-@@ -2640,16 +2640,15 @@
+@@ -1243,9 +1243,8 @@
+ "     --exclude=WZÓR    nie uwzględniaj plików pasujących do WZÓR\n"
+ 
+ #: src/commands.cc:237
+-#, fuzzy
+ msgid "edit [OPTS] <file>"
+-msgstr "mget [OPTS] <pliki>"
++msgstr "edit [OPTS] <plik>"
+ 
+ #: src/commands.cc:238
+ msgid ""
+@@ -1254,6 +1253,10 @@
+ " -k  keep the temporary file\n"
+ " -o <temp>  explicit temporary file location\n"
+ msgstr ""
++"Pobranie pliku zdalnego w tymczasowe miejsce, uruchomienie na nim lokalnego\n"
++"edytora i przesłanie pliku z powrotem, jeśli został zmieniony.\n"
++" -k  zachowanie pliku tymczasowego"
++" -o <temp>  jawna lokalizacja pliku tymczasowego\n"
+ 
+ #: src/commands.cc:243
+ msgid "exit [<code>|bg]"
+@@ -2658,16 +2661,15 @@
  #: src/resource.cc:69
  #, c-format
  msgid "%s must be one of: "
@@ -65,7 +99,7 @@
  
  #: src/resource.cc:115
  msgid "only PUT and POST values allowed"
-@@ -2692,12 +2691,12 @@
+@@ -2710,12 +2712,12 @@
  #: src/Torrent.cc:1088
  #, c-format
  msgid "%d file$|s$ found, now scanning %s"
@@ -81,7 +115,7 @@
  
  #: src/Torrent.cc:1983 src/Torrent.cc:1993
  #, c-format
-@@ -2779,14 +2778,14 @@
+@@ -2797,14 +2799,14 @@
  msgstr "Karmienie w tle...\n"
  
  #: src/Torrent.cc:4046
