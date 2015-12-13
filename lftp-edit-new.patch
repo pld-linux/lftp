@@ -1,0 +1,99 @@
+From 9dbf23ac89031129bdf39d8dd461c83617e0a2cb Mon Sep 17 00:00:00 2001
+From: "Alexander V. Lukyanov" <lavv17f@gmail.com>
+Date: Thu, 5 Nov 2015 16:14:38 +0300
+Subject: [PATCH] edit: allow creating a new file
+
+---
+ src/EditJob.cc | 13 ++++---------
+ src/EditJob.h  |  2 +-
+ 2 files changed, 5 insertions(+), 10 deletions(-)
+
+diff --git a/src/EditJob.cc b/src/EditJob.cc
+index 0ab731d..5946c72 100644
+--- a/src/EditJob.cc
++++ b/src/EditJob.cc
+@@ -33,11 +33,11 @@ void EditJob::Finish(int e)
+       unlink(temp_file);
+ }
+ 
+-int EditJob::HandleJob(JobRef<Job>& j)
++int EditJob::HandleJob(JobRef<Job>& j,bool fail)
+ {
+    if(!j->Done())
+       return STALL;
+-   if(j->ExitCode())
++   if(j->ExitCode() && fail)
+       Finish(1);
+    RemoveWaiting(j);
+    return MOVED;
+@@ -82,18 +82,13 @@ int EditJob::Do()
+       return MOVED;
+    }
+    if(get) {
+-      if(!HandleJob(get))
++      if(!HandleJob(get,false))
+ 	 return m;
+       if(done)
+ 	 return MOVED;
+       struct stat st;
+       int res=stat(temp_file,&st);
+-      if(res<0) {
+-	 perror(temp_file);
+-	 Finish(1);
+-	 return MOVED;
+-      }
+-      mtime=st.st_mtime;
++      mtime=(res>=0?st.st_mtime:NO_DATE);
+       xstring cmd("${EDITOR:-vi} ");
+       cmd.append(shell_encode(temp_file));
+       editor=new SysCmdJob(cmd);
+diff --git a/src/EditJob.h b/src/EditJob.h
+index d527965..c70b250 100644
+--- a/src/EditJob.h
++++ b/src/EditJob.h
+@@ -34,7 +34,7 @@ class EditJob : public SessionJob
+    int exit_code;
+    bool done;
+ 
+-   int HandleJob(JobRef<Job>& j);
++   int HandleJob(JobRef<Job>& j, bool fail=true);
+    void Finish(int code);
+ 
+ public:
+From 7840bb4716f2365f8de9067b5482144ca3522e16 Mon Sep 17 00:00:00 2001
+From: "Alexander V. Lukyanov" <lavv17f@gmail.com>
+Date: Thu, 5 Nov 2015 16:15:13 +0300
+Subject: [PATCH] get: rename the backup file back if retrieval fails.
+
+---
+ src/GetJob.cc | 16 +++++++++++-----
+ 1 file changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/src/GetJob.cc b/src/GetJob.cc
+index 4419255..0ff8999 100644
+--- a/src/GetJob.cc
++++ b/src/GetJob.cc
+@@ -42,12 +42,18 @@ int   GetJob::Do()
+ {
+    int m=STALL;
+ 
+-   if(cp && cp->Done() && !cp->Error())
++   if(cp && cp->Done())
+    {
+-      // now we can delete old file, since there is new one
+-      RemoveBackupFile();
+-      if(file_mode!=NO_MODE && local)
+-	 chmod(local->full_name,file_mode);
++      if(cp->Error()) {
++	 // in case of errors, move the backup to original location
++	 if(local && backup_file)
++	    rename(backup_file,local->full_name);
++      } else {
++	 // now we can delete the old file, since there is a new one
++	 RemoveBackupFile();
++	 if(file_mode!=NO_MODE && local)
++	    chmod(local->full_name,file_mode);
++      }
+    }
+    if(super::Do()==MOVED)
+       m=MOVED;
