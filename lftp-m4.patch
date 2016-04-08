@@ -23,3 +23,31 @@
          expat_lib_flags="-lexpat"
          run_expat_test="yes"
      elif test "$expat_requested" = "yes"; then
+--- lftp-4.7.1/m4/ax_check_zlib.m4~	2016-02-20 14:57:52.000000000 +0100
++++ lftp-4.7.1/m4/ax_check_zlib.m4	2016-04-08 23:22:04.957699442 +0200
+@@ -105,7 +105,6 @@ then
+   ZLIB_OLD_LDFLAGS=$LDFLAGS
+   ZLIB_OLD_CPPFLAGS=$CPPFLAGS
+   if test -n "${ZLIB_HOME}"; then
+-        LDFLAGS="$LDFLAGS -L${ZLIB_HOME}/lib"
+         CPPFLAGS="$CPPFLAGS -I${ZLIB_HOME}/include"
+   fi
+   AC_LANG_SAVE
+@@ -120,7 +119,6 @@ then
+     #
+     m4_ifblank([$1],[
+                 CPPFLAGS="$CPPFLAGS -I${ZLIB_HOME}/include"
+-                LDFLAGS="$LDFLAGS -L${ZLIB_HOME}/lib"
+                 LIBS="-lz $LIBS"
+                 AC_DEFINE([HAVE_LIBZ], [1],
+                           [Define to 1 if you have `z' library (-lz)])
+--- lftp-4.7.1/m4/lftp_lib_readline.m4~	2016-02-20 14:57:52.000000000 +0100
++++ lftp-4.7.1/m4/lftp_lib_readline.m4	2016-04-08 23:22:41.891914476 +0200
+@@ -107,7 +107,6 @@ AC_DEFUN([lftp_LIB_READLINE],
+ 	if test -f "$readline_include_dir/readline/readline.h"; then
+ 	    readline_include_dir="$readline_include_dir/readline"
+ 	fi
+-        readline_ld_flags="-L$readline_prefix/lib"
+         readline_lib_flags="-lreadline"
+         run_readline_test="yes"
+     elif test "$readline_requested" = "yes"; then
