@@ -70,3 +70,14 @@
  				lftp_cv_openssl="$lftp_cv_openssl OPENSSL_CPPFLAGS=-I$found_loc/include"
  			fi
  			break;
+--- lftp-4.7.1/configure.ac~	2016-04-08 23:03:03.000000000 +0200
++++ lftp-4.7.1/configure.ac	2016-04-08 23:49:53.853139448 +0200
+@@ -306,7 +306,7 @@ fi
+ 
+ AX_CHECK_ZLIB([
+    AC_SUBST([ZLIB],[-lz])
+-   AC_SUBST([ZLIB_LDFLAGS],["-L${ZLIB_HOME}/lib"])
++   AC_SUBST([ZLIB_LDFLAGS],[""])
+    AC_SUBST([ZLIB_CPPFLAGS],["-I${ZLIB_HOME}/include"])
+ ],[
+    AC_MSG_ERROR([cannot find -lz library, install zlib-devel package])
