@@ -51,3 +51,22 @@
          readline_lib_flags="-lreadline"
          run_readline_test="yes"
      elif test "$readline_requested" = "yes"; then
+--- lftp-4.7.1/m4/ssl.m4~	2016-02-20 14:57:52.000000000 +0100
++++ lftp-4.7.1/m4/ssl.m4	2016-04-08 23:27:39.145077021 +0200
+@@ -10,7 +10,6 @@ AC_CACHE_VAL(lftp_cv_openssl,
+ 		old_CPPFLAGS="$CPPFLAGS"
+ 		LIBS="$LIBS -lssl -lcrypto"
+ 		if test $loc != default; then
+-			LDFLAGS="$LDFLAGS -L$loc/lib"
+ 			CPPFLAGS="$CPPFLAGS -I$loc/include"
+ 		fi
+ 		AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <openssl/ssl.h>
+@@ -21,7 +20,7 @@ AC_CACHE_VAL(lftp_cv_openssl,
+ 		if test $found_loc != "none"; then
+ 			lftp_cv_openssl="OPENSSL_LIBS=\"-lssl -lcrypto\""
+ 			if test $found_loc != default; then
+-				lftp_cv_openssl="$lftp_cv_openssl OPENSSL_LDFLAGS=\"-L$found_loc/lib -R$found_loc/lib\""
++				lftp_cv_openssl="$lftp_cv_openssl OPENSSL_LDFLAGS=\"-R$found_loc/lib\""
+ 				lftp_cv_openssl="$lftp_cv_openssl OPENSSL_CPPFLAGS=-I$found_loc/include"
+ 			fi
+ 			break;
