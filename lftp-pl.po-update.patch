@@ -1,106 +1,34 @@
---- lftp-4.7.2/po/pl.po.orig	2016-05-18 15:15:30.000000000 +0200
-+++ lftp-4.7.2/po/pl.po	2016-05-20 18:21:08.478031851 +0200
-@@ -320,7 +320,7 @@
+--- lftp-4.7.3/po/pl.po.orig	2016-07-15 12:55:45.000000000 +0200
++++ lftp-4.7.3/po/pl.po	2016-09-13 20:50:36.057779236 +0200
+@@ -749,7 +749,6 @@
+ "%s: katalog źródłowy jest wymagany (mirror:require-source jest ustawione)\n"
  
- #: src/FileCopy.cc:208
- msgid "no progress timeout"
--msgstr ""
-+msgstr "bez limitu czasu postępu"
- 
- #: src/FileCopy.cc:236
- msgid "cannot seek on data source"
-@@ -702,9 +702,9 @@
- msgstr "Usuwanie starego katalogu `%s'"
- 
- #: src/MirrorJob.cc:1240
--#, fuzzy, c-format
-+#, c-format
- msgid "Removing source directory `%s'"
--msgstr "Usuwanie starego katalogu `%s'"
-+msgstr "Usuwanie katalogu źródłowego `%s'"
- 
- #: src/MirrorJob.cc:1306
- #, c-format
-@@ -1503,7 +1503,6 @@
- msgstr "lftp [OPCJE] <site>"
- 
- #: src/commands.cc:287
+ #: src/MirrorJob.cc:2170
 -#, fuzzy
  msgid ""
- "`lftp' is the first command executed by lftp after rc files\n"
- " -f <file>           execute commands from the file and exit\n"
-@@ -1522,12 +1521,15 @@
- "`lftp' jest pierwszą komendą uruchamianą przez lftp po plikach rc\n"
- " -f <plik>           wykonanie poleceń z pliku <plik> i wyjście\n"
- " -c <komenda>        wykonanie polecenia <komenda> i wyjście\n"
--" --help              wyświetl pomoc i zakończ działanie\n"
--" --version           wyświetl wersję lftp i zakończ działanie\n"
-+" --norc              bez wykonywania plików rc z katalogu domowego\n"
-+" --help              wyświetlenie pomocy i zakończenia działania\n"
-+" --version           wyświetlenie wersji lftp i zakończenie działania\n"
- "Inne opcje są takie same jak dla polecenia `open'\n"
- " -e <komenda>        wykonanie polecenia <komenda> od razu po wybieraniu\n"
--" -u <user>[,<hasło>] użyj user/hasło do uwierzytelnienia\n"
--" -p <port>           użyj portu <port> do połączeniu\n"
-+" -u <user>[,<hasło>] użycie user/hasło do uwierzytelnienia\n"
-+" -p <port>           użycie portu <port> do połączenia\n"
-+" -s <slot>           przypisanie połączenia do przegródki <slot>\n"
-+" -d                  włączenie trybu diagnostycznego\n"
- " <site>              nazwa hosta, URL lub nazwa zakładki\n"
+ "\n"
+ "Mirror specified remote directory to local directory\n"
+@@ -797,7 +796,7 @@
+ "     --no-umask         nie używaj umaski dla praw plików\n"
+ " -R, --reverse          przeciwny mirror (umieszczaj pliki)\n"
+ " -L, --dereference      pozyskuj dowiązania symboliczne jako pliki\n"
+-" -N, --newer-than PLIK  pozyskuj pliki tylko nowsze niż PLIK\n"
++" -N, --newer-than=PLIK  pozyskuj pliki tylko nowsze niż PLIK\n"
+ " -P, --parallel[=N]     pozyskuj N plików równolegle\n"
+ " -i RX, --include RX    dołącz pasujące pliki\n"
+ " -x RX, --exclude RX    wyłącz pasujące pliki\n"
+@@ -805,12 +804,12 @@
+ " -v, --verbose[=N]      dodatkowe komunikaty\n"
+ "     --log=PLIK         zapisz wykonywane polecenia lftp do PLIK\n"
+ "     --script=PLIK      zapisz polecenia lftp do PLIK ale nie wykonuj ich\n"
+-"     --just-print       to samo co --script=-\n"
+-"     --dry-run          to samo co --script=-\n"
++"     --just-print, --dry-run    to samo co --script=-\n"
+ "\n"
+ "Przy opcji -R, pierwszy katalog jest lokalnym, a drugi zdalnym. Jeżeli nie\n"
+ "podano nazwy drugiego katalogu, używana jest nazwa pierwszego. Jeżeli nie\n"
+ "podano nazw obu katalogów, to będą użyte bieżące katalogi lokalny i zdalny.\n"
++"Pełną listę opcji można znaleźć w lftp(1).\n"
  
- #: src/commands.cc:300
-@@ -1684,7 +1686,6 @@
- msgstr "open [OPCJE] <site>"
- 
- #: src/commands.cc:348
--#, fuzzy
- msgid ""
- "Select a server, URL or bookmark\n"
- " -e <cmd>            execute the command just after selecting\n"
-@@ -1694,11 +1695,12 @@
- " -d                  switch on debugging mode\n"
- " <site>              host name, URL or bookmark name\n"
- msgstr ""
--"Wybierz server, URL lub zakładkę\n"
--" -e <cmd>            wykonaj zaraz po wyborze polecenie <cmd>\n"
--" -u <user>[,<pass>]  użyj user/pass do uwierzytelnienia\n"
--" -p <port>           użyj portu <port> do połączenia\n"
--" -s <slot>           przypisz połączenie do <slotu>\n"
-+"Wybór serwera, URL-a lub zakładki\n"
-+" -e <cmd>            wykonanie polecenia zaraz po wyborze\n"
-+" -u <user>[,<hasło>] użycie user/hasło do uwierzytelnienia\n"
-+" -p <port>           użycie portu <port> do połączenia\n"
-+" -s <slot>           przypisanie połączenia do przegródki <slot>\n"
-+" -d                  włączenie trybu diagnostycznego\n"
- " <site>              nazwa hosta, URL lub zakładka\n"
- 
- #: src/commands.cc:355
-@@ -2074,7 +2076,7 @@
- #: src/commands.cc:852
- #, c-format
- msgid "%s: -c, -f, -v, -h conflict with other `open' options and arguments\n"
--msgstr ""
-+msgstr "%s: -c, -f, -v i -h są w konflikcie z pozostałymi opcjami i argumentami `open'\n"
- 
- #: src/commands.cc:951
- #, c-format
-@@ -2454,9 +2456,8 @@
- msgstr "MLSD jest zablokowane przez ftp:use-mlsd"
- 
- #: src/ftpclass.cc:1649
--#, fuzzy
- msgid "MFF and SITE CHMOD are not supported by this site"
--msgstr "SITE CHMOD nie jest obsługiwane przez ten serwer"
-+msgstr "MFF i SITE CHMOD nie są obsługiwane przez ten serwer"
- 
- #: src/ftpclass.cc:1654
- msgid "MLST and MLSD are not supported by this site"
-@@ -2700,7 +2701,7 @@
- #: src/pgetJob.cc:173
- #, c-format
- msgid "pget: warning: space allocation for %s (%lld bytes) failed: %s\n"
--msgstr ""
-+msgstr "pget: uwaga: przydzielenie miejsca dla %s (bajtów: %lld) nie powiodło się: %s\n"
- 
- #: src/pgetJob.cc:234
+ #: src/NetAccess.cc:148
  #, c-format
