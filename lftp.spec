@@ -2,6 +2,7 @@
 # - package itself defaults to GNUTLS (prefferring over openssl) should we too?
 #
 # Conditional build:
+%bcond_without	tests
 %bcond_without	ssl	# do not use SSL
 %bcond_with	gnutls	# use gnutls, otherwise openssl is used when ssl is on
 # better just preload it instead forcing linking
@@ -118,6 +119,8 @@ CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 	--with%{!?with_gnutls:out}-gnutls
 
 %{__make}
+
+%{?with_tests:%{__make} check}
 
 %install
 rm -rf $RPM_BUILD_ROOT
