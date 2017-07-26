@@ -49,20 +49,17 @@ BuildRequires:	automake
 BuildRequires:	expat-devel
 BuildRequires:	gettext-tools >= 0.14.2
 %{?with_gnutls:BuildRequires:	gnutls-devel >= 1.2.5}
+BuildRequires:	libidn-devel
 BuildRequires:	libstdc++-devel
-BuildRequires:	libtool >= 1:1.4.2-9
+BuildRequires:	libtool >= 2:2
 BuildRequires:	ncurses-devel >= 5.2
 %{?with_openssl:BuildRequires:	openssl-devel >= 0.9.7d}
 BuildRequires:	pkgconfig
-BuildRequires:	readline-devel >= 4.2
+BuildRequires:	readline-devel >= 5.0
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
+BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_gcc_ver	%(%{__cc} -dumpversion | cut -b 1)
-%if %{_gcc_ver} == 2
-%define		__cxx		"%{__cc}"
-%endif
 
 %description
 LFTP is a shell-like command line FTP/HTTP client. The main two
@@ -96,7 +93,7 @@ o arquivo FEATURES para uma lista mais detalhada.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-#%patch3 -p1
+%patch3 -p1
 %patch4 -p1
 
 %{__rm} po/stamp-po

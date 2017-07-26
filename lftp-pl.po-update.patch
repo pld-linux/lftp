@@ -1,34 +1,404 @@
---- lftp-4.7.3/po/pl.po.orig	2016-07-15 12:55:45.000000000 +0200
-+++ lftp-4.7.3/po/pl.po	2016-09-13 20:50:36.057779236 +0200
-@@ -749,7 +749,6 @@
- "%s: katalog źródłowy jest wymagany (mirror:require-source jest ustawione)\n"
+--- lftp-4.8.0/po/pl.po.orig	2017-07-26 18:10:55.796962031 +0200
++++ lftp-4.8.0/po/pl.po	2017-07-26 18:11:09.263628544 +0200
+@@ -7,7 +7,7 @@
+ #
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: lftp 4.7.2\n"
++"Project-Id-Version: lftp 4.8.0\n"
+ "Report-Msgid-Bugs-To: lftp-bugs@lftp.yar.ru\n"
+ "POT-Creation-Date: 2017-07-10 15:55+0300\n"
+ "PO-Revision-Date: 2016-05-20 15:00+0200\n"
+@@ -37,29 +37,29 @@
+ msgstr "Nieznany błąd systemowy"
  
- #: src/MirrorJob.cc:2170
+ #: lib/getopt.c:278
+-#, fuzzy, c-format
++#, c-format
+ msgid "%s: option '%s%s' is ambiguous\n"
+-msgstr "%s: opcja '%s' jest niejednoznaczna\n"
++msgstr "%s: opcja '%s%s' jest niejednoznaczna\n"
+ 
+ #: lib/getopt.c:284
+-#, fuzzy, c-format
++#, c-format
+ msgid "%s: option '%s%s' is ambiguous; possibilities:"
+-msgstr "%s: opcja '%s' jest niejednoznaczna; możliwości:"
++msgstr "%s: opcja '%s%s' jest niejednoznaczna; możliwości:"
+ 
+ #: lib/getopt.c:319
+-#, fuzzy, c-format
++#, c-format
+ msgid "%s: unrecognized option '%s%s'\n"
+-msgstr "%s: nieznana opcja '%c%s'\n"
++msgstr "%s: nieznana opcja '%s%s'\n"
+ 
+ #: lib/getopt.c:345
+-#, fuzzy, c-format
++#, c-format
+ msgid "%s: option '%s%s' doesn't allow an argument\n"
+-msgstr "%s: opcja '%c%s' nie może mieć argumentów\n"
++msgstr "%s: opcja '%s%s' nie może mieć argumentów\n"
+ 
+ #: lib/getopt.c:360
+-#, fuzzy, c-format
++#, c-format
+ msgid "%s: option '%s%s' requires an argument\n"
+-msgstr "%s: opcja '--%s' musi mieć argument\n"
++msgstr "%s: opcja '%s%s' musi mieć argument\n"
+ 
+ #: lib/getopt.c:621
+ #, c-format
+@@ -105,24 +105,22 @@
+ msgstr "pamięć wyczerpana"
+ 
+ #: src/ArgV.cc:107
+-#, fuzzy
+ msgid "option requires an argument"
+-msgstr "%s: opcja '--%s' musi mieć argument\n"
++msgstr "opcja musi mieć argument"
+ 
+ #: src/ArgV.cc:109 src/ArgV.cc:118
+-#, fuzzy
+ msgid "invalid option"
+-msgstr "%s: błędna opcja -- '%c'\n"
++msgstr "błędna opcja"
+ 
+ #: src/ArgV.cc:114
+-#, fuzzy, c-format
++#, c-format
+ msgid "option `%s' requires an argument"
+-msgstr "%s: opcja '--%s' musi mieć argument\n"
++msgstr "opcja `%s' musi mieć argument"
+ 
+ #: src/ArgV.cc:116
+-#, fuzzy, c-format
++#, c-format
+ msgid "unrecognized option `%s'"
+-msgstr "%s: nieznana opcja '--%s'\n"
++msgstr "nieznana opcja `%s'"
+ 
+ #: src/attach.h:138
+ #, c-format
+@@ -625,7 +623,6 @@
+ msgstr "glob [OPCJE] <komenda> <argumenty>"
+ 
+ #: src/commands.cc:270
 -#, fuzzy
  msgid ""
- "\n"
- "Mirror specified remote directory to local directory\n"
-@@ -797,7 +796,7 @@
- "     --no-umask         nie używaj umaski dla praw plików\n"
- " -R, --reverse          przeciwny mirror (umieszczaj pliki)\n"
- " -L, --dereference      pozyskuj dowiązania symboliczne jako pliki\n"
--" -N, --newer-than PLIK  pozyskuj pliki tylko nowsze niż PLIK\n"
-+" -N, --newer-than=PLIK  pozyskuj pliki tylko nowsze niż PLIK\n"
- " -P, --parallel[=N]     pozyskuj N plików równolegle\n"
- " -i RX, --include RX    dołącz pasujące pliki\n"
- " -x RX, --exclude RX    wyłącz pasujące pliki\n"
-@@ -805,12 +804,12 @@
- " -v, --verbose[=N]      dodatkowe komunikaty\n"
- "     --log=PLIK         zapisz wykonywane polecenia lftp do PLIK\n"
- "     --script=PLIK      zapisz polecenia lftp do PLIK ale nie wykonuj ich\n"
--"     --just-print       to samo co --script=-\n"
--"     --dry-run          to samo co --script=-\n"
-+"     --just-print, --dry-run    to samo co --script=-\n"
- "\n"
- "Przy opcji -R, pierwszy katalog jest lokalnym, a drugi zdalnym. Jeżeli nie\n"
- "podano nazwy drugiego katalogu, używana jest nazwa pierwszego. Jeżeli nie\n"
- "podano nazw obu katalogów, to będą użyte bieżące katalogi lokalny i zdalny.\n"
-+"Pełną listę opcji można znaleźć w lftp(1).\n"
+ "Expand wildcards and run specified command.\n"
+ "Options can be used to expand wildcards to list of files, directories,\n"
+@@ -639,14 +636,15 @@
+ " --not-exist  return zero exit code when the patterns expand to an empty "
+ "list\n"
+ msgstr ""
+-"Dopasuj maski i uruchom określone komendy.\n"
++"Dopasuj maski i uruchom podane polecenie.\n"
+ "Opcje mogą być użyte do dopasowywania masek do listy plików, katalogów,\n"
+-"lub obu typów. Wybór typu nie jest godny zaufania i zależy od serwera.\n"
+-"Jeśli typ nie został rozpoznany, to także zostanie on umieszczony na "
+-"liście.\n"
++"lub obu typów. Wybór wg typu nie jest godny zaufania i zależy od serwera.\n"
++"Jeśli typ nie został rozpoznany, obiekt zostanie umieszczony na liście.\n"
+ " -f  zwykłe pliki (standardowo)\n"
+ " -d  katalogi\n"
+-" -a  wszystkie pliki\n"
++" -a  wszystkie typy\n"
++" --exist      zerowy kod wyjścia, jeżeli pasująca lista jest niepusta\n"
++" --not-exist  zerowy kod wyjścia, jeżeli pasująca lista jest pusta\n"
  
- #: src/NetAccess.cc:148
+ #: src/commands.cc:279
+ msgid "help [<cmd>]"
+@@ -855,15 +853,16 @@
+ msgstr "Zmień nazwę z <plik1> na <plik2>\n"
+ 
+ #: src/commands.cc:346
+-#, fuzzy
+ msgid "mmv [OPTS] <files> <target-dir>"
+-msgstr "mget [OPCJE] <pliki>"
++msgstr "mmv [OPCJE] <pliki> <katalog-docelowy>"
+ 
+ #: src/commands.cc:347
+ msgid ""
+ "Move <files> to <target-directory> with wildcard expansion\n"
+ " -O <dir>  specifies the target directory (alternative way)\n"
+ msgstr ""
++"Przeniesienie <plików> do <katalogu-docelowego> z rozwinięciem masek\n"
++" -O <katalog>  określenie katalogu docelowego (sposób alternatywny)\n"
+ 
+ #: src/commands.cc:349
+ msgid "[re]nlist [<args>]"
+@@ -1124,9 +1123,8 @@
+ " -d  list only default values, not necessary current ones\n"
+ msgstr ""
+ "Ustaw zmienną na podaną wartość. Jeśli nie podano wartości usuń zmienną.\n"
+-"Nazwa zmiennej występuje w formacie ``nazwa/element_zamykający'', gdzie\n"
+-"elem_zamykający może być dokładnym ustawieniem aplikacji. Szczegóły w "
+-"lftp(1).\n"
++"Nazwa zmiennej występuje w formacie ,,nazwa/dopełnienie'', gdzie\n"
++"dopełnienie może być dokładnym ustawieniem aplikacji. Szczegóły w lftp(1).\n"
+ "Jeśli komenda wywoływana jest bez podawania nazwy zmiennej wtedy tylko\n"
+ "zmienione ustawienia są wyświetlane. Jako opcje można podać:\n"
+ " -a  wyświetl wszystkie ustawienia włączając ustawienia standardowe\n"
+@@ -1354,14 +1352,14 @@
+ msgstr "Użycie: %s [OPCJE] pliki...\n"
+ 
+ #: src/commands.cc:1785 src/commands.cc:1814
+-#, fuzzy, c-format
++#, c-format
+ msgid "%s: %s: Number expected. "
+-msgstr "%s: -n: Oczekiwano liczby. "
++msgstr "%s: %s: Oczekiwano liczby. "
+ 
+ #: src/commands.cc:1834
+-#, fuzzy, c-format
++#, c-format
+ msgid "%s: --continue conflicts with --remove-target.\n"
+-msgstr "%s: --share jest w konflikcie z --only-new.\n"
++msgstr "%s: --continue jest w konflikcie z --remove-target.\n"
+ 
+ #: src/commands.cc:1844 src/commands.cc:1920
  #, c-format
+@@ -1447,9 +1445,9 @@
+ msgstr "%s: wykryto pętle zastoju\n"
+ 
+ #: src/commands.cc:2552
+-#, fuzzy, c-format
++#, c-format
+ msgid "Usage: %s [OPTS] <files> <target-dir>\n"
+-msgstr "Użycie: %s [OPCJE] plik\n"
++msgstr "Użycie: %s [OPCJE] <pliki> <katalog-docelowy>\n"
+ 
+ #: src/commands.cc:2614 src/commands.cc:2944
+ #, c-format
+@@ -1791,9 +1789,8 @@
+ msgstr "execlp(/bin/sh) nieudane: %s\n"
+ 
+ #: src/Filter.cc:414
+-#, fuzzy
+ msgid "file already exists and xfer:clobber is unset"
+-msgstr "%s: %s: plik aktualnie istnieje i xfer:clobber jest nie ustawione\n"
++msgstr "plik już istnieje i xfer:clobber nie jest ustawione"
+ 
+ #: src/FindJobDu.cc:101
+ msgid "total"
+@@ -1924,9 +1921,8 @@
+ msgstr "MLST i MLSD nie są obsługiwane przez ten serwer"
+ 
+ #: src/ftpclass.cc:1988
+-#, fuzzy
+ msgid "SITE SYMLINK is not supported by the server"
+-msgstr "MLST i MLSD nie są obsługiwane przez ten serwer"
++msgstr "SITE SYMLINK nie jest obsługiwane przez ten serwer"
+ 
+ #: src/ftpclass.cc:2161
+ msgid "unsupported network protocol"
+@@ -2197,7 +2193,7 @@
+ #: src/lftp_ssl.cc:1395
+ #, c-format
+ msgid "No certificate presented by %s.\n"
+-msgstr ""
++msgstr "Serwer %s nie przedstawił certyfikatu.\n"
+ 
+ #: src/LocalAccess.cc:604 src/NetAccess.cc:663
+ msgid "Getting directory contents"
+@@ -2365,6 +2361,7 @@
+ "%s: multiple --file or --directory options must have the same base "
+ "directory\n"
+ msgstr ""
++"%s: wielokrotne opcje --file lub --directory muszą mieć ten sam katalog bazowy\n"
+ 
+ #: src/MirrorJob.cc:2134
+ #, c-format
+@@ -2398,6 +2395,17 @@
+ "\n"
+ "See the man page lftp(1) for a complete documentation.\n"
+ msgstr ""
++"\n"
++"Mirror wskazanego zdalnego katalogu do lokalnego katalogu\n"
++"\n"
++" -R, --reverse          przeciwny mirror (umieszczaj pliki)\n"
++"Dużo innych opcji jest opisanych na stronie podręcznika lftp(1).\n"
++"\n"
++"Przy opcji -R, pierwszy katalog jest lokalnym, a drugi zdalnym. Jeżeli nie\n"
++"podano nazwy drugiego katalogu, używany jest ostatni człon pierwszego. Jeżeli\n"
++"nie podano nazw obu katalogów, będą użyte bieżące katalogi lokalny i zdalny.\n"
++"\n"
++"Pełna dokumentacja znajduje się na stronie podręcznika lftp(1).\n"
+ 
+ #: src/mkdirJob.cc:128
+ #, c-format
+@@ -2466,7 +2474,7 @@
+ #: src/PatternSet.cc:110
+ #, c-format
+ msgid "regular expression `%s': %s"
+-msgstr ""
++msgstr "wyrażenie regularne `%s': %s"
+ 
+ #: src/pgetJob.cc:127
+ msgid "pget: falling back to plain get"
+@@ -2590,12 +2598,11 @@
+ 
+ #: src/ResMgr.cc:893
+ msgid "no closure defined for this setting"
+-msgstr "nie zdefiniowano zamknięcia dla tego ustawienia"
++msgstr "nie zdefiniowano dopełnienia dla tego ustawienia"
+ 
+ #: src/ResMgr.cc:899
+-#, fuzzy
+ msgid "a closure is required for this setting"
+-msgstr "nie zdefiniowano zamknięcia dla tego ustawienia"
++msgstr "do tego ustawienia wymagane jest dopełnienie"
+ 
+ #: src/Resolver.cc:232
+ msgid "host name resolve timeout"
+@@ -2608,7 +2615,7 @@
+ 
+ #: src/Resolver.cc:323
+ msgid "Link-local IPv6 address should have a scope"
+-msgstr ""
++msgstr "Adres IPv6 typu link-local powinien mieć zasięg"
+ 
+ #: src/Resolver.cc:741
+ msgid "DNS resolution not trusted."
+@@ -2775,18 +2782,17 @@
+ msgstr "pozostało: "
+ 
+ #: src/SSH_Access.cc:64
+-#, fuzzy
+ msgid "Password required"
+-msgstr "Hasło: "
++msgstr "Wymagane hasło"
+ 
+ #: src/SSH_Access.cc:69
+ msgid "Login incorrect"
+-msgstr ""
++msgstr "Uwierzytelnienie nie powiodło się"
+ 
+ #: src/SSH_Access.cc:163
+-#, fuzzy, c-format
++#, c-format
+ msgid "Disconnecting"
+-msgstr "Łączenie się..."
++msgstr "Rozłączanie"
+ 
+ #: src/SysCmdJob.cc:73
+ #, c-format
+@@ -2795,19 +2801,19 @@
+ 
+ #: src/TimeDate.cc:156
+ msgid "day"
+-msgstr ""
++msgstr "dni"
+ 
+ #: src/TimeDate.cc:157
+ msgid "hour"
+-msgstr ""
++msgstr "godz"
+ 
+ #: src/TimeDate.cc:158
+ msgid "minute"
+-msgstr ""
++msgstr "min"
+ 
+ #: src/TimeDate.cc:159
+ msgid "second"
+-msgstr ""
++msgstr "sek"
+ 
+ #: src/Torrent.cc:613
+ msgid "announced via "
+@@ -2977,93 +2983,3 @@
+ #, c-format
+ msgid "Received valid info about %d IPv6 peer$|s$"
+ msgstr "Otrzymano poprawne informacje o %d użytkownik$u|ach|ach$ IPv6"
+-
+-#~ msgid "%s: option '--%s' doesn't allow an argument\n"
+-#~ msgstr "%s: opcja '--%s' nie może mieć argumentów\n"
+-
+-#~ msgid "%s: unrecognized option '--%s'\n"
+-#~ msgstr "%s: nieznana opcja '--%s'\n"
+-
+-#~ msgid "%s: option '-W %s' is ambiguous\n"
+-#~ msgstr "%s: opcja '-W %s' jest niejednoznaczna\n"
+-
+-#~ msgid "%s: option '-W %s' doesn't allow an argument\n"
+-#~ msgstr "%s: opcja '-W %s' nie może mieć argumentów\n"
+-
+-#~ msgid "%s: option '-W %s' requires an argument\n"
+-#~ msgstr "%s: opcja '-W %s' musi mieć argument\n"
+-
+-#~ msgid "Usage: mv <file1> <file2>\n"
+-#~ msgstr "Użycie: mv <plik1> <plik2>\n"
+-
+-#, fuzzy
+-#~ msgid "number"
+-#~ msgstr "nieprawidłowy numer"
+-
+-#, fuzzy
+-#~ msgid ""
+-#~ "\n"
+-#~ "Mirror specified remote directory to local directory\n"
+-#~ "\n"
+-#~ " -c, --continue         continue a mirror job if possible\n"
+-#~ " -e, --delete           delete files not present at remote site\n"
+-#~ "     --delete-first     delete old files before transferring new ones\n"
+-#~ " -s, --allow-suid       set suid/sgid bits according to remote site\n"
+-#~ "     --allow-chown      try to set owner and group on files\n"
+-#~ "     --ignore-time      ignore time when deciding whether to download\n"
+-#~ " -n, --only-newer       download only newer files (-c won't work)\n"
+-#~ " -r, --no-recursion     don't go to subdirectories\n"
+-#~ " -p, --no-perms         don't set file permissions\n"
+-#~ "     --no-umask         don't apply umask to file modes\n"
+-#~ " -R, --reverse          reverse mirror (put files)\n"
+-#~ " -L, --dereference      download symbolic links as files\n"
+-#~ " -N, --newer-than=SPEC  download only files newer than specified time\n"
+-#~ " -P, --parallel[=N]     download N files in parallel\n"
+-#~ " -i RX, --include RX    include matching files\n"
+-#~ " -x RX, --exclude RX    exclude matching files\n"
+-#~ "                        RX is extended regular expression\n"
+-#~ " -v, --verbose[=N]      verbose operation\n"
+-#~ "     --log=FILE         write lftp commands being executed to FILE\n"
+-#~ "     --script=FILE      write lftp commands to FILE, but don't execute "
+-#~ "them\n"
+-#~ "     --just-print, --dry-run    same as --script=-\n"
+-#~ "\n"
+-#~ "When using -R, the first directory is local and the second is remote.\n"
+-#~ "If the second directory is omitted, basename of first directory is used.\n"
+-#~ "If both directories are omitted, current local and remote directories are "
+-#~ "used.\n"
+-#~ "See lftp(1) for a complete list of options.\n"
+-#~ msgstr ""
+-#~ "\n"
+-#~ "Mirror wskazanego zdalnego katalogu do lokalnego katalogu\n"
+-#~ "\n"
+-#~ " -c, --continue         kontynuuj pracę mirrora o ile to możliwe\n"
+-#~ " -e, --delete           skasuj pliki nie występujące w zdalnym serwisie\n"
+-#~ "     --delete-first     skasuj stare pliki przed ściągnięciem nowych\n"
+-#~ " -s, --allow-suid       ustaw bity suid/sgid zgodnie ze zdalnymi\n"
+-#~ "     --allow-chown      próbuj ustawiać właściciela i grupę na plikach\n"
+-#~ "     --ignore-time      ignoruj czas przy decydowaniu czy ściągać\n"
+-#~ " -n, --only-newer       pozyskuj tylko nowsze pliki (-c nie działa)\n"
+-#~ " -r, --no-recursion     nie wchodź do podkatalogów\n"
+-#~ " -p, --no-perms         nie ustawiaj praw dostępu do plików\n"
+-#~ "     --no-umask         nie używaj umaski dla praw plików\n"
+-#~ " -R, --reverse          przeciwny mirror (umieszczaj pliki)\n"
+-#~ " -L, --dereference      pozyskuj dowiązania symboliczne jako pliki\n"
+-#~ " -N, --newer-than PLIK  pozyskuj pliki tylko nowsze niż PLIK\n"
+-#~ " -P, --parallel[=N]     pozyskuj N plików równolegle\n"
+-#~ " -i RX, --include RX    dołącz pasujące pliki\n"
+-#~ " -x RX, --exclude RX    wyłącz pasujące pliki\n"
+-#~ "                        RX jest rozszerzonym wyrażeniem regularnym\n"
+-#~ " -v, --verbose[=N]      dodatkowe komunikaty\n"
+-#~ "     --log=PLIK         zapisz wykonywane polecenia lftp do PLIK\n"
+-#~ "     --script=PLIK      zapisz polecenia lftp do PLIK ale nie wykonuj "
+-#~ "ich\n"
+-#~ "     --just-print       to samo co --script=-\n"
+-#~ "     --dry-run          to samo co --script=-\n"
+-#~ "\n"
+-#~ "Przy opcji -R, pierwszy katalog jest lokalnym, a drugi zdalnym. Jeżeli "
+-#~ "nie\n"
+-#~ "podano nazwy drugiego katalogu, używana jest nazwa pierwszego. Jeżeli "
+-#~ "nie\n"
+-#~ "podano nazw obu katalogów, to będą użyte bieżące katalogi lokalny i "
+-#~ "zdalny.\n"
