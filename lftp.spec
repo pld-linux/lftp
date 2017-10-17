@@ -2,7 +2,7 @@
 # - package itself defaults to GNUTLS (prefferring over openssl) should we too?
 #
 # Conditional build:
-%bcond_without	tests
+%bcond_with	tests
 %bcond_without	ssl	# do not use SSL
 %bcond_with	gnutls	# use gnutls, otherwise openssl is used when ssl is on
 # better just preload it instead forcing linking
@@ -25,7 +25,7 @@ Summary(pt_BR.UTF-8):	Sofisticado programa de transferência de arquivos (client
 Summary(zh_CN.UTF-8):	lftp 客户端程序
 Name:		lftp
 Version:	4.8.3
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	https://lftp.yar.ru/ftp/%{name}-%{version}.tar.xz
@@ -117,7 +117,7 @@ CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 
 %{__make}
 
-%{?with_tests:%{__make} -j1 check}
+%{?with_tests:%{__make} check}
 
 %install
 rm -rf $RPM_BUILD_ROOT
