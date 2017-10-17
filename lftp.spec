@@ -117,7 +117,7 @@ CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 
 %{__make}
 
-%{?with_tests:%{__make} check}
+%{?with_tests:%{__make} -j1 check}
 
 %install
 rm -rf $RPM_BUILD_ROOT
