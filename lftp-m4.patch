@@ -34,16 +34,16 @@
                  LIBS="-lz $LIBS"
                  AC_DEFINE([HAVE_LIBZ], [1],
                            [Define to 1 if you have `z' library (-lz)])
---- lftp-4.7.1/m4/lftp_lib_readline.m4~	2016-02-20 14:57:52.000000000 +0100
-+++ lftp-4.7.1/m4/lftp_lib_readline.m4	2016-04-08 23:22:41.891914476 +0200
+--- lftp-4.9.1/m4/lftp_lib_readline.m4~	2020-01-11 17:02:43.000000000 +0100
++++ lftp-4.9.1/m4/lftp_lib_readline.m4	2020-01-26 12:57:50.656951742 +0100
 @@ -107,7 +107,6 @@ AC_DEFUN([lftp_LIB_READLINE],
  	if test -f "$readline_include_dir/readline/readline.h"; then
  	    readline_include_dir="$readline_include_dir/readline"
  	fi
 -        readline_ld_flags="-L$readline_prefix/lib"
-         readline_lib_flags="-lreadline"
-         run_readline_test="yes"
-     elif test "$readline_requested" = "yes"; then
+         if test -z "$readline_lib_flags"; then
+             readline_lib_flags="-lreadline"
+         fi
 --- lftp-4.7.1/m4/ssl.m4~	2016-02-20 14:57:52.000000000 +0100
 +++ lftp-4.7.1/m4/ssl.m4	2016-04-08 23:27:39.145077021 +0200
 @@ -10,7 +10,6 @@ AC_CACHE_VAL(lftp_cv_openssl,
