@@ -25,7 +25,7 @@ Summary(pt_BR.UTF-8):	Sofisticado programa de transferência de arquivos (client
 Summary(zh_CN.UTF-8):	lftp 客户端程序
 Name:		lftp
 Version:	4.9.1
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	https://lftp.yar.ru/ftp/%{name}-%{version}.tar.xz
@@ -132,6 +132,9 @@ cp -p %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}/lftp.png
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 %{__rm} $RPM_BUILD_ROOT%{_mandir}/{README.lftp-man-pages,lftpget.diff}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.{la,so}
+
+# don't drag in perl deps
+%{__rm} $RPM_BUILD_ROOT%{_datadir}/lftp/{convert-mozilla-cookies,verify-file}
 
 %find_lang %{name}
 
