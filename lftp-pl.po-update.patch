@@ -1,14 +1,5 @@
---- lftp-4.8.0/po/pl.po.orig	2017-07-26 18:10:55.796962031 +0200
-+++ lftp-4.8.0/po/pl.po	2017-07-26 18:11:09.263628544 +0200
-@@ -7,7 +7,7 @@
- #
- msgid ""
- msgstr ""
--"Project-Id-Version: lftp 4.7.2\n"
-+"Project-Id-Version: lftp 4.8.0\n"
- "Report-Msgid-Bugs-To: lftp-bugs@lftp.yar.ru\n"
- "POT-Creation-Date: 2017-07-10 15:55+0300\n"
- "PO-Revision-Date: 2016-05-20 15:00+0200\n"
+--- lftp-4.9.1/po/pl.po.orig	2020-01-29 20:08:47.084343430 +0100
++++ lftp-4.9.1/po/pl.po	2020-01-29 20:08:57.340954531 +0100
 @@ -37,29 +37,29 @@
  msgstr "Nieznany błąd systemowy"
  
@@ -128,38 +119,37 @@
  
  #: src/commands.cc:349
  msgid "[re]nlist [<args>]"
-@@ -1124,9 +1123,8 @@
+@@ -1124,8 +1123,8 @@
  " -d  list only default values, not necessary current ones\n"
  msgstr ""
  "Ustaw zmienną na podaną wartość. Jeśli nie podano wartości usuń zmienną.\n"
 -"Nazwa zmiennej występuje w formacie ``nazwa/element_zamykający'', gdzie\n"
 -"elem_zamykający może być dokładnym ustawieniem aplikacji. Szczegóły w "
--"lftp(1).\n"
-+"Nazwa zmiennej występuje w formacie ,,nazwa/dopełnienie'', gdzie\n"
-+"dopełnienie może być dokładnym ustawieniem aplikacji. Szczegóły w lftp(1).\n"
++"Nazwa zmiennej występuje w formacie ,,nazwa/domknięcie'', gdzie\n"
++"domknięcie może być dokładnym zastosowaniem ustawienia. Szczegóły w "
+ "lftp(1).\n"
  "Jeśli komenda wywoływana jest bez podawania nazwy zmiennej wtedy tylko\n"
  "zmienione ustawienia są wyświetlane. Jako opcje można podać:\n"
- " -a  wyświetl wszystkie ustawienia włączając ustawienia standardowe\n"
-@@ -1354,14 +1352,14 @@
+@@ -1354,14 +1353,14 @@
  msgstr "Użycie: %s [OPCJE] pliki...\n"
  
- #: src/commands.cc:1785 src/commands.cc:1814
+ #: src/commands.cc:1784 src/commands.cc:1813
 -#, fuzzy, c-format
 +#, c-format
  msgid "%s: %s: Number expected. "
 -msgstr "%s: -n: Oczekiwano liczby. "
 +msgstr "%s: %s: Oczekiwano liczby. "
  
- #: src/commands.cc:1834
+ #: src/commands.cc:1833
 -#, fuzzy, c-format
 +#, c-format
  msgid "%s: --continue conflicts with --remove-target.\n"
 -msgstr "%s: --share jest w konflikcie z --only-new.\n"
 +msgstr "%s: --continue jest w konflikcie z --remove-target.\n"
  
- #: src/commands.cc:1844 src/commands.cc:1920
+ #: src/commands.cc:1843 src/commands.cc:1919
  #, c-format
-@@ -1447,9 +1445,9 @@
+@@ -1447,9 +1446,9 @@
  msgstr "%s: wykryto pętle zastoju\n"
  
  #: src/commands.cc:2552
@@ -169,12 +159,12 @@
 -msgstr "Użycie: %s [OPCJE] plik\n"
 +msgstr "Użycie: %s [OPCJE] <pliki> <katalog-docelowy>\n"
  
- #: src/commands.cc:2614 src/commands.cc:2944
+ #: src/commands.cc:2614 src/commands.cc:2949
  #, c-format
-@@ -1791,9 +1789,8 @@
+@@ -1791,9 +1790,8 @@
  msgstr "execlp(/bin/sh) nieudane: %s\n"
  
- #: src/Filter.cc:414
+ #: src/Filter.cc:415
 -#, fuzzy
  msgid "file already exists and xfer:clobber is unset"
 -msgstr "%s: %s: plik aktualnie istnieje i xfer:clobber jest nie ustawione\n"
@@ -182,35 +172,48 @@
  
  #: src/FindJobDu.cc:101
  msgid "total"
-@@ -1924,9 +1921,8 @@
+@@ -1896,10 +1894,9 @@
+ msgstr "nie można przeanalizować odpowiedzi EPSV"
+ 
+ #: src/ftpclass.cc:837 src/ftpclass.cc:838
+-#, fuzzy, c-format
+-#| msgid "cannot parse EPSV response"
++#, c-format
+ msgid "cannot parse custom EPSV response"
+-msgstr "nie można przeanalizować odpowiedzi EPSV"
++msgstr "nie można przeanalizować rozszerzonej odpowiedzi EPSV"
+ 
+ #: src/ftpclass.cc:1122
+ #, c-format
+@@ -1930,9 +1927,8 @@
  msgstr "MLST i MLSD nie są obsługiwane przez ten serwer"
  
- #: src/ftpclass.cc:1988
+ #: src/ftpclass.cc:2031
 -#, fuzzy
  msgid "SITE SYMLINK is not supported by the server"
 -msgstr "MLST i MLSD nie są obsługiwane przez ten serwer"
 +msgstr "SITE SYMLINK nie jest obsługiwane przez ten serwer"
  
- #: src/ftpclass.cc:2161
+ #: src/ftpclass.cc:2204
  msgid "unsupported network protocol"
-@@ -2197,7 +2193,7 @@
+@@ -2203,7 +2199,7 @@
  #: src/lftp_ssl.cc:1395
  #, c-format
  msgid "No certificate presented by %s.\n"
 -msgstr ""
 +msgstr "Serwer %s nie przedstawił certyfikatu.\n"
  
- #: src/LocalAccess.cc:604 src/NetAccess.cc:663
+ #: src/LocalAccess.cc:604 src/NetAccess.cc:686
  msgid "Getting directory contents"
-@@ -2365,6 +2361,7 @@
+@@ -2371,6 +2367,7 @@
  "%s: multiple --file or --directory options must have the same base "
  "directory\n"
  msgstr ""
 +"%s: wielokrotne opcje --file lub --directory muszą mieć ten sam katalog bazowy\n"
  
- #: src/MirrorJob.cc:2134
+ #: src/MirrorJob.cc:2145
  #, c-format
-@@ -2398,6 +2395,17 @@
+@@ -2404,6 +2401,17 @@
  "\n"
  "See the man page lftp(1) for a complete documentation.\n"
  msgstr ""
@@ -228,7 +231,7 @@
  
  #: src/mkdirJob.cc:128
  #, c-format
-@@ -2466,7 +2474,7 @@
+@@ -2472,7 +2480,7 @@
  #: src/PatternSet.cc:110
  #, c-format
  msgid "regular expression `%s': %s"
@@ -237,45 +240,45 @@
  
  #: src/pgetJob.cc:127
  msgid "pget: falling back to plain get"
-@@ -2590,12 +2598,11 @@
+@@ -2596,12 +2604,11 @@
  
- #: src/ResMgr.cc:893
+ #: src/ResMgr.cc:894
  msgid "no closure defined for this setting"
 -msgstr "nie zdefiniowano zamknięcia dla tego ustawienia"
-+msgstr "nie zdefiniowano dopełnienia dla tego ustawienia"
++msgstr "nie zdefiniowano domknięcia dla tego ustawienia"
  
- #: src/ResMgr.cc:899
+ #: src/ResMgr.cc:900
 -#, fuzzy
  msgid "a closure is required for this setting"
 -msgstr "nie zdefiniowano zamknięcia dla tego ustawienia"
-+msgstr "do tego ustawienia wymagane jest dopełnienie"
++msgstr "do tego ustawienia wymagane jest domknięcie"
  
- #: src/Resolver.cc:232
+ #: src/Resolver.cc:236
  msgid "host name resolve timeout"
-@@ -2608,7 +2615,7 @@
+@@ -2614,7 +2621,7 @@
  
- #: src/Resolver.cc:323
+ #: src/Resolver.cc:327
  msgid "Link-local IPv6 address should have a scope"
 -msgstr ""
 +msgstr "Adres IPv6 typu link-local powinien mieć zasięg"
  
- #: src/Resolver.cc:741
+ #: src/Resolver.cc:765
  msgid "DNS resolution not trusted."
-@@ -2775,18 +2782,17 @@
+@@ -2781,18 +2788,17 @@
  msgstr "pozostało: "
  
- #: src/SSH_Access.cc:64
+ #: src/SSH_Access.cc:95
 -#, fuzzy
  msgid "Password required"
 -msgstr "Hasło: "
 +msgstr "Wymagane hasło"
  
- #: src/SSH_Access.cc:69
+ #: src/SSH_Access.cc:100
  msgid "Login incorrect"
 -msgstr ""
 +msgstr "Uwierzytelnienie nie powiodło się"
  
- #: src/SSH_Access.cc:163
+ #: src/SSH_Access.cc:194
 -#, fuzzy, c-format
 +#, c-format
  msgid "Disconnecting"
@@ -284,121 +287,27 @@
  
  #: src/SysCmdJob.cc:73
  #, c-format
-@@ -2795,19 +2801,19 @@
+@@ -2801,19 +2807,19 @@
  
- #: src/TimeDate.cc:156
+ #: src/TimeDate.cc:155
  msgid "day"
 -msgstr ""
 +msgstr "dni"
  
- #: src/TimeDate.cc:157
+ #: src/TimeDate.cc:156
  msgid "hour"
 -msgstr ""
 +msgstr "godz"
  
- #: src/TimeDate.cc:158
+ #: src/TimeDate.cc:157
  msgid "minute"
 -msgstr ""
 +msgstr "min"
  
- #: src/TimeDate.cc:159
+ #: src/TimeDate.cc:158
  msgid "second"
 -msgstr ""
 +msgstr "sek"
  
- #: src/Torrent.cc:613
+ #: src/Torrent.cc:585
  msgid "announced via "
-@@ -2977,93 +2983,3 @@
- #, c-format
- msgid "Received valid info about %d IPv6 peer$|s$"
- msgstr "Otrzymano poprawne informacje o %d użytkownik$u|ach|ach$ IPv6"
--
--#~ msgid "%s: option '--%s' doesn't allow an argument\n"
--#~ msgstr "%s: opcja '--%s' nie może mieć argumentów\n"
--
--#~ msgid "%s: unrecognized option '--%s'\n"
--#~ msgstr "%s: nieznana opcja '--%s'\n"
--
--#~ msgid "%s: option '-W %s' is ambiguous\n"
--#~ msgstr "%s: opcja '-W %s' jest niejednoznaczna\n"
--
--#~ msgid "%s: option '-W %s' doesn't allow an argument\n"
--#~ msgstr "%s: opcja '-W %s' nie może mieć argumentów\n"
--
--#~ msgid "%s: option '-W %s' requires an argument\n"
--#~ msgstr "%s: opcja '-W %s' musi mieć argument\n"
--
--#~ msgid "Usage: mv <file1> <file2>\n"
--#~ msgstr "Użycie: mv <plik1> <plik2>\n"
--
--#, fuzzy
--#~ msgid "number"
--#~ msgstr "nieprawidłowy numer"
--
--#, fuzzy
--#~ msgid ""
--#~ "\n"
--#~ "Mirror specified remote directory to local directory\n"
--#~ "\n"
--#~ " -c, --continue         continue a mirror job if possible\n"
--#~ " -e, --delete           delete files not present at remote site\n"
--#~ "     --delete-first     delete old files before transferring new ones\n"
--#~ " -s, --allow-suid       set suid/sgid bits according to remote site\n"
--#~ "     --allow-chown      try to set owner and group on files\n"
--#~ "     --ignore-time      ignore time when deciding whether to download\n"
--#~ " -n, --only-newer       download only newer files (-c won't work)\n"
--#~ " -r, --no-recursion     don't go to subdirectories\n"
--#~ " -p, --no-perms         don't set file permissions\n"
--#~ "     --no-umask         don't apply umask to file modes\n"
--#~ " -R, --reverse          reverse mirror (put files)\n"
--#~ " -L, --dereference      download symbolic links as files\n"
--#~ " -N, --newer-than=SPEC  download only files newer than specified time\n"
--#~ " -P, --parallel[=N]     download N files in parallel\n"
--#~ " -i RX, --include RX    include matching files\n"
--#~ " -x RX, --exclude RX    exclude matching files\n"
--#~ "                        RX is extended regular expression\n"
--#~ " -v, --verbose[=N]      verbose operation\n"
--#~ "     --log=FILE         write lftp commands being executed to FILE\n"
--#~ "     --script=FILE      write lftp commands to FILE, but don't execute "
--#~ "them\n"
--#~ "     --just-print, --dry-run    same as --script=-\n"
--#~ "\n"
--#~ "When using -R, the first directory is local and the second is remote.\n"
--#~ "If the second directory is omitted, basename of first directory is used.\n"
--#~ "If both directories are omitted, current local and remote directories are "
--#~ "used.\n"
--#~ "See lftp(1) for a complete list of options.\n"
--#~ msgstr ""
--#~ "\n"
--#~ "Mirror wskazanego zdalnego katalogu do lokalnego katalogu\n"
--#~ "\n"
--#~ " -c, --continue         kontynuuj pracę mirrora o ile to możliwe\n"
--#~ " -e, --delete           skasuj pliki nie występujące w zdalnym serwisie\n"
--#~ "     --delete-first     skasuj stare pliki przed ściągnięciem nowych\n"
--#~ " -s, --allow-suid       ustaw bity suid/sgid zgodnie ze zdalnymi\n"
--#~ "     --allow-chown      próbuj ustawiać właściciela i grupę na plikach\n"
--#~ "     --ignore-time      ignoruj czas przy decydowaniu czy ściągać\n"
--#~ " -n, --only-newer       pozyskuj tylko nowsze pliki (-c nie działa)\n"
--#~ " -r, --no-recursion     nie wchodź do podkatalogów\n"
--#~ " -p, --no-perms         nie ustawiaj praw dostępu do plików\n"
--#~ "     --no-umask         nie używaj umaski dla praw plików\n"
--#~ " -R, --reverse          przeciwny mirror (umieszczaj pliki)\n"
--#~ " -L, --dereference      pozyskuj dowiązania symboliczne jako pliki\n"
--#~ " -N, --newer-than PLIK  pozyskuj pliki tylko nowsze niż PLIK\n"
--#~ " -P, --parallel[=N]     pozyskuj N plików równolegle\n"
--#~ " -i RX, --include RX    dołącz pasujące pliki\n"
--#~ " -x RX, --exclude RX    wyłącz pasujące pliki\n"
--#~ "                        RX jest rozszerzonym wyrażeniem regularnym\n"
--#~ " -v, --verbose[=N]      dodatkowe komunikaty\n"
--#~ "     --log=PLIK         zapisz wykonywane polecenia lftp do PLIK\n"
--#~ "     --script=PLIK      zapisz polecenia lftp do PLIK ale nie wykonuj "
--#~ "ich\n"
--#~ "     --just-print       to samo co --script=-\n"
--#~ "     --dry-run          to samo co --script=-\n"
--#~ "\n"
--#~ "Przy opcji -R, pierwszy katalog jest lokalnym, a drugi zdalnym. Jeżeli "
--#~ "nie\n"
--#~ "podano nazwy drugiego katalogu, używana jest nazwa pierwszego. Jeżeli "
--#~ "nie\n"
--#~ "podano nazw obu katalogów, to będą użyte bieżące katalogi lokalny i "
--#~ "zdalny.\n"

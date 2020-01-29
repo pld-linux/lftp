@@ -25,7 +25,7 @@ Summary(pt_BR.UTF-8):	Sofisticado programa de transferência de arquivos (client
 Summary(zh_CN.UTF-8):	lftp 客户端程序
 Name:		lftp
 Version:	4.9.1
-Release:	2
+Release:	3
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	https://lftp.yar.ru/ftp/%{name}-%{version}.tar.xz
@@ -92,7 +92,7 @@ o arquivo FEATURES para uma lista mais detalhada.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-#%patch3 -p1
+%patch3 -p1
 %patch4 -p1
 %patch5 -p1
 
