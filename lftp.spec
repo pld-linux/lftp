@@ -32,8 +32,6 @@ Source0:	https://lftp.yar.ru/ftp/%{name}-%{version}.tar.xz
 # Source0-md5:	3da57b1960b1416e89a532c54a67a936
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
-Source2:	%{name}.desktop
-Source3:	%{name}-icon.png
 Patch100:	%{name}-git.patch
 Patch0:		%{name}-makefile.patch
 Patch1:		%{name}-m4.patch
@@ -41,8 +39,9 @@ Patch2:		aliases.patch
 # when updated attach at https://github.com/lavv17/lftp/issues
 Patch3:		%{name}-pl.po-update.patch
 Patch4:		%{name}-am.patch
+Patch5:		%{name}-desktop.patch
 URL:		http://lftp.tech/
-BuildRequires:	autoconf >= 2.60
+BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake
 %{?with_dante:BuildRequires:	dante-devel}
 %{?with_dnssec:BuildRequires:	dnssec-tools-devel}
@@ -95,6 +94,7 @@ o arquivo FEATURES para uma lista mais detalhada.
 %patch2 -p1
 #%patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %{__rm} po/stamp-po
 
@@ -110,10 +110,10 @@ CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 %configure \
 	--without-included-regex \
 	--with-dnssec-local-validation%{!?with_dnssec:=no} \
+	--with-gnutls%{!?with_gnutls:=no} \
 	--with-modules \
-	--with-socksdante%{!?with_dante:=no} \
-	--with%{!?with_openssl:out}-openssl \
-	--with%{!?with_gnutls:out}-gnutls
+	--with-openssl%{!?with_openssl:=no} \
+	--with-socksdante%{!?with_dante:=no}
 
 %{__make}
 
@@ -121,13 +121,12 @@ CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_pixmapsdir},%{_desktopdir}}
+install -d $RPM_BUILD_ROOT%{_sysconfdir}
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 cp -p lftp.conf $RPM_BUILD_ROOT%{_sysconfdir}
-cp -p %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
-cp -p %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}/lftp.png
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 %{__rm} $RPM_BUILD_ROOT%{_mandir}/{README.lftp-man-pages,lftpget.diff}
@@ -146,7 +145,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc README NEWS FAQ FEATURES BUGS ChangeLog TODO
+%doc AUTHORS BUGS ChangeLog FAQ FEATURES NEWS README README.debug-levels README.dnssec THANKS TODO
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/lftp.conf
 %attr(755,root,root) %{_bindir}/lftp
 %attr(755,root,root) %{_bindir}/lftpget
@@ -160,4 +159,4 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pl) %{_mandir}/pl/man1/lftpget.1*
 %{_mandir}/man5/lftp.conf.5*
 %{_desktopdir}/lftp.desktop
-%{_pixmapsdir}/lftp.png
+%{_iconsdir}/hicolor/48x48/apps/lftp-icon.png

@@ -1,0 +1,13 @@
+--- lftp-4.9.1/contrib/lftp.desktop.orig	2017-05-08 08:00:44.000000000 +0200
++++ lftp-4.9.1/contrib/lftp.desktop	2020-01-28 21:28:18.949894306 +0100
+@@ -5,4 +5,9 @@
+ Type=Application
+ Terminal=true
+ Exec=lftp
+-Categories=Network;
++Comment=Sophisticated command line ftp/http client
++Comment[ko]=명령줄에서 돌아가는 FTP/HTTP 클라이언트
++Comment[pl]=Zaawansowany klient ftp/http
++Comment[pt_BR]=Sofisticado programa de transferência de arquivos (cliente ftp/http)
++Comment[zh_CN]=Lftp 客户端程序
++Categories=ConsoleOnly;Network;FileTransfer;
