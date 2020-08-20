@@ -267,18 +267,18 @@
 @@ -2781,18 +2788,17 @@
  msgstr "pozostało: "
  
- #: src/SSH_Access.cc:95
+ #: src/SSH_Access.cc:97
 -#, fuzzy
  msgid "Password required"
 -msgstr "Hasło: "
 +msgstr "Wymagane hasło"
  
- #: src/SSH_Access.cc:100
+ #: src/SSH_Access.cc:102
  msgid "Login incorrect"
 -msgstr ""
 +msgstr "Uwierzytelnienie nie powiodło się"
  
- #: src/SSH_Access.cc:194
+ #: src/SSH_Access.cc:196
 -#, fuzzy, c-format
 +#, c-format
  msgid "Disconnecting"
