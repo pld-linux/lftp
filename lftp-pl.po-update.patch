@@ -1,5 +1,5 @@
---- lftp-4.9.1/po/pl.po.orig	2020-01-29 20:08:47.084343430 +0100
-+++ lftp-4.9.1/po/pl.po	2020-01-29 20:08:57.340954531 +0100
+--- lftp-4.9.2/po/pl.po.orig	2020-08-13 22:17:09.000000000 +0200
++++ lftp-4.9.2/po/pl.po	2020-08-22 10:55:47.246329462 +0200
 @@ -37,29 +37,29 @@
  msgstr "Nieznany błąd systemowy"
  
@@ -197,7 +197,7 @@
  #: src/ftpclass.cc:2204
  msgid "unsupported network protocol"
 @@ -2203,7 +2199,7 @@
- #: src/lftp_ssl.cc:1395
+ #: src/lftp_ssl.cc:1402
  #, c-format
  msgid "No certificate presented by %s.\n"
 -msgstr ""
@@ -205,15 +205,24 @@
  
  #: src/LocalAccess.cc:604 src/NetAccess.cc:686
  msgid "Getting directory contents"
-@@ -2371,6 +2367,7 @@
+@@ -2362,7 +2358,7 @@
+ 
+ #: src/MirrorJob.cc:1694
+ msgid "pattern is empty"
+-msgstr ""
++msgstr "wzorzec jest pusty"
+ 
+ #: src/MirrorJob.cc:1779
+ #, c-format
+@@ -2375,6 +2371,7 @@
  "%s: multiple --file or --directory options must have the same base "
  "directory\n"
  msgstr ""
 +"%s: wielokrotne opcje --file lub --directory muszą mieć ten sam katalog bazowy\n"
  
- #: src/MirrorJob.cc:2145
+ #: src/MirrorJob.cc:2160
  #, c-format
-@@ -2404,6 +2401,17 @@
+@@ -2408,6 +2405,17 @@
  "\n"
  "See the man page lftp(1) for a complete documentation.\n"
  msgstr ""
@@ -231,7 +240,7 @@
  
  #: src/mkdirJob.cc:128
  #, c-format
-@@ -2472,7 +2480,7 @@
+@@ -2476,7 +2484,7 @@
  #: src/PatternSet.cc:110
  #, c-format
  msgid "regular expression `%s': %s"
@@ -240,7 +249,7 @@
  
  #: src/pgetJob.cc:127
  msgid "pget: falling back to plain get"
-@@ -2596,12 +2604,11 @@
+@@ -2600,12 +2608,11 @@
  
  #: src/ResMgr.cc:894
  msgid "no closure defined for this setting"
@@ -255,7 +264,7 @@
  
  #: src/Resolver.cc:236
  msgid "host name resolve timeout"
-@@ -2614,7 +2621,7 @@
+@@ -2618,7 +2625,7 @@
  
  #: src/Resolver.cc:327
  msgid "Link-local IPv6 address should have a scope"
@@ -264,7 +273,7 @@
  
  #: src/Resolver.cc:765
  msgid "DNS resolution not trusted."
-@@ -2781,18 +2788,17 @@
+@@ -2785,18 +2792,17 @@
  msgstr "pozostało: "
  
  #: src/SSH_Access.cc:97
@@ -287,7 +296,7 @@
  
  #: src/SysCmdJob.cc:73
  #, c-format
-@@ -2801,19 +2807,19 @@
+@@ -2805,19 +2811,19 @@
  
  #: src/TimeDate.cc:155
  msgid "day"
