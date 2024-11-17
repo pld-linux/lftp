@@ -4,7 +4,7 @@
  Type=Application
  Terminal=true
  Exec=lftp
--Categories=Network;
+-Categories=Network;FileTransfer;
 +Comment=Sophisticated command line ftp/http client
 +Comment[ko]=명령줄에서 돌아가는 FTP/HTTP 클라이언트
 +Comment[pl]=Zaawansowany klient ftp/http

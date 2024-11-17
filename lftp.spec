@@ -24,12 +24,12 @@ Summary(pl.UTF-8):	Zaawansowany klient FTP/HTTP
 Summary(pt_BR.UTF-8):	Sofisticado programa de transferência de arquivos (cliente FTP/HTTP)
 Summary(zh_CN.UTF-8):	lftp 客户端程序
 Name:		lftp
-Version:	4.9.2
-Release:	2
+Version:	4.9.3
+Release:	1
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	https://lftp.yar.ru/ftp/%{name}-%{version}.tar.xz
-# Source0-md5:	b3a272ecb7a2b60e3827776f90ffb2f3
+# Source0-md5:	f2e4ffa81b68106a14d354d50635bbf4
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	cdad8fb5342eebd9916eccefc98a855b
 Patch100:	%{name}-git.patch
@@ -38,8 +38,8 @@ Patch1:		%{name}-m4.patch
 Patch2:		aliases.patch
 # when updated attach at https://github.com/lavv17/lftp/issues
 Patch3:		%{name}-pl.po-update.patch
-Patch4:		%{name}-am.patch
-Patch5:		%{name}-desktop.patch
+Patch4:		%{name}-desktop.patch
+Patch5:		gnulib-duplicate-symbols.patch
 URL:		http://lftp.tech/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake
@@ -160,3 +160,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man5/lftp.conf.5*
 %{_desktopdir}/lftp.desktop
 %{_iconsdir}/hicolor/48x48/apps/lftp-icon.png
+%{zsh_compdir}/_lftp

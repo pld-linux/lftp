@@ -3,42 +3,42 @@
 @@ -37,29 +37,29 @@
  msgstr "Nieznany błąd systemowy"
  
- #: lib/getopt.c:278
+ #: lib/getopt.c:282
 -#, fuzzy, c-format
 +#, c-format
  msgid "%s: option '%s%s' is ambiguous\n"
 -msgstr "%s: opcja '%s' jest niejednoznaczna\n"
 +msgstr "%s: opcja '%s%s' jest niejednoznaczna\n"
  
- #: lib/getopt.c:284
+ #: lib/getopt.c:288
 -#, fuzzy, c-format
 +#, c-format
  msgid "%s: option '%s%s' is ambiguous; possibilities:"
 -msgstr "%s: opcja '%s' jest niejednoznaczna; możliwości:"
 +msgstr "%s: opcja '%s%s' jest niejednoznaczna; możliwości:"
  
- #: lib/getopt.c:319
+ #: lib/getopt.c:322
 -#, fuzzy, c-format
 +#, c-format
  msgid "%s: unrecognized option '%s%s'\n"
 -msgstr "%s: nieznana opcja '%c%s'\n"
 +msgstr "%s: nieznana opcja '%s%s'\n"
  
- #: lib/getopt.c:345
+ #: lib/getopt.c:348
 -#, fuzzy, c-format
 +#, c-format
  msgid "%s: option '%s%s' doesn't allow an argument\n"
 -msgstr "%s: opcja '%c%s' nie może mieć argumentów\n"
 +msgstr "%s: opcja '%s%s' nie może mieć argumentów\n"
  
- #: lib/getopt.c:360
+ #: lib/getopt.c:363
 -#, fuzzy, c-format
 +#, c-format
  msgid "%s: option '%s%s' requires an argument\n"
 -msgstr "%s: opcja '--%s' musi mieć argument\n"
 +msgstr "%s: opcja '%s%s' musi mieć argument\n"
  
- #: lib/getopt.c:621
+ #: lib/getopt.c:624
  #, c-format
 @@ -105,24 +105,22 @@
  msgstr "pamięć wyczerpana"
@@ -133,33 +133,33 @@
 @@ -1354,14 +1353,14 @@
  msgstr "Użycie: %s [OPCJE] pliki...\n"
  
- #: src/commands.cc:1784 src/commands.cc:1813
+ #: src/commands.cc:1785 src/commands.cc:1814
 -#, fuzzy, c-format
 +#, c-format
  msgid "%s: %s: Number expected. "
 -msgstr "%s: -n: Oczekiwano liczby. "
 +msgstr "%s: %s: Oczekiwano liczby. "
  
- #: src/commands.cc:1833
+ #: src/commands.cc:1834
 -#, fuzzy, c-format
 +#, c-format
  msgid "%s: --continue conflicts with --remove-target.\n"
 -msgstr "%s: --share jest w konflikcie z --only-new.\n"
 +msgstr "%s: --continue jest w konflikcie z --remove-target.\n"
  
- #: src/commands.cc:1843 src/commands.cc:1919
+ #: src/commands.cc:1844 src/commands.cc:1920
  #, c-format
 @@ -1447,9 +1446,9 @@
  msgstr "%s: wykryto pętle zastoju\n"
  
- #: src/commands.cc:2552
+ #: src/commands.cc:2553
 -#, fuzzy, c-format
 +#, c-format
  msgid "Usage: %s [OPTS] <files> <target-dir>\n"
 -msgstr "Użycie: %s [OPCJE] plik\n"
 +msgstr "Użycie: %s [OPCJE] <pliki> <katalog-docelowy>\n"
  
- #: src/commands.cc:2614 src/commands.cc:2949
+ #: src/commands.cc:2615 src/commands.cc:2956
  #, c-format
 @@ -1791,9 +1790,8 @@
  msgstr "execlp(/bin/sh) nieudane: %s\n"
@@ -197,7 +197,7 @@
  #: src/ftpclass.cc:2204
  msgid "unsupported network protocol"
 @@ -2203,7 +2199,7 @@
- #: src/lftp_ssl.cc:1402
+ #: src/lftp_ssl.cc:1291
  #, c-format
  msgid "No certificate presented by %s.\n"
 -msgstr ""
