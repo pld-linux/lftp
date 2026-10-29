@@ -1,0 +1,7 @@
+gettext >= 1.0 po/Makefile.in.in reads only po/LINGUAS, not ALL_LINGUAS from
+configure.ac; without it no catalogs are built or installed.
+
+--- /dev/null
++++ lftp-4.9.3/po/LINGUAS
+@@ -0,0 +1 @@
++de es fr it ja ko pl pt_BR sr ru uk zh_CN zh_TW zh_HK cs

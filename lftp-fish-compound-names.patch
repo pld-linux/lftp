@@ -1,0 +1,27 @@
+From ca273449824f3ad2ca5dbb506346abcb22ac8c05 Mon Sep 17 00:00:00 2001
+From: Acts1631 <acts1631kjv@proton.me>
+Date: Thu, 20 Aug 2026 11:56:37 -0400
+Subject: [PATCH] fish: reject compound names from remote listings
+
+FISH parses remote ls output directly into FileInfo names. Reject
+
+slash-containing names before consumers such as mirror combine them with
+
+local destination paths, preventing remote path traversal.
+---
+ src/Fish.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/Fish.cc b/src/Fish.cc
+index 868202e62..183357d8a 100644
+--- a/src/Fish.cc
++++ b/src/Fish.cc
+@@ -1179,6 +1179,8 @@ static FileSet *ls_to_FileSet(const char *b,int len)
+ 
+       set->Add(f);
+    }
++   // Remote shell output must not introduce path components into file names.
++   set->ExcludeCompound();
+    return set;
+ }
+ 

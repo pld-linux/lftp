@@ -25,7 +25,7 @@ Summary(pt_BR.UTF-8):	Sofisticado programa de transferência de arquivos (client
 Summary(zh_CN.UTF-8):	lftp 客户端程序
 Name:		lftp
 Version:	4.9.3
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	https://lftp.yar.ru/ftp/%{name}-%{version}.tar.xz
@@ -40,6 +40,15 @@ Patch2:		aliases.patch
 Patch3:		%{name}-pl.po-update.patch
 Patch4:		%{name}-desktop.patch
 Patch5:		gnulib-duplicate-symbols.patch
+# https://github.com/lavv17/lftp/commit/67d5e059dd
+Patch6:		%{name}-torrent-path.patch
+# https://github.com/lavv17/lftp/commit/ca27344982
+Patch7:		%{name}-fish-compound-names.patch
+# https://github.com/lavv17/lftp/commit/2fb63d3691
+Patch8:		%{name}-bencode-depth.patch
+# https://github.com/lavv17/lftp/commit/573d06c046
+Patch9:		%{name}-cwd-overflow.patch
+Patch10:	%{name}-po-linguas.patch
 URL:		http://lftp.tech/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake
@@ -95,6 +104,11 @@ o arquivo FEATURES para uma lista mais detalhada.
 %patch -P3 -p1
 %patch -P4 -p1
 %patch -P5 -p1
+%patch -P6 -p1
+%patch -P7 -p1
+%patch -P8 -p1
+%patch -P9 -p1
+%patch -P10 -p1
 
 %{__rm} po/stamp-po
 
